@@ -1,0 +1,19 @@
+.main__subtitle {
+  max-width: 730px;
+  
+  /* Header2 */
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 64px;
+  /* or 160% */
+
+  text-align: center;
+
+  /* White */
+
+  color: #FFFFFF;
+    margin: 32px auto 90px;
+}
