@@ -1,0 +1,36 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+
+    <section class="main root__container">
+        <div class="main__background">
+            <div class="main__content root__content">
+                <h1 class="main__title">Получи опыт в своей новой IT профессии</h1>
+                <h2 class="main__subtitle">
+                    Находи задачи и создавай команды для реализации своих идей!
+                </h2>
+                <div class="main__buttons">
+                    <button class="buttons_type_white main__button">
+                        Найти задачу
+                    </button>
+                    <button class="buttons_type_white main__button">
+                        Создать команду
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="news root__container">
+        <div class="news__content root__content">
+            <div class="news__articles">
+                <img src="{% static 'img/news.jpg' %}" alt="Новости"/>
+            </div>
+            <div class="news__forum">
+                <img src="{% static 'img/forum.jpg' %}" alt="Форум"/>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
