@@ -6,4 +6,11 @@ from authapp.forms import SiteUserLoginForm
 
 class Login(LoginView):
     form = SiteUserLoginForm
-    template_name = 'authapp/login.html'
+
+
+# def Login(request):
+#     form = SiteUserLoginForm
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'registration/login.html', context=context)
