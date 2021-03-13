@@ -1,5 +1,9 @@
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 
+from authapp.forms import SiteUserLoginForm
 
-def login(request):
-    pass
+
+class Login(LoginView):
+    form = SiteUserLoginForm
+    template_name = 'authapp/login.html'
