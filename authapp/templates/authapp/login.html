@@ -3,13 +3,10 @@
 
     <form class="form-horizontal" action="{% url 'authapp:login' %}" method="post">
         {% csrf_token %}
-        {#    {% if next_page %}#}
-        {#        <input type="hidden" name="next_page" value="">#}
-        {#    {% endif %}#}
-        {% for field in form %}
-            <div class="dsa">{{ field.label_tag }}</div>
-            <div class="form-control">{{ field }}</div>
-        {% endfor %}
+        {% if next_page %}
+            <input type="hidden" name="next_page" value="{{ next_page }}">
+        {% endif %}
+        {{ login_form.as_p }}
         <br>
         <input class="form-control" type="submit" value="войти">
     </form>
