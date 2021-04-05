@@ -21,7 +21,13 @@ def login(request):
             auth.login(request, user)
             if "next_page" in request.POST.keys():
                 return HttpResponseRedirect(request.POST["next_page"])
-            return HttpResponseRedirect(reverse("main"))
+            return HttpResponseRedirect(reverse("mainapp:index"))
 
     content = {"title": title, "login_form": login_form, "next_page": next_page}
     return render(request, "authapp/login.html", content)
+
+
+def profile(request):
+    title = 'личный кабинет'
+    content = {"title": title}
+    return render(request, 'authapp/profile.html', context=content)

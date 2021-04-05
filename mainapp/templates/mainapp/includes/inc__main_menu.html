@@ -11,5 +11,11 @@
         <a href="#" class="header__link">Статьи</a>
     </nav>
     <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск"/>
-    <button class="buttons_type_white header__button" ><a href="{% url 'authapp:login' %}">Войти</a></button>
+    {% if user.is_authenticated %}
+        <li>
+            <a href="{% url 'authapp:profile' %}">профиль</a>
+        </li>
+    {% else %}
+        <button class="buttons_type_white header__button"><a href="{% url 'authapp:login' %}">Войти</a></button>
+    {% endif %}
 </div>
