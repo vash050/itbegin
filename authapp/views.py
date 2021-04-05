@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from authapp.forms import SiteUserLoginForm
+from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm
 
 
 def login(request):
@@ -31,3 +31,19 @@ def profile(request):
     title = 'личный кабинет'
     content = {"title": title}
     return render(request, 'authapp/profile.html', context=content)
+
+
+def register(request):
+    title = "регистрация"
+
+    if request.method == "POST":
+        register_form = SiteUserRegisterForm(request.POST, request.FILES)
+
+        if register_form.is_valid():
+            register_form.save()
+            return HttpResponseRedirect(reverse('mainapp:index'))
+    else:
+        register_form = SiteUserRegisterForm()
+
+    content = {"title": title, "register_form": register_form}
+    return render(request, "authapp/register.html", content)
