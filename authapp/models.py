@@ -4,7 +4,6 @@ from django.db import models
 
 class SiteUser(AbstractUser):
     avatar = models.ImageField(verbose_name="аватар пользователя", upload_to="user_avatars", blank=True)
-    surname = models.CharField(verbose_name="фамилия", max_length=150, blank=True)
     date_born = models.DateField(verbose_name="день рождения", null=True)
     profession = models.ManyToManyField(verbose_name="профессии", to='Professions', blank=True)
     about_me = models.CharField(verbose_name="обо мне", max_length=1000, blank=True)
@@ -12,7 +11,6 @@ class SiteUser(AbstractUser):
     # my_groups = models.ManyToManyField(to='Groups', blank=True)
     # my_projects = models.ManyToManyField(to='Projects', blank=True)
     free = models.BooleanField(default=True)
-    date_last_login = models.DateTimeField(null=True)
     date_update_profile = models.DateTimeField(auto_now=True)
 
     class Meta:

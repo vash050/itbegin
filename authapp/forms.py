@@ -35,4 +35,4 @@ class SiteUserRegisterForm(UserCreationForm):
 
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'surname', 'date_born', 'username', 'password1', 'password2',)
+        fields = ('first_name', 'last_name', 'date_born', 'username', 'password1', 'password2',)
