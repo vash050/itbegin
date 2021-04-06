@@ -22,7 +22,7 @@ class SiteUser(AbstractUser):
 
 class ContactUser(models.Model):
     user = models.OneToOneField(SiteUser, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
-    user_phone = models.CharField(verbose_name="телефон", max_length=20)
+    user_phone = models.CharField(verbose_name="телефон", max_length=20, blank=True)
     user_email = models.EmailField(verbose_name="email", blank=True)
     user_instagram = models.URLField(verbose_name="инстаграмм", blank=True)
     user_vk = models.URLField(verbose_name="вконтакте", blank=True)
@@ -34,15 +34,11 @@ class ContactUser(models.Model):
 
 
 class Professions(models.Model):
-    user = models.ManyToManyField(to=SiteUser)
-    front_end = models.BooleanField(verbose_name="front-end разработчик", default=False)
-    back_end = models.BooleanField(verbose_name="back-end разработчик", default=False)
-    web_designer = models.BooleanField(verbose_name="web дизайнер", default=False)
-    ux_designer = models.BooleanField(verbose_name="UX дизайнер", default=False)
-    game_designer = models.BooleanField(verbose_name="game дизайнер", default=False)
-    android = models.BooleanField(verbose_name="android разработчик", default=False)
-    ios = models.BooleanField(verbose_name="ios разработчик", default=False)
+    profession_name = models.CharField(verbose_name="профессия", max_length=120)
 
     class Meta:
         verbose_name = 'профессии'
         verbose_name_plural = 'профессии'
+
+    def __str__(self):
+        return self.profession_name

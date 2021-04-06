@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm
+from authapp.models import Professions, SiteUser
 
 
 def login(request):
