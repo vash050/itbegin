@@ -17,8 +17,11 @@ class Task(models.Model):
     quantity_take = models.IntegerField(verbose_name='количество взятий', default=0)
     quantity_finished = models.IntegerField(verbose_name='количество выполнения', default=0)
     # reviews = models.ManyToManyField()
-    rating = models.SmallIntegerField()
+    rating = models.SmallIntegerField(default=0)
 
     class Meta:
         verbose_name = 'задача'
         verbose_name_plural = 'задачи'
+
+    def __str__(self):
+        return self.name
