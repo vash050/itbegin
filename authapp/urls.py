@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', authapp.login, name='login'),
     path('profile/', authapp.profile, name='profile'),
     path('register/', authapp.register, name='register'),
+    path('logout/', authapp.logout, name='logout'),
 ]
