@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+
+   Groups
+    <ul>
+        {% for group in groups %}
+             <li>----------------------------------------------------------------</li>
+            <li> {{ groups }}</li>
+            <li> {{ group.name }}</li>
+            <li> {{ group.description }}</li>
+            <li>{{ group.logotype }}</li>
+            <li>----------------------------------------------------------------</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
