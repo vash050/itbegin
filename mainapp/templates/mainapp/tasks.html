@@ -1,0 +1,19 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+
+    Tasks
+    <ul>
+        {% for task in tasks %}
+             <li>----------------------------------------------------------------</li>
+            <li> {{ task.name }}</li>
+            <li> {{ task.short_description }}</li>
+            <li>{{ task.full_description }}</li>
+            <li>{{ task.tz }}</li>
+            <li>{{ task.author }}</li>
+            <li>----------------------------------------------------------------</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
