@@ -5,6 +5,7 @@
 {% block conteiner %}
 
     Profile
+    {{ request.user }}
 <a href="{% url 'authapp:logout' %}" class="header__link header__link_activ">Выход</a>
-
+<a href="{% url 'authapp:update' %}" class="header__link header__link_activ">Изменить профиль</a>
 {% endblock %}

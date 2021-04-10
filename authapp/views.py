@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm
+from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm
 from authapp.models import Professions, SiteUser
 
 
@@ -53,3 +53,22 @@ def register(request):
         "register_form": register_form
     }
     return render(request, "authapp/register.html", content)
+
+
+def update(request):
+    title = "изменения профиля"
+
+    if request.method == "POST":
+        form = SiteUserUpdateForm(request.POST, request.FILES, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('authapp:profile'))
+    else:
+        form = SiteUserUpdateForm(instance=request.user)
+
+    content = {
+        "title": title,
+        "form": form
+    }
+    return render(request, "authapp/update.html", content)

@@ -15,6 +15,9 @@
         <li>
             <a href="{% url 'authapp:profile' %}">профиль</a>
         </li>
+        <li style="color: #FFFFFF">
+        {{ request.user }}
+        </li>
     {% else %}
         <button class="buttons_type_white header__button"><a href="{% url 'authapp:login' %}">Войти</a></button>
     {% endif %}
