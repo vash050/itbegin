@@ -4,9 +4,9 @@
 
 {% block conteiner %}
 
-    Tasks
+    Task
     <ul>
-        {% for task in tasks %}
+{{ task }}
              <li>----------------------------------------------------------------</li>
             <li> {{ task.name }}</li>
             <li> {{ task.short_description }}</li>
@@ -14,9 +14,9 @@
             <li>{{ task.tz }}</li>
             <li>{{ task.author }}</li>
             <li>{{ task.id }}</li>
-            <li><a href="{% url 'mainapp:task' task.id %}">Task</a> </li>
+
             <li>----------------------------------------------------------------</li>
-        {% endfor %}
+
     </ul>
-    <a href="{% url 'mainapp:create_task' %}">Создать задачу</a>
+    <a href="{% url 'mainapp:tasks' %}">задачи</a>
 {% endblock %}
