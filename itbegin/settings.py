@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mainapp',
     'authapp',
     'groupapp',
+
 ]
 
 AUTH_USER_MODEL = 'authapp.SiteUser'
