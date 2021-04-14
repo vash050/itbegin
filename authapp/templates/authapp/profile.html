@@ -1,0 +1,15 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+
+    Profile
+    <p style="color: #212121">{{ request.user }}</p>
+    {% for prof in profession %}
+    {{ prof }}
+    {% endfor %}
+    </br>
+<a href="{% url 'authapp:logout' %}" class="header__link header__link_activ" style="color: #212121">Выход</a>
+<a href="{% url 'authapp:update' %}" class="header__link header__link_activ" style="color: #212121 ">Изменить профиль</a>
+{% endblock %}

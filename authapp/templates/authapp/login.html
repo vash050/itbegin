@@ -1,0 +1,22 @@
+{% extends 'authapp/base.html' %}
+{% block content %}
+
+    <form class="form-horizontal" action="{% url 'authapp:login' %}" method="post">
+        {% csrf_token %}
+        {{ login_form.as_p }}
+        <br>
+        <input class="" type="submit" value="войти">
+    </form>
+    <a href="{% url 'authapp:register' %}" class="">
+        зарегистрироваться
+    </a>
+    {#<a href="#" class="btn btn-primary btn-block" role="button">#}
+    {#    Вход через <i class="fa fa-vk" aria-hidden="true"></i>#}
+    {#</a>#}
+    {#    <a href="#" class="btn btn-primary btn-block" role="button">#}
+    {#    Вход через <i class="fab fa-github" aria-hidden="true"></i>#}
+    {#</a>#}
+
+
+
+{% endblock content %}

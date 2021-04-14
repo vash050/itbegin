@@ -3,13 +3,22 @@
 <div class="header__content root__content">
     <img src="{% static 'img/logo.png' %}" alt="Лого"/>
     <nav class="header__links">
-        <a href="{% url 'index' %}" class="header__link header__link_activ">Главная</a>
-        <a href="#" class="header__link">Команды</a>
-        <a href="#" class="header__link">Задачи</a>
+        <a href="{% url 'mainapp:index' %}" class="header__link header__link_activ">Главная</a>
+        <a href="{% url 'groupapp:groups' %}" class="header__link">Команды</a>
+        <a href="{% url 'mainapp:tasks' %}" class="header__link">Задачи</a>
         <a href="#" class="header__link">О нас</a>
         <a href="#" class="header__link">Форум</a>
         <a href="#" class="header__link">Статьи</a>
     </nav>
     <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск"/>
-    <button class="buttons_type_white header__button">Войти</button>
+    {% if user.is_authenticated %}
+        <li>
+            <a href="{% url 'authapp:profile' %}">профиль</a>
+        </li>
+        <li style="color: #FFFFFF">
+        {{ request.user }}
+        </li>
+    {% else %}
+        <button class="buttons_type_white header__button"><a href="{% url 'authapp:login' %}">Войти</a></button>
+    {% endif %}
 </div>

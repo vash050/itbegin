@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+
+    Tasks
+    <ul>
+        {% for task in tasks %}
+             <li>----------------------------------------------------------------</li>
+            <li> {{ task.name }}</li>
+            <li> {{ task.short_description }}</li>
+            <li>{{ task.full_description }}</li>
+            <li>{{ task.tz }}</li>
+            <li>{{ task.author }}</li>
+            <li>{{ task.id }}</li>
+            <li><a href="{% url 'mainapp:task' task.id %}">Task</a> </li>
+            <li>----------------------------------------------------------------</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'mainapp:create_task' %}">Создать задачу</a>
+{% endblock %}

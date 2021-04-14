@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+    <title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
+    </title>
+    {% block css %}
+
+    {% endblock %}
+
+    {% block js %}
+    {% endblock js %}
+
+</head>
+
+<body>
+<div class="container">
+    <div class="login">
+        <div class="h2 text-center head">
+            Вход в систему
+        </div>
+
+        {% block content %}
+        {% endblock content %}
+
+    </div>
+</div>
+</body>
+
+
+</html>
