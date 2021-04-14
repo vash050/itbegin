@@ -8,7 +8,7 @@ class Task(models.Model):
     short_description = models.CharField(verbose_name='краткое описанние', max_length=1000)
     full_description = models.TextField(verbose_name='полное описание')
     tz = models.TextField(verbose_name='техническое задание')
-    author = models.OneToOneField(SiteUser, unique=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(to=SiteUser, on_delete=models.CASCADE)
     # developers = models.ManyToManyField(to=Groups)
     professions = models.ManyToManyField(to=Professions)
     create_date = models.DateTimeField(auto_now_add=True)

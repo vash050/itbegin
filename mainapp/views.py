@@ -26,16 +26,16 @@ def task(request, pk):
     content = {'title': title, 'task': task_obj}
     return render(request, 'mainapp/task.html', context=content)
 
+
 def create_task(request):
     title = 'создание задачи'
 
     if request.method == "POST":
         create_task_form = CreateTaskForm(request.POST, request.FILES)
-
         if create_task_form.is_valid():
-            create_task_form.save(commit=False)
-            create_task_form.author = f'{request.user}'
-            create_task_form.save()
+            new_task = create_task_form.save(commit=False)
+            new_task.author = request.user
+            new_task.save()
 
             return HttpResponseRedirect(reverse('mainapp:tasks'))
 
