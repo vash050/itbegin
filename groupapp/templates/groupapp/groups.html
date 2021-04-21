@@ -9,10 +9,13 @@
         {% for group in groups %}
              <li>----------------------------------------------------------------</li>
             <li> {{ groups }}</li>
+            <li>{{ group.pk }}</li>
             <li> {{ group.name }}</li>
             <li> {{ group.description }}</li>
             <li>{{ group.logotype }}</li>
+            <li><a href="{% url 'groupapp:group' group.pk %}">Group</a> </li>
             <li>----------------------------------------------------------------</li>
         {% endfor %}
     </ul>
+
 {% endblock %}

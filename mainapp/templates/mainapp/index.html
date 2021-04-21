@@ -14,10 +14,12 @@
                 <div class="main__buttons">
                     <button class="buttons_type_white main__button"><a href="{% url 'mainapp:tasks' %}">
                         Найти задачу
-                        </a>
+                    </a>
                     </button>
                     <button class="buttons_type_white main__button">
-                        Создать команду
+                        <a href="{% url 'groupapp:create_group' %}">
+                            Создать команду
+                        </a>
                     </button>
                 </div>
             </div>

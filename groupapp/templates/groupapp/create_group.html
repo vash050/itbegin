@@ -1,0 +1,13 @@
+{% extends 'mainapp/base.html' %}
+{% block conteiner %}
+
+    <form class="form-horizontal" action="{% url 'groupapp:create_group' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ create_group_form.as_p }}
+        <br>
+        <input class="form-control" type="submit" value="создать">
+    </form>
+    <a href="{% url 'mainapp:index' %}" class="btn btn-outline-secondary btn-block" role="button">
+        назад
+    </a>
+{% endblock %}
