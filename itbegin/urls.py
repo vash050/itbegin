@@ -19,10 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 
-import mainapp.views as mainapp
-
 urlpatterns = [
-
     path('', include('mainapp.urls'), name='mainapp'),
     path('auth/', include('authapp.urls'), name='authapp'),
     path('group/', include('groupapp.urls'), name='groupapp'),

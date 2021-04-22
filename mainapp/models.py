@@ -1,6 +1,5 @@
 from django.db import models
 
-
 from authapp.models import SiteUser, Professions
 
 
@@ -26,4 +25,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
-
