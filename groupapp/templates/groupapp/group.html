@@ -1,0 +1,12 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+
+    <li> {{ this_group.name }}</li>
+    <li> {{ this_group.description }}</li>
+    <li>{{ this_group.id }}</li>
+
+
+{% endblock %}
