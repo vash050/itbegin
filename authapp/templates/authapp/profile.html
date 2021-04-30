@@ -13,4 +13,8 @@
     <a href="{% url 'authapp:logout' %}" class="header__link header__link_activ" style="color: #212121">Выход</a>
     <a href="{% url 'authapp:update' %}" class="header__link header__link_activ" style="color: #212121 ">Изменить профиль</a>
     <a href="{% url 'messegeapp:create_dialog' request.user.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>
+    {% for us in users %}
+    {{ us.id }}
+<a href="{% url 'messegeapp:create_dialog' us.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>
+    {% endfor %}
 {% endblock %}
