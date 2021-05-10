@@ -26,6 +26,22 @@
 @import url("../blocks/news/__articles/news__articles.css");
 @import url("../blocks/news/__content/news__content.css");
 @import url("../blocks/news/__forum/news__forum.css");
+@import url("../blocks/news/__header/news__header.css");
+@import url("../blocks/news/__header-label/news__header-label.css");
+@import url("../blocks/news/__select/news__select.css");
+@import url("../blocks/news/__article/news__article.css");
+@import url("../blocks/news/__load/news__load.css");
+@import url("../blocks/news/__footer/news__footer.css");
+@import url("../blocks/news/__article-img/news__article-img.css");
+
+@import url("../blocks/article/article.css");
+@import url("../blocks/article/__data/article__data.css");
+@import url("../blocks/article/__label/article__label.css");
+@import url("../blocks/article/__text/article__text.css");
+
+
+
+@import url("../blocks/selects/_type/selects_type_darkGray.css");
 
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__about/footer__about.css");
