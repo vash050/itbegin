@@ -1,22 +1,46 @@
 {% extends 'authapp/base.html' %}
+{% load static %}
 {% block content %}
 
-    <form class="form-horizontal" action="{% url 'authapp:login' %}" method="post">
-        {% csrf_token %}
-        {{ login_form.as_p }}
-        <br>
-        <input class="" type="submit" value="войти">
-    </form>
-    <a href="{% url 'authapp:register' %}" class="">
-        зарегистрироваться
-    </a>
-    {#<a href="#" class="btn btn-primary btn-block" role="button">#}
-    {#    Вход через <i class="fa fa-vk" aria-hidden="true"></i>#}
-    {#</a>#}
-    {#    <a href="#" class="btn btn-primary btn-block" role="button">#}
-    {#    Вход через <i class="fab fa-github" aria-hidden="true"></i>#}
-    {#</a>#}
+    {#    <form class="form-horizontal" action="{% url 'authapp:login' %}" method="post">#}
+    {#        {% csrf_token %}#}
+    {#        {{ login_form.as_p }}#}
+    {#        <br>#}
+    {#        <input class="" type="submit" value="войти">#}
+    {#    </form>#}
+    {#    <a href="{% url 'authapp:register' %}" class="">#}
+    {#        зарегистрироваться#}
+    {#    </a>#}
 
+    <div class="root darkgrey_background authorization__page">
+        <section class="authorization__block">
+            <a href="{% url 'authapp:login' %}">Вход</a>
+            <a href="{% url 'authapp:register' %}">Регистрация</a>
+        </section>
+        <section class="authorization__main root__container">
+            <form action="{% url 'authapp:login' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for form in login_form %}
+                    <div class="authorization__main__label">
+                        <label for="{{ form.id_for_label }}" class="registration__form_input_label">
+                            {{ form.label }}
+                        </label>
+                        <input type="{% if form.name == 'password' %}password{% else %}text{% endif %}"
+                               id="{{ form.id }}" name="{{ form.name }}" placeholder=""
+                               class="input_type_black authorization_input">
+                    </div>
+                {% endfor %}
+                <label class="registration__form_checkbox"><input type="checkbox" required name="personalinfo"
+                                                                  id="personalinfo">
+                    <span class="registration__form_checkmark"></span>
+                    Запомнить меня</label>
+                <input type="submit" value="Войти"
+                   class="buttons_type_white button__submit__registration__form" id="submit__application">
+{#                <button class="buttons_type_white authorization__button">Войти</button>#}
+            </form>
+            <a href="#" class="authorization__password__link">Забыли пароль?</a>
+        </section>
+    </div>
 
 
 {% endblock content %}
