@@ -1,16 +1,41 @@
 {% extends 'authapp/base.html' %}
+{% load static %}
 {% block content %}
 
-    <form class="form-horizontal" action="{% url 'authapp:register' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ register_form.as_p }}
-        <br>
-        <input class="form-control" type="submit" value="зарегистрироваться">
-    </form>
-    <a href="{% url 'authapp:login' %}" class="btn btn-outline-secondary btn-block" role="button">
-        назад
-    </a>
 
+
+    <section class="registration__form__content root__container">
+        <a href="{% url 'mainapp:index' %}" class="button__registration__form">
+            <img class="button__registration__form__img" src="/static/img/Arrow.png">
+            Назад
+        </a>
+        <h1 class="registration__form__content__h1">
+            Заполни форму, что бы зарегистрироваться
+        </h1>
+        <form action="{% url 'authapp:register' %}" class="registration__form" method="post"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for form in register_form %}
+                <div class="registration__form_div">
+                    <label for="{{ form.id_for_label }}" class="registration__form_input_label">
+                        {{ form.label }}
+                    </label>
+                    <input type="{% if form.name == 'password1' or form.name == 'password2' %}password{% else %}text{% endif %}"
+                           id="{{ form.id }}" name="{{ form.name }}" placeholder=""
+                           class="input_type_black registration__form_input">
+                </div>
+            {% endfor %}
+
+            <label class="registration__form_checkbox">
+                <input type="checkbox" required name="personalinfo" id="personalinfo">
+                <span class="registration__form_checkmark"></span>
+                Согласие на использование персональной информации
+            </label>
+            <input type="submit" value="Зарегистрироваться"
+                   class="buttons_type_white button__submit__registration__form" id="submit__application">
+        </form>
+    </section>
 
 
 {% endblock content %}

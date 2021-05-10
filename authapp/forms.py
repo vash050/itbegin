@@ -2,9 +2,10 @@ import hashlib
 import random
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms.widgets import HiddenInput
+from django.forms.widgets import HiddenInput, TextInput, PasswordInput
 
 from authapp.models import SiteUser
+from groupapp import forms
 
 
 class SiteUserLoginForm(AuthenticationForm):
@@ -21,12 +22,11 @@ class SiteUserLoginForm(AuthenticationForm):
 class SiteUserRegisterForm(UserCreationForm):
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'last_name', 'date_born', 'username', 'password1', 'password2',)
+        fields = ('first_name', 'last_name', 'date_born', 'username', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SiteUserRegisterForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
             field.help_text = ""
 
     def save(self):
