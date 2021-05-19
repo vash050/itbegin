@@ -48,6 +48,7 @@ class SiteUserUpdateForm(UserChangeForm):
     def __init__(self, *args, **kwargs):
         super(SiteUserUpdateForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "input_type_white registration__form_input"
             field.help_text = ""
             if field_name == 'password':
                 field.widget = HiddenInput()
