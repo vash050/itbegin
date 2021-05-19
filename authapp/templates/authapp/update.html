@@ -1,9 +1,10 @@
 {% extends 'authapp/base.html' %}
+{% load static %}
 {% block content %}
 
     <form class="form-horizontal" action="{% url 'authapp:update' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ forms.as_p }}
         <br>
         <input class="form-control" type="submit" value="зарегистрироваться">
     </form>
@@ -11,6 +12,24 @@
         назад
     </a>
 
-
+{#<form action="{% url 'authapp:update' %}" class="registration__form" method="post"#}
+{#              enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{##}
+{#            {% for form in forms %}#}
+{#                <div class="registration__form_div">#}
+{#                    <label for="{{ form.id_for_label }}" class="registration__form_input_label">#}
+{#                        {{ form.label }}#}
+{#                    </label>#}
+{#                    <input type="{% if form.name == 'password1' %}password{% else %}text{% endif %}"#}
+{#                           id="{{ form.id }}" name="{{ form.name }}" placeholder=""#}
+{#                           class="input_type_white registration__form_input">#}
+{#                </div>#}
+{#            {% endfor %}#}
+{##}
+{#            <input type="submit" value="Зарегистрироваться"#}
+{#                   class="buttons_type_white button__submit__registration__form" id="submit__application">#}
+{#        </form>#}
+{#    </section>#}
 
 {% endblock content %}

@@ -25,21 +25,22 @@
             <div class="account__profile root__content">
                 <div class="account__profile__info">
                     <div class="account__avatar">
-                        <img src="/static/img/avatar.png" alt="avatar">
+                        <img src="/static/{% if user.avatar %}{{ user.avatar }}{% else %}img/avatar.png{% endif %}"
+                             alt="avatar">
                         <a href="#"><i class="fas fa-pen"></i> Изменить</a>
                     </div>
                     <div class="account__info">
-                        <p class="account__headline">Андрей Андреев</p>
+                        <p class="account__headline">{{ user.first_name }} {{ user.last_name }}</p>
                         <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
                         <p>Статус: свободен</p>
                     </div>
                 </div>
-                <a href="#">Обо мне</a>
+                <a href="#">{{ user.about_me }}</a>
             </div>
             <div class="account__content root__content">
                 <div class="account__content__div">
                     <p class="account__headline">Специализации</p>
-                    <p>Веб-разработка</p>
+                    <p>{{ user.profession }}</p>
                 </div>
                 <div class="account__content__div">
                     <p class="account__headline">Работы</p>
@@ -69,26 +70,29 @@
                 </div>
             </div>
             <div class="account__buttons root__content">
-                <a href="team.html"><button class="account__button buttons_type_white">Мои команды</button></a>
+                <a href="team.html">
+                    <button class="account__button buttons_type_white">Мои команды</button>
+                </a>
                 <button class="account__button buttons_type_white">Мои проекты</button>
-                <button class="account__button buttons_type_white"><a href="{% url 'authapp:update' %}"> Редактировать профиль</a></button>
+                <button class="account__button buttons_type_white"><a href="{% url 'authapp:update' %}"> Редактировать
+                    профиль</a></button>
                 <button class="account__exit__btn buttons_type_white">Выход</button>
             </div>
         </div>
     </section>
 
 
-{#    Profile#}
-{#    <p style="color: #212121">{{ request.user }}</p>#}
-{#    {% for prof in profession %}#}
-{#        {{ prof }}#}
-{#    {% endfor %}#}
-{#    </br>#}
-{#    <a href="{% url 'authapp:logout' %}" class="header__link header__link_activ" style="color: #212121">Выход</a>#}
-{#    <a href="{% url 'authapp:update' %}" class="header__link header__link_activ" style="color: #212121 ">Изменить профиль</a>#}
-{#    <a href="{% url 'messegeapp:create_dialog' request.user.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>#}
-{#    {% for us in users %}#}
-{#    {{ us.id }}#}
-{#<a href="{% url 'messegeapp:create_dialog' us.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>#}
-{#    {% endfor %}#}
+    {#    Profile#}
+    {#    <p style="color: #212121">{{ request.user }}</p>#}
+    {#    {% for prof in profession %}#}
+    {#        {{ prof }}#}
+    {#    {% endfor %}#}
+    {#    </br>#}
+    {#    <a href="{% url 'authapp:logout' %}" class="header__link header__link_activ" style="color: #212121">Выход</a>#}
+    {#    <a href="{% url 'authapp:update' %}" class="header__link header__link_activ" style="color: #212121 ">Изменить профиль</a>#}
+    {#    <a href="{% url 'messegeapp:create_dialog' request.user.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>#}
+    {#    {% for us in users %}#}
+    {#    {{ us.id }}#}
+    {#<a href="{% url 'messegeapp:create_dialog' us.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>#}
+    {#    {% endfor %}#}
 {% endblock %}

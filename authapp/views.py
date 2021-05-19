@@ -33,8 +33,8 @@ def logout(request):
 def profile(request):
     title = 'личный кабинет'
     profession = Professions.objects.filter(siteuser__profession=request.user.id)
-    users = SiteUser.objects.all()
-    content = {"title": title, 'profession': profession, 'users': users}
+    user = SiteUser.objects.get(id=request.user.id)
+    content = {"title": title, 'profession': profession, 'user': user}
     return render(request, 'authapp/profile.html', context=content)
 
 
@@ -71,6 +71,6 @@ def update(request):
 
     content = {
         "title": title,
-        "form": form
+        "forms": form
     }
     return render(request, "authapp/update.html", content)
