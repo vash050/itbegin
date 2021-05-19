@@ -21,11 +21,11 @@
             <div class="team__profile root__content">
                 <div class="account__profile__info">
                     <div class="team__logo__block">
-                        <div class="team__logo">Logo</div>
-                        <p>Описание/девиз</p>
+                        <div class="team__logo">{{ this_group.logotype }}</div>
+                        <p>{{ this_group.description }}</p>
                     </div>
                     <div>
-                        <p>Название</p>
+                        <p>{{ this_group.name }}</p>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,6 @@
                                 <a href="account-smb.html">
                                     <img src="{{ object.avatar }}" alt="avatar">
                                 </a>
-                                {{ object }}
                                 <p>{{ object.first_name }}</p>
                                 <p>{{ object.last_name }}</p>
                                 <p>{{ object.profession }}</p>
