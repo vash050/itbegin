@@ -33,41 +33,18 @@
                 <div class="account__content__div">
                     <p class="team__headline">Состав команды</p>
                     <div class="team__persons">
-                        <div class="team__person">
-                            <a href="account-smb.html">
-                                <img src="img/avatar.png" alt="avatar">
-                            </a>
-                            <p>Имя Фамилия</p>
-                            <p>Специализация</p>
-                        </div>
-                        <div class="team__person">
-                            <a href="account-smb.html">
-                                <img src="img/avatar.png" alt="avatar">
-                            </a>
-                            <p>Имя Фамилия</p>
-                            <p>Специализация</p>
-                        </div>
-                        <div class="team__person">
-                            <a href="account-smb.html">
-                                <img src="img/avatar.png" alt="avatar">
-                            </a>
-                            <p>Имя Фамилия</p>
-                            <p>Специализация</p>
-                        </div>
-                        <div class="team__person">
-                            <a href="account-smb.html">
-                                <img src="img/avatar.png" alt="avatar">
-                            </a>
-                            <p>Имя Фамилия</p>
-                            <p>Специализация</p>
-                        </div>
-                        <div class="team__person">
-                            <a href="account-smb.html">
-                                <img src="img/avatar.png" alt="avatar">
-                            </a>
-                            <p>Имя Фамилия</p>
-                            <p>Специализация</p>
-                        </div>
+                        {% for object in members %}
+                            <div class="team__person">
+                                <a href="account-smb.html">
+                                    <img src="{{ object.avatar }}" alt="avatar">
+                                </a>
+                                {{ object }}
+                                <p>{{ object.first_name }}</p>
+                                <p>{{ object.last_name }}</p>
+                                <p>{{ object.profession }}</p>
+                            </div>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>

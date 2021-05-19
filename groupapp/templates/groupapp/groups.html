@@ -26,26 +26,15 @@
                 </a>
             </div>
             <div class="teams__block root__content">
-                <div class="teams__part">
-                    <p class="teams__part__logo"></p>
-                    <p>Название</p>
-                    <p>Свободно вакансий &#183; 2</p>
-                </div>
-                <div class="teams__part">
-                    <p class="teams__part__logo"></p>
-                    <p>Название</p>
-                    <p>Свободно вакансий &#183; 2</p>
-                </div>
-                <div class="teams__part">
-                    <p class="teams__part__logo"></p>
-                    <p>Название</p>
-                    <p>Свободно вакансий &#183; 2</p>
-                </div>
-                <div class="teams__part">
-                    <p class="teams__part__logo"></p>
-                    <p>Название</p>
-                    <p>Свободно вакансий &#183; 2</p>
-                </div>
+
+                {% for object in groups %}
+                    <div class="teams__part">
+                        <a href="{% url "groupapp:group" object.pk %}"><p class="teams__part__logo"></p></a>
+                        <p>{{ object.name }}</p>
+                        <p>Свободно вакансий &#183; 2</p>
+                    </div>
+                {% endfor %}
+
             </div>
             <div class="teams__pages__block root__content">
 
