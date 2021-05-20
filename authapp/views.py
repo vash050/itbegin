@@ -33,9 +33,9 @@ def logout(request):
 
 def profile(request):
     title = 'личный кабинет'
-    profession = Professions.objects.filter(siteuser__profession=request.user.id)
+    professions = Professions.objects.filter(siteuser__profession=request.user.id)
     user = SiteUser.objects.get(id=request.user.id)
-    content = {"title": title, 'profession': profession, 'user': user}
+    content = {"title": title, 'professions': professions, 'user': user}
     return render(request, 'authapp/profile.html', context=content)
 
 
