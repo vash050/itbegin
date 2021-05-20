@@ -2,6 +2,7 @@ from django.contrib import auth
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.generic import UpdateView, FormView
 
 from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm
 from authapp.models import Professions, SiteUser

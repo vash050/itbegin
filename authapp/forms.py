@@ -42,7 +42,7 @@ class SiteUserRegisterForm(UserCreationForm):
 class SiteUserUpdateForm(UserChangeForm):
     class Meta:
         model = SiteUser
-        fields = ('avatar', 'first_name', 'last_name', 'date_born', 'username', 'password',
+        fields = ('first_name', 'last_name', 'date_born', 'username',
                   'profession', 'about_me', 'link_to_portfolio', 'free')
 
     def __init__(self, *args, **kwargs):
@@ -50,5 +50,4 @@ class SiteUserUpdateForm(UserChangeForm):
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_white registration__form_input"
             field.help_text = ""
-            if field_name == 'password':
-                field.widget = HiddenInput()
+
