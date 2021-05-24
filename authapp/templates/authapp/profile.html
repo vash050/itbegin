@@ -40,8 +40,8 @@
             <div class="account__content root__content">
                 <div class="account__content__div">
                     <p class="account__headline">Специализации</p>
-                    {%  for profession in professions %}
-                    <p class="account__headline">{{ profession }}</p>
+                    {% for profession in professions %}
+                        <p class="account__headline">{{ profession }}</p>
                     {% endfor %}
                 </div>
                 <div class="account__content__div">
@@ -78,23 +78,9 @@
                 <button class="account__button buttons_type_white">Мои проекты</button>
                 <button class="account__button buttons_type_white"><a href="{% url 'authapp:update' %}"> Редактировать
                     профиль</a></button>
-                <button class="account__exit__btn buttons_type_white">Выход</button>
+                <button class="account__exit__btn buttons_type_white"><a href="{% url 'authapp:logout' %}">Выход</a>
+                </button>
             </div>
         </div>
     </section>
-
-
-    {#    Profile#}
-    {#    <p style="color: #212121">{{ request.user }}</p>#}
-    {#    {% for prof in profession %}#}
-    {#        {{ prof }}#}
-    {#    {% endfor %}#}
-    {#    </br>#}
-    {#    <a href="{% url 'authapp:logout' %}" class="header__link header__link_activ" style="color: #212121">Выход</a>#}
-    {#    <a href="{% url 'authapp:update' %}" class="header__link header__link_activ" style="color: #212121 ">Изменить профиль</a>#}
-    {#    <a href="{% url 'messegeapp:create_dialog' request.user.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>#}
-    {#    {% for us in users %}#}
-    {#    {{ us.id }}#}
-    {#<a href="{% url 'messegeapp:create_dialog' us.id  %}" class="header__link header__link_activ" style="color: #212121 ">Send</a>#}
-    {#    {% endfor %}#}
 {% endblock %}

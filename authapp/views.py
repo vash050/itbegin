@@ -22,7 +22,7 @@ def login(request):
             auth.login(request, user)
             return HttpResponseRedirect(reverse("mainapp:index"))
 
-    content = {"title": title, "login_form": login_form}
+    content = {"title": title, "forms": login_form}
     return render(request, "authapp/login.html", content)
 
 
@@ -33,9 +33,11 @@ def logout(request):
 
 def profile(request):
     title = 'личный кабинет'
+    print(request.user.id)
     professions = Professions.objects.filter(siteuser__profession=request.user.id)
-    user = SiteUser.objects.get(id=request.user.id)
-    content = {"title": title, 'professions': professions, 'user': user}
+    print(professions, request.user.id)
+    content = {"title": title, 'professions': professions}
+
     return render(request, 'authapp/profile.html', context=content)
 
 
@@ -53,7 +55,7 @@ def register(request):
 
     content = {
         "title": title,
-        "register_form": register_form
+        "forms": register_form
     }
     return render(request, "authapp/register.html", content)
 
@@ -66,6 +68,7 @@ def update(request):
 
         if form.is_valid():
             form.save()
+            print(form.profession)
             return HttpResponseRedirect(reverse('authapp:profile'))
     else:
         form = SiteUserUpdateForm(instance=request.user)
@@ -74,4 +77,4 @@ def update(request):
         "title": title,
         "forms": form
     }
-    return render(request, "authapp/update.html", content)
+    return render(request, "authapp/chang_profile.html", content)

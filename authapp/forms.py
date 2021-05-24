@@ -13,21 +13,21 @@ class SiteUserLoginForm(AuthenticationForm):
         model = SiteUser
         fields = ('username', 'password')
 
-    # def __init__(self, *args, **kwargs):
-    #     super(SiteUserLoginForm, self).__init__(*args, **kwargs)
-    #     for field_name, field in self.fields.items():
-    #         field.widget.attrs["class"] = "form-control"
+    def __init__(self, *args, **kwargs):
+        super(AuthenticationForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
 
 
 class SiteUserRegisterForm(UserCreationForm):
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'last_name', 'date_born', 'username', 'password1', 'password2')
+        fields = ('first_name', 'last_name', 'date_born', 'username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SiteUserRegisterForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.help_text = ""
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
 
     def save(self):
         user = super(SiteUserRegisterForm, self).save()
@@ -43,11 +43,10 @@ class SiteUserUpdateForm(UserChangeForm):
     class Meta:
         model = SiteUser
         fields = ('first_name', 'last_name', 'date_born', 'username',
-                  'profession', 'about_me', 'link_to_portfolio', 'free')
+                  'profession', 'about_me', 'link_to_portfolio')
 
     def __init__(self, *args, **kwargs):
         super(SiteUserUpdateForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "input_type_white registration__form_input"
-            field.help_text = ""
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
 
