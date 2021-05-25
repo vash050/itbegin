@@ -10,7 +10,7 @@ from groupapp import forms
 
 class SiteUserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
-        super(SiteUserLoginForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
 
@@ -21,7 +21,7 @@ class SiteUserRegisterForm(UserCreationForm):
         fields = ('first_name', 'last_name', 'date_born', 'username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
-        super(SiteUserRegisterForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
 
@@ -42,7 +42,7 @@ class SiteUserUpdateForm(UserChangeForm):
                   'profession', 'about_me', 'link_to_portfolio')
 
     def __init__(self, *args, **kwargs):
-        super(SiteUserUpdateForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
 
