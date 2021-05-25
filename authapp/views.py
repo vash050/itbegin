@@ -68,7 +68,6 @@ def update(request):
 
         if form.is_valid():
             form.save()
-            print(form.profession)
             return HttpResponseRedirect(reverse('authapp:profile'))
     else:
         form = SiteUserUpdateForm(instance=request.user)

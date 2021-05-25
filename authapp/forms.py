@@ -38,11 +38,13 @@ class SiteUserRegisterForm(UserCreationForm):
 class SiteUserUpdateForm(UserChangeForm):
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'last_name', 'date_born', 'username',
+        fields = ('avatar', 'first_name', 'last_name', 'date_born', 'username',
                   'profession', 'about_me', 'link_to_portfolio')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
+            if field_name == 'password':
+                field.widget = HiddenInput()
 
