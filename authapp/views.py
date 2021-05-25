@@ -1,4 +1,5 @@
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -34,7 +35,7 @@ def logout(request):
 def profile(request):
     title = 'личный кабинет'
     print(request.user.id)
-    professions = Professions.objects.filter(siteuser__profession=request.user.id)
+    professions = SiteUser.objects.get(id=request.user.id).profession.all()
     print(professions, request.user.id)
     content = {"title": title, 'professions': professions}
 
