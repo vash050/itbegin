@@ -9,12 +9,8 @@ from groupapp import forms
 
 
 class SiteUserLoginForm(AuthenticationForm):
-    class Meta:
-        model = SiteUser
-        fields = ('username', 'password')
-
     def __init__(self, *args, **kwargs):
-        super(AuthenticationForm, self).__init__(*args, **kwargs)
+        super(SiteUserLoginForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
 
