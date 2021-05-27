@@ -56,6 +56,11 @@
                 <div class="drop_block team__headline">
                     Свободные вакансии<i class="fas fa-caret-down drop_caret"></i>
                     <div class="drop_summary team__summary">
+                        {% for profession in need_professions %}
+                            <div>
+                            {{ profession }}
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

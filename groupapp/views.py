@@ -9,7 +9,7 @@ from groupapp.models import Group
 
 def groups(request):
     title = 'команды'
-    groups = Group.objects.all()
+    groups = Group.objects.filter(is_active=True)
 
     content = {'title': title, 'groups': groups}
     return render(request, 'groupapp/groups.html', context=content)
@@ -18,9 +18,17 @@ def groups(request):
 def group(request, pk):
     title = 'команда'
     this_group = Group.objects.get(pk=pk)
+    need_professions = this_group.need_profession.all()
+    team_professions = SiteUser.objects.get(id=request.user.id).profession.all()
     members = SiteUser.objects.filter(group__team_members__group=pk)
 
-    content = {'title': title, 'this_group': this_group, 'members': members}
+    content = {
+        'title': title,
+        'this_group': this_group,
+        'need_professions': need_professions,
+        'team_professions': team_professions,
+        'members': members
+    }
     return render(request, 'groupapp/group.html', context=content)
 
 
@@ -34,6 +42,7 @@ def create_group(request):
             new_group = create_group_form.save(commit=False)
             new_group.author = request.user
             new_group.save()
+            new_group.need_profession.add(*create_group_form.data.getlist('need_profession'))
             return HttpResponseRedirect(reverse('groupapp:groups'))
     else:
         create_group_form = CreateGroupForm()
