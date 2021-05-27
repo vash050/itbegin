@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from authapp.models import Professions, SiteUser
-from groupapp.forms import CreateGroup
+from groupapp.forms import CreateGroupForm
 from groupapp.models import Group
 
 
@@ -28,18 +28,18 @@ def create_group(request):
     title = "создание команды"
 
     if request.method == "POST":
-        create_group_form = CreateGroup(request.POST, request.FILES)
+        create_group_form = CreateGroupForm(request.POST, request.FILES)
 
         if create_group_form.is_valid():
             new_group = create_group_form.save(commit=False)
             new_group.author = request.user
             new_group.save()
-        return HttpResponseRedirect(reverse('mainapp:index'))
+            return HttpResponseRedirect(reverse('groupapp:groups'))
     else:
-        create_group_form = CreateGroup()
+        create_group_form = CreateGroupForm()
 
     content = {
         "title": title,
-        "create_group_form": create_group_form
+        "forms": create_group_form
     }
     return render(request, "groupapp/create_group.html", content)
