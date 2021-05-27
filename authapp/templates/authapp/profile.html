@@ -25,7 +25,9 @@
             <div class="account__profile root__content">
                 <div class="account__profile__info">
                     <div class="account__avatar">
-                        <img src="/static/{% if user.avatar %}{{ user.avatar }}{% else %}img/avatar.png{% endif %}"
+                        {#                        <img src="/static/{% if user.avatar %}{{ user.avatar }}{% else %}img/avatar.png{% endif %}"#}
+                        {#                             alt="avatar">#}
+                        <img src=" {{ user.avatar }}"
                              alt="avatar">
                         <a href="#"><i class="fas fa-pen"></i> Изменить</a>
                     </div>
