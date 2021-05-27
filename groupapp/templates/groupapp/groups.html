@@ -4,18 +4,46 @@
 
 {% block conteiner %}
 
-   Groups
-    <ul>
-        {% for group in groups %}
-             <li>----------------------------------------------------------------</li>
-            <li> {{ groups }}</li>
-            <li>{{ group.pk }}</li>
-            <li> {{ group.name }}</li>
-            <li> {{ group.description }}</li>
-            <li>{{ group.logotype }}</li>
-            <li><a href="{% url 'groupapp:group' group.pk %}">Group</a> </li>
-            <li>----------------------------------------------------------------</li>
-        {% endfor %}
-    </ul>
+    <section class="teams root__container">
+        <div class="account__background">
+            <div class="account__header root__content">
+                <p>Команды</p>
+                <div class="teams__drop">
+                    <div class="drop_block"> Поиск команды<i class="fas fa-caret-down drop_caret"></i>
+                        <div class="drop_summary teams__summary">
+                            <a href="#">Название</a>
+                            <a href="#">Свободные вакансии</a>
+                            <a href="#">Дата создания</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="teams__buttons root__content">
+                <button class="account__button buttons_type_white">Найти команду</button>
+                <button class="account__button buttons_type_white">Создать команду</button>
+                <a href="#">
+                    <button class="account__button buttons_type_white">Мои команды</button>
+                </a>
+            </div>
+            <div class="teams__block root__content">
+
+                {% for object in groups %}
+                    <div class="teams__part">
+                        <a href="{% url "groupapp:group" object.pk %}"><p class="teams__part__logo"></p></a>
+                        <p>{{ object.name }}</p>
+                        <p>Свободно вакансий &#183; 2</p>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="teams__pages__block root__content">
+
+                <div class="page__active teams__pages">1</div>
+                <div class="teams__pages">2</div>
+                <div class="teams__pages">3</div>
+
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

@@ -2,32 +2,28 @@ import hashlib
 import random
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms.widgets import HiddenInput
+from django.forms.widgets import HiddenInput, TextInput, PasswordInput
 
 from authapp.models import SiteUser
+from groupapp import forms
 
 
 class SiteUserLoginForm(AuthenticationForm):
-    class Meta:
-        model = SiteUser
-        fields = ('username', 'password')
-
     def __init__(self, *args, **kwargs):
-        super(SiteUserLoginForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
 
 
 class SiteUserRegisterForm(UserCreationForm):
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'last_name', 'date_born', 'username', 'password1', 'password2',)
+        fields = ('first_name', 'last_name', 'date_born', 'username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
-        super(SiteUserRegisterForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
-            field.help_text = ""
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
 
     def save(self):
         user = super(SiteUserRegisterForm, self).save()
@@ -42,13 +38,13 @@ class SiteUserRegisterForm(UserCreationForm):
 class SiteUserUpdateForm(UserChangeForm):
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'last_name', 'date_born', 'username', 'password',
-                  'profession', 'about_me', 'link_to_portfolio', 'free')
+        fields = ('avatar', 'first_name', 'last_name', 'date_born', 'username',
+                  'profession', 'about_me', 'link_to_portfolio')
 
     def __init__(self, *args, **kwargs):
-        super(SiteUserUpdateForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
-            field.help_text = ""
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
             if field_name == 'password':
                 field.widget = HiddenInput()
+

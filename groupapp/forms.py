@@ -6,5 +6,5 @@ from groupapp.models import Group
 class CreateGroup(ModelForm):
     class Meta:
         model = Group
-        fields = ('name', 'description', 'need_profession', 'team_members', 'logotype', 'got_task')
+        fields = ('name', 'description', 'need_profession','logotype')
 

@@ -1,7 +1,9 @@
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.generic import UpdateView, FormView
 
 from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm
 from authapp.models import Professions, SiteUser
@@ -21,7 +23,7 @@ def login(request):
             auth.login(request, user)
             return HttpResponseRedirect(reverse("mainapp:index"))
 
-    content = {"title": title, "login_form": login_form}
+    content = {"title": title, "forms": login_form}
     return render(request, "authapp/login.html", content)
 
 
@@ -32,8 +34,9 @@ def logout(request):
 
 def profile(request):
     title = 'личный кабинет'
-    profession = Professions.objects.filter(siteuser__profession=request.user.id)
-    content = {"title": title, 'profession': profession}
+    professions = SiteUser.objects.get(id=request.user.id).profession.all()
+    content = {"title": title, 'professions': professions}
+
     return render(request, 'authapp/profile.html', context=content)
 
 
@@ -51,7 +54,7 @@ def register(request):
 
     content = {
         "title": title,
-        "register_form": register_form
+        "forms": register_form
     }
     return render(request, "authapp/register.html", content)
 
@@ -70,6 +73,6 @@ def update(request):
 
     content = {
         "title": title,
-        "form": form
+        "forms": form
     }
-    return render(request, "authapp/update.html", content)
+    return render(request, "authapp/chang_profile.html", content)
