@@ -33,6 +33,7 @@ class ContactUser(models.Model):
 
 class Professions(models.Model):
     profession_name = models.CharField(verbose_name="профессия", max_length=120)
+    discretion = models.CharField(verbose_name='требования', max_length=240, blank=True)
 
     class Meta:
         verbose_name = 'профессии'

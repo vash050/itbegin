@@ -1,7 +1,7 @@
 from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput
 
-from groupapp.models import Group
+from groupapp.models import Group, Professions
 
 
 class CreateGroupForm(ModelForm):
@@ -13,3 +13,14 @@ class CreateGroupForm(ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
+
+
+# class UpdateVacancyForm(ModelForm):
+#     class Meta:
+#         model = Professions
+#         fields = ['profession_name', 'discretion']
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         for field_name, field in self.fields.items():
+#             field.widget.attrs["class"] = "input_type_black registration__form_input"

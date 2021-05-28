@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.generic import ListView, UpdateView
 
 from authapp.models import Professions, SiteUser
 from groupapp.forms import CreateGroupForm
@@ -52,3 +53,31 @@ def create_group(request):
         "forms": create_group_form
     }
     return render(request, "groupapp/create_group.html", content)
+
+
+class SettingView(ListView):
+    model = Group
+
+
+# def update_vacancy(request, pk):
+#     title = 'Описание вакансий'
+#
+#     this_group = Group.objects.get(pk=pk)
+#     need_professions = this_group.need_profession.all()
+#
+#     if request.method == "POST":
+#         pass
+#     else:
+#        pass
+#
+#     content = {
+#         'title': title,
+#         # 'this_group': this_group,
+#         # 'need_professions': need_professions,
+#         'forms': form,
+#     }
+#     return render(request, 'groupapp/group_form.html', context=content)
+
+
+def create_request_in_team(request):
+    pass
