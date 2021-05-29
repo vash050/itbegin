@@ -9,7 +9,7 @@ class Group(models.Model):
     # При удаление бд убрать null=True
     author = models.ForeignKey(to=SiteUser,related_name='author_group', on_delete=models.CASCADE, null=True)
     description = models.CharField(max_length=200, blank=True)
-    need_profession = models.ManyToManyField(to=Professions,)
+    need_profession = models.ManyToManyField(to=Professions, through='DescriptionNeedProfessions')
     team_members = models.ManyToManyField(to=SiteUser, null=True)
     logotype = models.ImageField(blank=True)
     got_task = models.ManyToManyField(to=Task, related_name='got_task', null=True)
@@ -24,9 +24,8 @@ class Group(models.Model):
         verbose_name_plural = 'команды'
 
 
-# class DescriptionNeedProfessions(models.Model):
-#     profession = models.ForeignKey(Professions, on_delete=models.CASCADE)
-#     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-#     description = models.TextField(blank=True)
+class DescriptionNeedProfessions(models.Model):
+    profession = models.ForeignKey(Professions, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
 
- # through='DescriptionNeedProfessions'
