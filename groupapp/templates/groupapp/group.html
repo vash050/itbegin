@@ -9,6 +9,11 @@
             <div class="account__header root__content">
                 <p>Команда</p>
                 <div class="team__header__task">
+                    {% if this_group.author == user %}
+                        <div class="team__header__task">
+                        <a href="{% url 'groupapp:setting_group' request.resolver_match.kwargs.pk %}">настройки</a>
+                        </div>
+                    {% endif %}
                     <div class="drop_block team__drop"> Задачи<i class="fas fa-caret-down drop_caret"></i>
                         <div class="drop_summary account__summary">
                             <a href="#">Взятые</a>
@@ -16,56 +21,67 @@
                             <a href="#">Сделанные</a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="team__profile root__content">
-                <div class="account__profile__info">
-                    <div class="team__logo__block">
-                        <div class="team__logo">{{ this_group.logotype }}</div>
-                        <p>{{ this_group.description }}</p>
                     </div>
-                    <div>
-                        <p>{{ this_group.name }}</p>
                     </div>
-                </div>
-            </div>
-            <div class="team__persons__block root__content">
-                <div class="account__content__div">
-                    <p class="team__headline">Состав команды</p>
-                    <div class="team__persons">
-                        {% for object in members %}
-                            <div class="team__person">
-                                <a href="account-smb.html">
-                                    <img src="{{ object.avatar }}" alt="avatar">
-                                </a>
-                                <p>{{ object.first_name }}</p>
-                                <p>{{ object.last_name }}</p>
-                                <p>{{ object.profession }}</p>
+                    <div class="team__profile root__content">
+                        <div class="account__profile__info">
+                            <div class="team__logo__block">
+                                <div class="team__logo">{{ this_group.logotype }}</div>
+                                <p>{{ this_group.description }}</p>
                             </div>
-                        {% endfor %}
+                            <div>
+                                <p>{{ this_group.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team__persons__block root__content">
+                        <div class="account__content__div">
+                            <p class="team__headline">Состав команды</p>
+                            <div class="team__persons">
+                                {% for object in members %}
+                                    <div class="team__person">
+                                        <a href="account-smb.html">
+                                            <img src="{{ object.avatar }}" alt="avatar">
+                                        </a>
+                                        <p>{{ object.first_name }}</p>
+                                        <p>{{ object.last_name }}</p>
+                                        <p>{{ object.profession }}</p>
+                                    </div>
+                                {% endfor %}
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team__vacancy__block root__content">
+                        <div class="drop_block team__headline">
+                            Занятые вакансии<i class="fas fa-caret-down drop_caret"></i>
+                            <div class="drop_summary team__summary">
+                            </div>
+                        </div>
+
+
+                        <div class="drop_block team__headline">
+                            Свободные вакансии<i class="fas fa-caret-down drop_caret"></i>
+                            <div class="drop_summary team__summary">
+
+                                {% for profession in need_professions %}
+                                    <div>
+{#                                        <a href="{% url 'groupapp:create_request_in_team' %}">#}
+                                            {{ profession }}
+                                        </a>
+                                    </div>
+                                    </div>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="team__forum root__content">
+                    <div class="account__information">
+                        <a href="#">
+                            <p class="team__headline">Чат/Форум</p>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="team__vacancy__block root__content">
-                <div class="drop_block team__headline">
-                    Занятые вакансии<i class="fas fa-caret-down drop_caret"></i>
-                    <div class="drop_summary team__summary">
-                    </div>
-                </div>
-                <div class="drop_block team__headline">
-                    Свободные вакансии<i class="fas fa-caret-down drop_caret"></i>
-                    <div class="drop_summary team__summary">
-                    </div>
-                </div>
-            </div>
-            <div class="team__forum root__content">
-                <div class="account__information">
-                    <a href="#">
-                        <p class="team__headline">Чат/Форум</p>
-                    </a>
-                </div>
-            </div>
-        </div>
     </section>
 {% endblock %}

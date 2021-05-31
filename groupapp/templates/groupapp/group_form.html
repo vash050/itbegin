@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
@@ -9,12 +10,13 @@
                 Назад
             </a>
             <h1 class="registration__form__content__h1">
-                Заполни форму, что бы создать команду
+                Заполни форму требованиями к специалистам
             </h1>
-            <form action="{% url 'groupapp:create_group' %}" class="registration__form" method="post"
+            <form action="{% url 'groupapp:update_vacancy'  request.resolver_match.kwargs.pk %}" class="registration__form" method="post"
                   enctype="multipart/form-data">
                 {% csrf_token %}
-                {% for form in forms %}
+            {{ vacancyneed.manage_form }}
+                {% for form in vacancyneed %}
                     <div>
                         <label for="{{ form.id_for_label }}"
                                class="registration__form_input_label"> {{ form.label }} </label>

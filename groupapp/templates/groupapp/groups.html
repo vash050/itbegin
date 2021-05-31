@@ -20,7 +20,11 @@
             </div>
             <div class="teams__buttons root__content">
                 <button class="account__button buttons_type_white">Найти команду</button>
-                <button class="account__button buttons_type_white">Создать команду</button>
+                <button class="account__button buttons_type_white">
+                    <a href="{% url 'groupapp:create_group' %}">
+                        Создать команду
+                    </a>
+                </button>
                 <a href="#">
                     <button class="account__button buttons_type_white">Мои команды</button>
                 </a>
