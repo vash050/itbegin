@@ -89,11 +89,14 @@ class VacancyUpdate(UpdateView):
         return data
 
     # def form_valid(self, form):
-    #     form.instance = self.get_context_data()
-    #     if form.is_valid():
-    #         form.save()
-    #
-    #     return super(VacancyUpdate, self).form_valid(form)
+    #     context = self.get_context_data()
+    #     vacancyneed = context['vacancyneed']
+    #     self.object = form.save()
+    #     if vacancyneed.is_valid():
+    #         vacancyneed.instance = self.object
+    #         vacancyneed.save()
+
+        return super(VacancyUpdate, self).form_valid(form)
 
 
 def create_request_in_team(request):

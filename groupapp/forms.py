@@ -18,7 +18,7 @@ class CreateGroupForm(ModelForm):
 class UpdateVacancyForm(ModelForm):
     class Meta:
         model = DescriptionNeedProfessions
-        fields = ['profession', 'description']
+        fields = ['id', 'group', 'profession', 'description']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

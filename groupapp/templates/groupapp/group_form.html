@@ -15,6 +15,7 @@
             <form action="{% url 'groupapp:update_vacancy'  request.resolver_match.kwargs.pk %}" class="registration__form" method="post"
                   enctype="multipart/form-data">
                 {% csrf_token %}
+            {{ vacancyneed.manage_form }}
                 {% for form in vacancyneed %}
                     <div>
                         <label for="{{ form.id_for_label }}"
