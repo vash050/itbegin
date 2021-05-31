@@ -96,7 +96,7 @@ class VacancyUpdate(UpdateView):
     #         vacancyneed.instance = self.object
     #         vacancyneed.save()
 
-        return super(VacancyUpdate, self).form_valid(form)
+        # return super(VacancyUpdate, self).form_valid(form)
 
 
 def create_request_in_team(request):
