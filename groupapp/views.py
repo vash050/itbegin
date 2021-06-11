@@ -1,10 +1,10 @@
-from django.forms import formset_factory, inlineformset_factory
+from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
-from authapp.models import Professions, SiteUser
+from authapp.models import SiteUser
 from groupapp.forms import CreateGroupForm, UpdateVacancyForm
 from groupapp.models import Group, DescriptionNeedProfessions
 
@@ -13,8 +13,58 @@ def groups(request):
     title = 'команды'
     groups = Group.objects.filter(is_active=True)
 
-    content = {'title': title, 'groups': groups}
+    content = {'title': title, 'object_list': groups}
     return render(request, 'groupapp/groups.html', context=content)
+
+
+class UserGroupView(ListView):
+    model = Group
+    template_name = 'groupapp/groups.html'
+
+    def get_queryset(self):
+        return Group.objects.filter(author=self.request.user)
+
+
+# def create_group(request):
+#     title = "создание команды"
+#
+#     if request.method == "POST":
+#         create_group_form = CreateGroupForm(request.POST, request.FILES)
+#
+#         if create_group_form.is_valid():
+#             new_group = create_group_form.save(commit=False)
+#             new_group.author = request.user
+#             new_group.save()
+#             new_group.need_profession.add(*create_group_form.data.getlist('need_profession'))
+#             return HttpResponseRedirect(reverse('groupapp:groups'))
+#     else:
+#         create_group_form = CreateGroupForm()
+#
+#     content = {
+#         "title": title,
+#         "object_list": create_group_form
+#     }
+#     return render(request, "groupapp/create_group.html", content)
+
+class GroupCreateView(CreateView):
+    model = Group
+    form_class = CreateGroupForm
+    template_name = 'groupapp/create_group.html'
+    success_url = reverse_lazy('groupapp:groups')
+
+    def post(self, request, *args, **kwargs):
+        '''
+        added to the method author=user
+        '''
+        form = self.get_form()
+        if form.is_valid():
+            new_group = form.save(commit=False)
+            new_group.author = request.user
+            new_group.save()
+            new_group.need_profession.add(*form.data.getlist('need_profession'))
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 
 def group(request, pk):
@@ -34,33 +84,36 @@ def group(request, pk):
     return render(request, 'groupapp/group.html', context=content)
 
 
-def create_group(request):
-    title = "создание команды"
+class GroupUpdateView(UpdateView):
+    model = Group
+    form_class = CreateGroupForm
+    template_name = 'groupapp/create_group.html'
+    success_url = reverse_lazy('groupapp:groups')
 
-    if request.method == "POST":
-        create_group_form = CreateGroupForm(request.POST, request.FILES)
 
-        if create_group_form.is_valid():
-            new_group = create_group_form.save(commit=False)
-            new_group.author = request.user
-            new_group.save()
-            new_group.need_profession.add(*create_group_form.data.getlist('need_profession'))
-            return HttpResponseRedirect(reverse('groupapp:groups'))
-    else:
-        create_group_form = CreateGroupForm()
+class GroupDeleteView(DeleteView):
+    model = Group
+    success_url = reverse_lazy('groupapp:groups')
 
-    content = {
-        "title": title,
-        "forms": create_group_form
-    }
-    return render(request, "groupapp/create_group.html", content)
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(success_url)
 
 
 class SettingView(ListView):
+    """
+    page setting group
+    """
     model = Group
 
 
 class VacancyUpdate(UpdateView):
+    """
+    form description vacancy of group
+    """
     model = Group
     fields = []
     success_url = reverse_lazy('groupapp:groups')
@@ -71,7 +124,7 @@ class VacancyUpdate(UpdateView):
         pk = self.kwargs.get('pk')
 
         if self.request.POST:
-            formset = VacancyFormSet(self.request.POST)
+            formset = VacancyFormSet(self.request.POST, instance=Group.objects.get(id=pk))
         else:
             need_profession = DescriptionNeedProfessions.objects.filter(group=pk)
             if len(need_profession):
@@ -83,20 +136,29 @@ class VacancyUpdate(UpdateView):
                     form.initial['description'] = need_profession[el].description
                     form.initial['group'] = need_profession[el].group
                     form.initial['id'] = need_profession[el].id
-            else:
-                formset = VacancyFormSet()
         data['vacancyneed'] = formset
         return data
 
-    # def form_valid(self, form):
-    #     context = self.get_context_data()
-    #     vacancyneed = context['vacancyneed']
-    #     self.object = form.save()
-    #     if vacancyneed.is_valid():
-    #         vacancyneed.instance = self.object
-    #         vacancyneed.save()
-
-        # return super(VacancyUpdate, self).form_valid(form)
+    def form_valid(self, form):
+        """need refactor"""
+        if form.is_valid:
+            my_list = []
+            a = []
+            for key, el in form.data.items():
+                if key[33:] == 'description':
+                    a.append(el)
+                if key[33:] == 'id':
+                    a.append(el)
+                    my_list.append(a)
+                    a = []
+            for el in my_list:
+                idx = int(el[1])
+                dis = el[0]
+                f = DescriptionNeedProfessions.objects.get(id=idx)
+                f.description = dis
+                f.save()
+            form.save()
+            return super().form_valid(form)
 
 
 def create_request_in_team(request):

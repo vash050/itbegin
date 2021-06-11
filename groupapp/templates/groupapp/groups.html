@@ -25,13 +25,13 @@
                         Создать команду
                     </a>
                 </button>
-                <a href="#">
+                <a href="{% url 'groupapp:user_groups' %}">
                     <button class="account__button buttons_type_white">Мои команды</button>
                 </a>
             </div>
             <div class="teams__block root__content">
 
-                {% for object in groups %}
+                {% for object in object_list %}
                     <div class="teams__part">
                         <a href="{% url "groupapp:group" object.pk %}"><p class="teams__part__logo"></p></a>
                         <p>{{ object.name }}</p>

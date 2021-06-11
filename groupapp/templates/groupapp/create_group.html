@@ -11,14 +11,14 @@
             <h1 class="registration__form__content__h1">
                 Заполни форму, что бы создать команду
             </h1>
-            <form action="{% url 'groupapp:create_group' %}" class="registration__form" method="post"
+            <form class="registration__form" method="post"
                   enctype="multipart/form-data">
                 {% csrf_token %}
-                {% for form in forms %}
+                {% for field in form %}
                     <div>
-                        <label for="{{ form.id_for_label }}"
-                               class="registration__form_input_label"> {{ form.label }} </label>
-                        {{ form }}
+                        <label for="{{ field.id_for_label }}"
+                               class="registration__form_input_label"> {{ field.label }} </label>
+                        {{ field }}
                     </div>
                 {% endfor %}
 
