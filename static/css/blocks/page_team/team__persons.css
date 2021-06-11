@@ -1,0 +1,6 @@
+.team__persons {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}

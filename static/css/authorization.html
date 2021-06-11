@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/authorization.css" />
+    <title>IT-Begin Authorization</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,700;1,600&family=Rubik:wght@400;500&family=Vollkorn:wght@600&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body class="root darkgrey_background authorization__page">
+    <section class="authorization__block">
+        <a href="#">Вход</a>
+        <a href="registration.html">Регистрация</a>
+    </section>
+    <section class="authorization__main root__container">
+        <div class="authorization__main__label">
+            <label for="login" class="registration__form_input_label">Логин</label>
+            <input type="text" id="login" name="login" placeholder="andrey111@gmail.com"
+                class="input_type_black authorization_input">
+        </div>
+        <div>
+            <label for="password" class="registration__form_input_label">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="*****"
+                class="input_type_black authorization_input">
+        </div>
+        <label class="registration__form_checkbox"><input type="checkbox" required name="personalinfo"
+                id="personalinfo">
+            <span class="registration__form_checkmark"></span>
+            Запомнить меня</label>
+        <button class="buttons_type_white authorization__button">Войти</button>
+        <a href="#" class="authorization__password__link">Забыли пароль?</a>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.drop_block {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 0;
+}
+
+.drop_block:hover .drop_summary {
+    display: flex;
+}

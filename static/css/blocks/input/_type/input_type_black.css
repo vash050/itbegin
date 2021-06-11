@@ -1,0 +1,15 @@
+.input_type_black {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+   
+    color: #818181;
+    background: #212121;
+  
+    padding-left: 12px;
+    border: 1px solid #818181;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    outline: none;
+  }

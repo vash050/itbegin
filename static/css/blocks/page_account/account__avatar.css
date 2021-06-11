@@ -1,0 +1,15 @@
+.account__avatar {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    font-size: 16px;
+    margin-right: 22px;
+    height: 188px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account__avatar__header {
+    width: 72px;
+    padding-left: 150px;
+}

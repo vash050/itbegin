@@ -1,0 +1,5 @@
+.account__links {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,9 @@
+.teams__part {
+    display: flex;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}

@@ -1,0 +1,5 @@
+.team__vacancy__block {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}

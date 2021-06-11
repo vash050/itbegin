@@ -1,0 +1,18 @@
+@import url("../blocks/root/root.css");
+@import url("../blocks/root/__container/root__container.css");
+@import url("../blocks/input/_type/input_type_black.css");
+@import url("../blocks/buttons/_type/buttons_type_white.css");
+@import url("../blocks/backgrounds/darkgrey_background.css");
+
+
+@import url("../blocks/page_authorization/authorization__main.css");
+@import url("../blocks/page_authorization/authorization__block.css");
+@import url("../blocks/page_authorization/authorization__page.css");
+@import url("../blocks/page_authorization/authorization__main__label.css");
+
+@import url("../blocks/page_authorization/authorization_input.css");
+@import url("../blocks/page_authorization/authorization__button.css");
+@import url("../blocks/page_authorization/authorization__password__link.css");
+
+@import url("../blocks/page_registration_form/registration__form_checkbox.css");
+@import url("../blocks/page_registration_form/registration__form_checkmark.css");

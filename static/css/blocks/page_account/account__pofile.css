@@ -1,0 +1,8 @@
+.account__profile {
+    display: flex;
+    flex-direction: column;
+    color: #818181;
+    height: 240px;
+    margin-top: 25px;
+    justify-content: space-between;
+}

@@ -1,0 +1,7 @@
+.teams__buttons {
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 76px; */
+    height: 188px;
+    align-items: center;
+}

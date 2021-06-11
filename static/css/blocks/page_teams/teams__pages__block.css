@@ -1,0 +1,6 @@
+.teams__pages__block {
+    display: flex;
+    height: 224px;
+    align-items: center;
+    justify-content: center;
+}

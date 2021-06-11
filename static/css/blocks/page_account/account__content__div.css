@@ -1,0 +1,6 @@
+.account__content__div {
+    display: flex;
+    justify-content: space-between;
+    height: 72px;
+    flex-direction: column;
+}

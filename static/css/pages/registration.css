@@ -1,0 +1,21 @@
+@import url("../blocks/root/root.css");
+@import url("../blocks/root/__container/root__container.css");
+@import url("../blocks/input/_type/input_type_black.css");
+@import url("../blocks/buttons/_type/buttons_type_white.css");
+@import url("../blocks/backgrounds/darkgrey_background.css");
+
+@import url("../blocks/page_registration_form/registration__form_div.css");
+@import url("../blocks/page_registration_form/registration__form_checkbox.css");
+@import url("../blocks/page_registration_form/registration__form_checkmark.css");
+
+@import url("../blocks/page_registration_form/__content/registration__form__content.css");
+@import url("../blocks/page_registration_form/__content/registration__form__content__h1.css");
+
+@import url("../blocks/page_registration_form/__button/button__registration__form.css");
+@import url("../blocks/page_registration_form/__button/button__submit__registration__form.css");
+
+@import url("../blocks/page_registration_form/registration__form.css");
+
+
+@import url("../blocks/page_registration_form/__input/registration__form_input.css");
+@import url("../blocks/page_registration_form/__input/registration__form_input_label.css");

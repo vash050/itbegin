@@ -1,0 +1,7 @@
+.team__logo__block {
+    display: flex;
+    flex-direction: column;
+    margin-right: 22px;
+    height: 100px;
+    justify-content: space-between;
+}

@@ -1,0 +1,32 @@
+.registration__form_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 13px;
+    width: 13px;
+    background-color: #212121;
+    border: 1px solid #818181;
+    border-radius: 3px;
+}
+
+.registration__form_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .registration__form_checkbox input:checked ~ .registration__form_checkmark:after {
+    display: block;
+  }
+
+  .registration__form_checkbox .registration__form_checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 3px;
+    height: 6px;
+    border: solid #818181;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

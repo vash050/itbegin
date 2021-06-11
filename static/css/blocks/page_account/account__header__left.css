@@ -1,0 +1,14 @@
+.account__header__left {
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account__header__left sup {
+    padding-left: 5px;
+}
+
+.account__link:hover {
+    color: #FAFD5A;
+}

@@ -1,0 +1,8 @@
+.account__information {
+    display: flex;
+    color: #FFFFFF;
+    font-size: 24px;
+    width: 295px;
+    justify-content: space-between;
+    margin-bottom: 48px;
+}

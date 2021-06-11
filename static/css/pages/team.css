@@ -1,0 +1,54 @@
+@import url("../blocks/root/root.css");
+@import url("../blocks/root/__container/root__container.css");
+@import url("../blocks/root/__content/root__content.css");
+
+@import url("../blocks/buttons/_type/buttons_type_white.css");
+@import url("../blocks/buttons/_type/buttons_type_darkGray.css");
+
+@import url("../blocks/input/_type/input_type_white.css");
+
+@import url("../blocks/header/header.css");
+@import url("../blocks/header/__content/header__content.css");
+@import url("../blocks/header/__link/header__link.css");
+@import url("../blocks/header/__link/_activ/header__link_activ.css");
+@import url("../blocks/header/__links/header__links.css");
+@import url("../blocks/header/__button/header__button.css");
+@import url("../blocks/page_account/account__avatar.css");
+
+@import url("../blocks/footer/footer.css");
+@import url("../blocks/footer/__about/footer__about.css");
+@import url("../blocks/footer/__content/footer__content.css");
+@import url("../blocks/footer/__questions/footer__questions.css");
+@import url("../blocks/footer/__subscribe/footer__subscribe.css");
+@import url("../blocks/footer/__link/footer__link.css");
+@import url("../blocks/footer/__subscribe-title/footer__subscribe-title.css");
+@import url("../blocks/footer/__subscribe-input/footer__subscribe-input.css");
+@import url("../blocks/footer/__button/footer__button.css");
+@import url("../blocks/footer/__logo/footer__logo.css");
+
+@import url("../blocks/drop_block/drop_block.css");
+@import url("../blocks/drop_block/drop_caret.css");
+
+@import url("../blocks/page_account/account__background.css");
+@import url("../blocks/page_account/account__header.css");
+@import url("../blocks/page_account/account__profile__info.css");
+
+@import url("../blocks/page_account/account__content__div.css");
+@import url("../blocks/page_account/account__information.css");
+
+@import url("../blocks/page_account/account__summary.css");
+
+@import url("../blocks/page_team/team.css");
+@import url("../blocks/page_team/team__header__task.css");
+@import url("../blocks/page_team/team__drop.css");
+@import url("../blocks/page_team/team__logo.css");
+@import url("../blocks/page_team/team__logo__block.css");
+@import url("../blocks/page_team/team__profile.css");
+@import url("../blocks/page_team/team__persons.css");
+@import url("../blocks/page_team/team__person.css");
+@import url("../blocks/page_team/team__persons__block.css");
+@import url("../blocks/page_team/team__headline.css");
+@import url("../blocks/page_team/team__person.css");
+@import url("../blocks/page_team/team__vacancy__block.css");
+@import url("../blocks/page_team/team__summary.css");
+@import url("../blocks/page_team/team__forum.css");

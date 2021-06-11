@@ -1,0 +1,12 @@
+.tasks {
+    background-image: url("../../img/background_team.jpg");
+    height: calc(100vh - 100px);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    height: 900px;
+}

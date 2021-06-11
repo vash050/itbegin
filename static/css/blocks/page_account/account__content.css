@@ -1,0 +1,8 @@
+.account__content {
+    display: flex;
+    justify-content: space-between;
+    color: #818181;
+    margin-top: 25px;
+    height: 72px;
+    margin-bottom: 60px;
+}
