@@ -7,6 +7,7 @@ from messegeapp.forms import MessageForm
 from messegeapp.models import Chat
 
 
+
 class DialogView(View):
 
     def get(self, request):
