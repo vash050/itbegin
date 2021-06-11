@@ -1,7 +1,9 @@
 {% load static %}
 
 <div class="header__content root__content">
-    <img src="{% static 'img/logo.png' %}" alt="Лого"/>
+    <a href={% url 'mainapp:index' %}>
+        <img class="footer__logo" src="{% static '/img/logo.png' %}" alt="Лого" />
+    </a>
     <nav class="header__links">
 
         <a href="{% url 'mainapp:index' %}" class="header__link header__link_activ">Главная</a>
@@ -11,17 +13,19 @@
         <a href="#" class="header__link">Форум</a>
         <a href="#" class="header__link">Статьи</a>
     </nav>
-    <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск"/>
+    <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск" />
 
     {% if user.is_authenticated %}
-        <li>
-            <a href="{% url 'authapp:profile' %}">профиль</a>
-        </li>
-        <li style="color: #FFFFFF">
+    <li>
+        <a href="{% url 'authapp:profile' %}">профиль</a>
+    </li>
+    <li style="color: #FFFFFF">
         {{ request.user }}
-        </li>
+    </li>
     {% else %}
-        <button class="buttons_type_white header__button"><a href="{% url 'authapp:login' %}">Войти</a></button>
+    <a href="{% url 'authapp:login' %}" class="buttons_type_white header__button">
+        Войти
+    </a>
     {% endif %}
 
 </div>
