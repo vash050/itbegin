@@ -1,5 +1,5 @@
 @import url("../blocks/root/root.css");
-@import url("../blocks/root__container/root__container.css");
+@import url("../blocks/root/__container/root__container.css");
 @import url("../blocks/root/__content/root__content.css");
 
 @import url("../blocks/buttons/_type/buttons_type_white.css");
