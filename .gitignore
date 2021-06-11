@@ -212,5 +212,6 @@ fabric.properties
 
 /static/
 /static/.idea/
+
 /Dockerfile
-/.idea/
+

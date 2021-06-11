@@ -13,6 +13,9 @@
 }
 
 .buttons_type_darkGray:hover {
-background: #4CB6CB;
-cursor: pointer;
+  background: #FAFD5A;
+  box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+  border-radius: 16px;
+  color: #212121;
+  cursor: pointer;
 }

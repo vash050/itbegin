@@ -1,5 +1,5 @@
 .news {
   background-color: #ffffff;
   color: #000000;
-  margin: 60px auto;
+  margin: 60px auto !important;
 }
