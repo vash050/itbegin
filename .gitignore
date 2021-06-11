@@ -212,5 +212,11 @@ fabric.properties
 
 /static/
 /static/.idea/
+<<<<<<< HEAD
 /Dockerfile
 /.idea/
+=======
+
+/Dockerfile
+
+>>>>>>> master

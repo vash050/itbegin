@@ -3,20 +3,31 @@
 
 
 {% block conteiner %}
+<section class="task root__container">
+    <div class="task__background">
+        <div class="task__header root__content">
+            <p>Задача</p>
+        </div>
+        <div class="task__description root__content">
+            <p class="task__description__p">Название задачи</p>
+            <p class="task__description__p">Описание задачи</p>
+        </div>
 
-    Task
-    <ul>
-{{ task }}
-             <li>----------------------------------------------------------------</li>
-            <li> {{ task.name }}</li>
-            <li> {{ task.short_description }}</li>
-            <li>{{ task.full_description }}</li>
-            <li>{{ task.tz }}</li>
-            <li>{{ task.author }}</li>
-            <li>{{ task.id }}</li>
+    </div>
+</section>
+Task
+<ul>
+    {{ task }}
+    <li>----------------------------------------------------------------</li>
+    <li> {{ task.name }}</li>
+    <li> {{ task.short_description }}</li>
+    <li>{{ task.full_description }}</li>
+    <li>{{ task.tz }}</li>
+    <li>{{ task.author }}</li>
+    <li>{{ task.id }}</li>
 
-            <li>----------------------------------------------------------------</li>
+    <li>----------------------------------------------------------------</li>
 
-    </ul>
-    <a href="{% url 'mainapp:tasks' %}">задачи</a>
+</ul>
+<a href="{% url 'mainapp:tasks' %}">задачи</a>
 {% endblock %}
