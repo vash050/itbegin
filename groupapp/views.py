@@ -50,7 +50,7 @@ class GroupCreateView(CreateView):
     model = Group
     form_class = CreateGroupForm
     template_name = 'groupapp/create_group.html'
-    success_url = reverse_lazy('groupapp:groups')
+    # success_url = reverse_lazy('groupapp:groups')
 
     def post(self, request, *args, **kwargs):
         '''

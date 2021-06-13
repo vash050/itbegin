@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from authapp.models import SiteUser, Professions
 from mainapp.models import Task
@@ -18,6 +19,9 @@ class Group(models.Model):
     date_create = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
+
+    def get_absolute_url(self):
+        return reverse('groupapp:group', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'команда'
