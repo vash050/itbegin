@@ -9,6 +9,7 @@ app_name = 'groupapp'
 
 urlpatterns = [
     path('groups/', groupapp.groups, name='groups'),
+    path('groups/<int:page_num>/', groupapp.groups, name='groups_paginator'),
     # path('create_group/', groupapp.create_group, name='create_group'),
     path('create_group/', groupapp.GroupCreateView.as_view(), name='create_group'),
     path('group/<int:pk>', groupapp.group, name='group'),
@@ -18,4 +19,5 @@ urlpatterns = [
     path('setting/<int:pk>/', groupapp.SettingView.as_view(), name='setting_group'),
     path('update_vacancy/<int:pk>/', groupapp.VacancyUpdate.as_view(), name='update_vacancy'),
     path('user_groups/', groupapp.UserGroupView.as_view(), name='user_groups'),
+    path('user_groups/<int:pk>/', groupapp.UserGroupView.as_view(), name='user_groups_paginator'),
 ]

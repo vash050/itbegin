@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -9,17 +10,26 @@ from groupapp.forms import CreateGroupForm, UpdateVacancyForm
 from groupapp.models import Group, DescriptionNeedProfessions
 
 
-def groups(request):
+def groups(request, page_num=1):
     title = 'команды'
     groups = Group.objects.filter(is_active=True)
 
-    content = {'title': title, 'object_list': groups}
+    groups_paginator = Paginator(groups, 3)
+    try:
+        groups = groups_paginator.page(page_num)
+    except PageNotAnInteger:
+        groups = groups_paginator.page(1)
+    except EmptyPage:
+        groups = groups_paginator.page(groups_paginator.num_pages)
+
+    content = {'title': title, 'page_obj': groups}
     return render(request, 'groupapp/groups.html', context=content)
 
 
 class UserGroupView(ListView):
     model = Group
-    template_name = 'groupapp/groups.html'
+    template_name = 'groupapp/mygroups.html'
+    paginate_by = 3
 
     def get_queryset(self):
         return Group.objects.filter(author=self.request.user)
