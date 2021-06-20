@@ -3,7 +3,7 @@ from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 
 from authapp.models import SiteUser
 from groupapp.forms import CreateGroupForm, UpdateVacancyForm
@@ -101,9 +101,10 @@ class GroupCreateView(CreateView):
 def group(request, pk):
     title = 'команда'
     this_group = Group.objects.get(pk=pk)
-    need_professions = this_group.need_profession.all()
     team_professions = SiteUser.objects.get(id=request.user.id).profession.all()
     members = SiteUser.objects.filter(group__team_members__group=pk)
+    need_professions = DescriptionNeedProfessions.objects.filter(group_id=pk)
+
 
     content = {
         'title': title,
@@ -190,6 +191,10 @@ class VacancyUpdate(UpdateView):
                 f.save()
             form.save()
             return super().form_valid(form)
+
+
+class NeedProfessionDescriptionView(DetailView):
+    model = DescriptionNeedProfessions
 
 
 def create_request_in_team(request):

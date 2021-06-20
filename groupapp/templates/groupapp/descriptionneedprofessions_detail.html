@@ -1,0 +1,11 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+<a href="{% url 'groupapp:group' object.group.pk %}"> <<< Back </a>
+    <h3> {{ object.profession }}</h3>
+    <h4>{{ object.description }}</h4>
+    {{ object }}
+
+{% endblock %}
