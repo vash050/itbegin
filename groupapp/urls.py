@@ -23,4 +23,5 @@ urlpatterns = [
     path('user_groups/<int:page_num>/', groupapp.user_groups, name='user_groups_paginator'),
     # path('user_groups/<str:page_num>/', groupapp.UserGroupView.as_view(), name='user_groups_paginator'),
     path('need_profession_description/<int:pk>/', groupapp.NeedProfessionDescriptionView.as_view(), name='need_prof_view'),
+    # path('create_application_need_prof/', groupapp.CreateApplicationNeedProfView.as_view(), name='create_application_need_prof'),
 ]

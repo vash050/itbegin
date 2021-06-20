@@ -197,5 +197,10 @@ class NeedProfessionDescriptionView(DetailView):
     model = DescriptionNeedProfessions
 
 
+# class CreateApplicationNeedProfView(CreateView):
+#     model = ApplicationToNeedProfession
+
+
+
 def create_request_in_team(request):
     pass

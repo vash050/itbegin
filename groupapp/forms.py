@@ -24,3 +24,9 @@ class UpdateVacancyForm(ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
+
+
+# class CreateApplicationToNeedProfessionForm(ModelForm):
+#     class Meta:
+#         model = ApplicationToNeedProfession
+#         fields = ['']
