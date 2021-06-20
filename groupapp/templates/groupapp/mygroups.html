@@ -41,25 +41,28 @@
 
             </div>
             <div class="teams__pages__block root__content">
+            <h3 style="color:white">{{ page_obj }}</h3>
+            <h3 style="color:red">{{ paginator }}</h3>
                 {% if page_obj.has_previous %}
                     <div class="teams__pages">
                         <a href="{% url 'groupapp:user_groups_paginator' page_obj.previous_page_number %}">
-                            <
-                            {{ page_obj.previous_page_number }}
-                        </a>
+                        <
+                        {{ page_obj.previous_page_number }}
+                    </a>
                     </div>
                 {% endif %}
-                <div class="page__active teams__pages">{{ page_obj.number }}</div>
-                {% if page_obj.has_next %}
-                    <div class="teams__pages">
-                        <a href="{% url 'groupapp:user_groups_paginator' page_obj.next_page_number %}">
-                            {{ page_obj.next_page_number }}
-                            >
-                        </a>
-                    </div>
-                {% endif %}
-{{ page_obj.next_page_number }}
-            </div>
+            <div class="page__active teams__pages">{{ page_obj.number }}</div>
+            {% if page_obj.has_next %}
+                <div class="teams__pages">
+                 {{ page_obj.next_page_number }}
+                    <a href="{% url 'groupapp:user_groups_paginator' page_obj.next_page_number %}"
+                        {{ page_obj.next_page_number }}
+                        >
+                    </a>
+                </div>
+            {% endif %}
+            {{ page_obj.next_page_number }}
+        </div>
         </div>
     </section>
 

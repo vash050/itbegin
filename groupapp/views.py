@@ -26,13 +26,34 @@ def groups(request, page_num=1):
     return render(request, 'groupapp/groups.html', context=content)
 
 
-class UserGroupView(ListView):
-    model = Group
-    template_name = 'groupapp/mygroups.html'
-    paginate_by = 3
+def user_groups(request, page_num=1):
+    title = 'команды'
+    groups = Group.objects.filter(author=request.user)
 
-    def get_queryset(self):
-        return Group.objects.filter(author=self.request.user)
+    groups_paginator = Paginator(groups, 3)
+    try:
+        groups = groups_paginator.page(page_num)
+    except PageNotAnInteger:
+        groups = groups_paginator.page(1)
+    except EmptyPage:
+        groups = groups_paginator.page(groups_paginator.num_pages)
+
+    content = {'title': title, 'page_obj': groups}
+    return render(request, 'groupapp/groups.html', context=content)
+
+# class UserGroupView(ListView):
+#     model = Group
+#     template_name = 'groupapp/mygroups.html'
+#     paginate_by = 3
+#
+#     def get_queryset(self):
+#         queryset = Group.objects.filter(author=self.request.user).order_by('date_create')
+#         ordering = self.get_ordering()
+#         if ordering:
+#             if isinstance(ordering, str):
+#                 ordering = (ordering,)
+#             queryset = queryset.order_by(*ordering)
+#         return queryset
 
 
 # def create_group(request):

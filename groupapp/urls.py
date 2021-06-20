@@ -18,6 +18,8 @@ urlpatterns = [
     path('create_request_in_team/', groupapp.create_request_in_team, name='create_request_in_team'),
     path('setting/<int:pk>/', groupapp.SettingView.as_view(), name='setting_group'),
     path('update_vacancy/<int:pk>/', groupapp.VacancyUpdate.as_view(), name='update_vacancy'),
-    path('user_groups/', groupapp.UserGroupView.as_view(), name='user_groups'),
-    path('user_groups/<int:pk>/', groupapp.UserGroupView.as_view(), name='user_groups_paginator'),
+    path('user_groups/', groupapp.user_groups, name='user_groups'),
+    # path('user_groups/<int:page_num>/', groupapp.UserGroupView.as_view(), name='user_groups'),
+    path('user_groups/<int:page_num>/', groupapp.user_groups, name='user_groups_paginator'),
+    # path('user_groups/<str:page_num>/', groupapp.UserGroupView.as_view(), name='user_groups_paginator'),
 ]
