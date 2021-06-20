@@ -39,7 +39,7 @@ def user_groups(request, page_num=1):
         groups = groups_paginator.page(groups_paginator.num_pages)
 
     content = {'title': title, 'page_obj': groups}
-    return render(request, 'groupapp/groups.html', context=content)
+    return render(request, 'groupapp/mygroups.html', context=content)
 
 # class UserGroupView(ListView):
 #     model = Group
