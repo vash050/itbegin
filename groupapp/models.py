@@ -1,4 +1,7 @@
+
+
 from django.db import models
+
 from django.urls import reverse
 
 from authapp.models import SiteUser, Professions
@@ -41,3 +44,10 @@ class ApplicationToNeedProfession(models.Model):
     is_active = models.BooleanField(default=True)
     acceptation = models.IntegerField(default=0)
     description_self = models.TextField(blank=True)
+
+
+
+
+
+
+

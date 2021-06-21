@@ -2,12 +2,12 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 
 from authapp.models import SiteUser
-from groupapp.forms import CreateGroupForm, UpdateVacancyForm
-from groupapp.models import Group, DescriptionNeedProfessions
+from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm
+from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
 
 
 def groups(request, page_num=1):
@@ -40,6 +40,7 @@ def user_groups(request, page_num=1):
 
     content = {'title': title, 'page_obj': groups}
     return render(request, 'groupapp/mygroups.html', context=content)
+
 
 # class UserGroupView(ListView):
 #     model = Group
@@ -81,6 +82,7 @@ class GroupCreateView(CreateView):
     model = Group
     form_class = CreateGroupForm
     template_name = 'groupapp/create_group.html'
+
     # success_url = reverse_lazy('groupapp:groups')
 
     def post(self, request, *args, **kwargs):
@@ -104,7 +106,6 @@ def group(request, pk):
     team_professions = SiteUser.objects.get(id=request.user.id).profession.all()
     members = SiteUser.objects.filter(group__team_members__group=pk)
     need_professions = DescriptionNeedProfessions.objects.filter(group_id=pk)
-
 
     content = {
         'title': title,
@@ -197,10 +198,40 @@ class NeedProfessionDescriptionView(DetailView):
     model = DescriptionNeedProfessions
 
 
+def create_application_need_prof(request, pk):
+    need_prof_pk = pk
+
+    if request.method == "POST":
+        form = CreateApplicationToNeedProfessionForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.to_need_profession = DescriptionNeedProfessions.objects.get(id=pk)
+            new_form.author_application = request.user
+            new_form.save()
+            return HttpResponseRedirect(reverse('mainapp:index'))
+    else:
+        form = CreateApplicationToNeedProfessionForm()
+
+    content = {
+        "need_prof_pk": need_prof_pk,
+        "forms": form
+    }
+    return render(request, "groupapp/applicationtoneedprofession_form.html", content)
+
+
 # class CreateApplicationNeedProfView(CreateView):
 #     model = ApplicationToNeedProfession
-
-
+#     form_class = CreateApplicationToNeedProfessionForm
+#     success_url = reverse_lazy('groupapp:groups')
+#
+#     def form_valid(self, form):
+#         """If the form is valid, save the associated model."""
+#         print(self.request)
+#         form.instance.author_application = self.request.user.id
+#         form.instance.to_need_profession = self.request
+#         self.object = form.save()
+#         return super().form_valid()
 
 def create_request_in_team(request):
     pass

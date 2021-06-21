@@ -6,6 +6,7 @@
 <a href="{% url 'groupapp:group' object.group.pk %}"> <<< Back </a>
     <h3> {{ object.profession }}</h3>
     <h4>{{ object.description }}</h4>
-<a href="{% url 'groupapp:create_application_need_prof' %}"> Подать заявку >>> </a>
+    {{ object.pk }}
+<a href="{% url 'groupapp:create_application_need_prof' object.pk %}"> Подать заявку >>> </a>
 
 {% endblock %}
