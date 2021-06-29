@@ -12,7 +12,7 @@ from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeed
 
 def groups(request, page_num=1):
     title = 'команды'
-    groups = Group.objects.filter(is_active=True)
+    groups = Group.objects.filter(is_active=True).order_by('date_create')
 
     groups_paginator = Paginator(groups, 3)
     try:
@@ -28,7 +28,7 @@ def groups(request, page_num=1):
 
 def user_groups(request, page_num=1):
     title = 'команды'
-    groups = Group.objects.filter(author=request.user)
+    groups = Group.objects.filter(author=request.user).order_by('date_create')
 
     groups_paginator = Paginator(groups, 3)
     try:
