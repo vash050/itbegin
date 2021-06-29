@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block conteiner %}
+    <div>
+        {% for object in object_list %}
+            <div>
+                {{ object.to_need_profession.profession }}
+                {{ object.author_application }}
+                {{ object.description_self }}
+            </div>
+            <a href="">ADD</a>
+            <a href="">Delete</a>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

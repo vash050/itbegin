@@ -10,7 +10,6 @@ from mainapp.models import Task
 
 class Group(models.Model):
     name = models.CharField(max_length=120)
-    # При удаление бд убрать null=True
     author = models.ForeignKey(to=SiteUser,related_name='author_group', on_delete=models.CASCADE)
     description = models.CharField(max_length=200, blank=True)
     need_profession = models.ManyToManyField(to=Professions, through='DescriptionNeedProfessions')

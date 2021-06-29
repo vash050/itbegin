@@ -233,5 +233,12 @@ def create_application_need_prof(request, pk):
 #         self.object = form.save()
 #         return super().form_valid()
 
-def create_request_in_team(request):
-    pass
+class ApplicationsToTeamsView(ListView):
+    model = ApplicationToNeedProfession
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(to_need_profession__group=self.kwargs['pk'])
+        print(queryset)
+        return queryset
+
+

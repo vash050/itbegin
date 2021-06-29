@@ -15,7 +15,7 @@ urlpatterns = [
     path('group/<int:pk>', groupapp.group, name='group'),
     path('update_group/<int:pk>/', groupapp.GroupUpdateView.as_view(), name='update_group'),
     path('delete_group/<int:pk>/', groupapp.GroupDeleteView.as_view(), name='delete_group'),
-    path('create_request_in_team/', groupapp.create_request_in_team, name='create_request_in_team'),
+    # path('create_request_in_team/', groupapp.create_request_in_team, name='create_request_in_team'),
     path('setting/<int:pk>/', groupapp.SettingView.as_view(), name='setting_group'),
     path('update_vacancy/<int:pk>/', groupapp.VacancyUpdate.as_view(), name='update_vacancy'),
     path('user_groups/', groupapp.user_groups, name='user_groups'),
@@ -25,4 +25,5 @@ urlpatterns = [
     path('need_profession_description/<int:pk>/', groupapp.NeedProfessionDescriptionView.as_view(), name='need_prof_view'),
     # path('create_application_need_prof/', groupapp.CreateApplicationNeedProfView.as_view(), name='create_application_need_prof'),
     path('create_application_need_prof/<int:pk>/', groupapp.create_application_need_prof, name='create_application_need_prof'),
+    path('applications_to_team/<int:pk>/', groupapp.ApplicationsToTeamsView.as_view(), name='applications_to_team'),
 ]
