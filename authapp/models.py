@@ -8,8 +8,8 @@ class SiteUser(AbstractUser):
     profession = models.ManyToManyField(verbose_name="профессии", to='Professions', blank=True)
     about_me = models.CharField(verbose_name="обо мне", max_length=1000, blank=True)
     link_to_portfolio = models.CharField(max_length=150, blank=True)
-    # my_groups = models.ManyToManyField(to='Groups', blank=True)
-    # my_projects = models.ManyToManyField(to='Projects', blank=True)
+    # my_groups = models.ManyToManyField(to='Group', blank=True)
+    # my_projects = models.ManyToManyField(to='Task', blank=True)
     free = models.BooleanField(default=True)
     date_update_profile = models.DateTimeField(auto_now=True)
 

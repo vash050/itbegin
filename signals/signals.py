@@ -7,6 +7,7 @@ from groupapp.models import ApplicationToNeedProfession, MemberTeam
 @receiver(post_save, sender=ApplicationToNeedProfession)
 def add_to_team(sender, instance, **kwargs):
     """
+    for groupapp
     The function receives a signal from the application model when it is updated.
      If acceptance == 1, the user is added to the team.
 
@@ -15,3 +16,9 @@ def add_to_team(sender, instance, **kwargs):
     """
     if instance.acceptation == 1:
         MemberTeam.objects.create(group_id=instance.to_need_profession.group, user_id=instance.author_application)
+    elif instance.acceptation == 2:
+        MemberTeam.objects.create(
+            group_id=instance.to_need_profession.group,
+            user_id=instance.author_application,
+            is_active=False
+        )

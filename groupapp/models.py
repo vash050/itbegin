@@ -49,5 +49,6 @@ class ApplicationToNeedProfession(models.Model):
 class MemberTeam(models.Model):
     group_id = models.ForeignKey(Group, on_delete=models.CASCADE)
     user_id = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
-
-
+    date_create = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
