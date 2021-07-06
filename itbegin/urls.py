@@ -26,6 +26,7 @@ urlpatterns = [
     path('group/', include('groupapp.urls'), name='groupapp'),
     path('message/', include('messegeapp.urls'), name='messegeapp'),
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:

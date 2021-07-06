@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'mainapp',
     'authapp',
     'groupapp',
     'messegeapp',
+
+    'signals.apps.GroupAppConfig',
 ]
 
 AUTH_USER_MODEL = 'authapp.SiteUser'

@@ -2,10 +2,14 @@
 from django.urls import path
 
 from django.urls import path
+from rest_framework.routers import SimpleRouter
 
 import groupapp.views as groupapp
 
 app_name = 'groupapp'
+
+router = SimpleRouter()
+# router.register('api/delete_applications_to_team/<int:pk>/', groupapp.DeleteApplicationsFromTeamApi)
 
 urlpatterns = [
     path('groups/', groupapp.groups, name='groups'),
@@ -26,4 +30,7 @@ urlpatterns = [
     # path('create_application_need_prof/', groupapp.CreateApplicationNeedProfView.as_view(), name='create_application_need_prof'),
     path('create_application_need_prof/<int:pk>/', groupapp.create_application_need_prof, name='create_application_need_prof'),
     path('applications_to_team/<int:pk>/', groupapp.ApplicationsToTeamsView.as_view(), name='applications_to_team'),
+    path('api/delete_applications_to_team/<int:pk>/', groupapp.UpdateApplicationsFromTeamApi.as_view()),
 ]
+
+urlpatterns += router.urls

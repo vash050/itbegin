@@ -1,6 +1,7 @@
-
-
+from django.apps import AppConfig
 from django.db import models
+from django.db.models.signals import post_save, m2m_changed
+from django.dispatch.dispatcher import receiver
 
 from django.urls import reverse
 
@@ -10,10 +11,10 @@ from mainapp.models import Task
 
 class Group(models.Model):
     name = models.CharField(max_length=120)
-    author = models.ForeignKey(to=SiteUser,related_name='author_group', on_delete=models.CASCADE)
+    author = models.ForeignKey(to=SiteUser, related_name='author_group', on_delete=models.CASCADE)
     description = models.CharField(max_length=200, blank=True)
     need_profession = models.ManyToManyField(to=Professions, through='DescriptionNeedProfessions')
-    team_members = models.ManyToManyField(to=SiteUser, null=True)
+    team_members = models.ManyToManyField(to=SiteUser, through='MemberTeam')
     logotype = models.ImageField(blank=True)
     got_task = models.ManyToManyField(to=Task, related_name='got_task', null=True)
     done_task = models.ManyToManyField(to=Task, related_name='done_task', blank=True)
@@ -45,8 +46,8 @@ class ApplicationToNeedProfession(models.Model):
     description_self = models.TextField(blank=True)
 
 
-
-
-
+class MemberTeam(models.Model):
+    group_id = models.ForeignKey(Group, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
 
 

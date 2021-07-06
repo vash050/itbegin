@@ -1,16 +1,19 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'groupapp/base.html' %}
 {% load static %}
 
 {% block conteiner %}
     <div>
         {% for object in object_list %}
-            <div>
-                {{ object.to_need_profession.profession }}
-                {{ object.author_application }}
-                {{ object.description_self }}
-            </div>
-            <a href="">ADD</a>
-            <a href="">Delete</a>
+            {% if object.acceptation == 0 or 1 %}
+                <div>
+                    {{ object.to_need_profession.profession }}
+                    {{ object.author_application }}
+                    {{ object.description_self }}
+                    {{ object.to_need_profession.group.pk }}
+                </div>
+                <a class="add-one-to-team" href="">ADD</a>
+                <a class="delete-application-to-team-from-team" href="">Delete</a>
+            {% endif %}
 
         {% endfor %}
     </div>

@@ -4,10 +4,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
+from rest_framework.generics import UpdateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 
 from authapp.models import SiteUser
 from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm
 from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
+from groupapp.serializers import ApplicationsToTeamSerializer
 
 
 def groups(request, page_num=1):
@@ -238,7 +241,14 @@ class ApplicationsToTeamsView(ListView):
 
     def get_queryset(self):
         queryset = self.model.objects.filter(to_need_profession__group=self.kwargs['pk'])
-        print(queryset)
         return queryset
+
+
+class UpdateApplicationsFromTeamApi(RetrieveUpdateDestroyAPIView):
+    """
+
+    """
+    queryset = ApplicationToNeedProfession.objects.all()
+    serializer_class = ApplicationsToTeamSerializer
 
 
