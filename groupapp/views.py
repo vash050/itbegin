@@ -107,7 +107,8 @@ def group(request, pk):
     title = 'команда'
     this_group = Group.objects.get(pk=pk)
     team_professions = SiteUser.objects.get(id=request.user.id).profession.all()
-    members = SiteUser.objects.filter(group__team_members__group=pk)
+    members = SiteUser.objects.filter(memberteam__group_id=pk)
+    print(members, pk)
     need_professions = DescriptionNeedProfessions.objects.filter(group_id=pk)
 
     content = {

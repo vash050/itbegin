@@ -8,14 +8,17 @@ class SiteUser(AbstractUser):
     profession = models.ManyToManyField(verbose_name="профессии", to='Professions', blank=True)
     about_me = models.CharField(verbose_name="обо мне", max_length=1000, blank=True)
     link_to_portfolio = models.CharField(max_length=150, blank=True)
-    # my_groups = models.ManyToManyField(to='Groups', blank=True)
-    # my_projects = models.ManyToManyField(to='Projects', blank=True)
     free = models.BooleanField(default=True)
     date_update_profile = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
+
+    def avatar_or_default(self, default_path="../../static/img/avatar.png"):
+        if self.avatar:
+            return self.avatar
+        return default_path
 
 
 class ContactUser(models.Model):
