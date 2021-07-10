@@ -1,8 +1,4 @@
-from django.apps import AppConfig
 from django.db import models
-from django.db.models.signals import post_save, m2m_changed
-from django.dispatch.dispatcher import receiver
-
 from django.urls import reverse
 
 from authapp.models import SiteUser, Professions

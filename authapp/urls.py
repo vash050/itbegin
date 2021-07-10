@@ -11,4 +11,5 @@ urlpatterns = [
     path('register/', authapp.register, name='register'),
     path('logout/', authapp.logout, name='logout'),
     path('update/', authapp.update, name='update'),
+    path('profile/<int:pk>/', authapp.UserProfile.as_view(), name='user_profile'),
 ]

@@ -16,9 +16,3 @@ def add_to_team(sender, instance, **kwargs):
     """
     if instance.acceptation == 1:
         MemberTeam.objects.create(group_id=instance.to_need_profession.group, user_id=instance.author_application)
-    elif instance.acceptation == 2:
-        MemberTeam.objects.create(
-            group_id=instance.to_need_profession.group,
-            user_id=instance.author_application,
-            is_active=False
-        )

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import UpdateView, FormView
+from django.views.generic import UpdateView, FormView, DetailView
 
 from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm
 from authapp.models import Professions, SiteUser
@@ -76,3 +76,7 @@ def update(request):
         "forms": form
     }
     return render(request, "authapp/chang_profile.html", content)
+
+
+class UserProfile(DetailView):
+    model = SiteUser
