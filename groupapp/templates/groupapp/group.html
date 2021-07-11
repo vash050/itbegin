@@ -41,6 +41,7 @@
                     </div>
                 </div>
             </div>
+        <p style="color: #FFFFFF"> {{ members }}</p>
             <div class="team__persons__block root__content">
                 <div class="account__content__div">
                     <p class="team__headline">Состав команды</p>
@@ -53,9 +54,10 @@
                                 <p>{{ object.first_name }}</p>
                                 <p>{{ object.last_name }}</p>
                                 <p>{{ object.profession.first }}</p>
-                            {{ object.avatar }}
                             </div>
                         {% endfor %}
+
+
 
                     </div>
                 </div>
