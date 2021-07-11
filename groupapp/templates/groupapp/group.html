@@ -41,7 +41,6 @@
                     </div>
                 </div>
             </div>
-        <p style="color: #FFFFFF"> {{ members }}</p>
             <div class="team__persons__block root__content">
                 <div class="account__content__div">
                     <p class="team__headline">Состав команды</p>
@@ -58,7 +57,6 @@
                         {% endfor %}
 
 
-
                     </div>
                 </div>
             </div>
@@ -66,6 +64,11 @@
                 <div class="drop_block team__headline">
                     Занятые вакансии<i class="fas fa-caret-down drop_caret"></i>
                     <div class="drop_summary team__summary">
+                        {% for prof in occupied_vacancy %}
+                            <div>
+                                {{ prof.profession }}
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
 

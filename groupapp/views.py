@@ -108,12 +108,16 @@ def group(request, pk):
     this_group = Group.objects.get(pk=pk)
     team_professions = SiteUser.objects.get(id=request.user.id).profession.all()
     members = SiteUser.objects.filter(memberteam__group_id=pk)
-    need_professions = DescriptionNeedProfessions.objects.filter(group_id=pk)
+    professions_all = DescriptionNeedProfessions.objects.filter(group_id=pk)
+    need_professions = professions_all.filter(status=0)
+    occupied_vacancy = professions_all.filter(status=1)
+
 
     content = {
         'title': title,
         'this_group': this_group,
         'need_professions': need_professions,
+        'occupied_vacancy': occupied_vacancy,
         'team_professions': team_professions,
         'members': members
     }

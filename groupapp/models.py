@@ -31,6 +31,7 @@ class DescriptionNeedProfessions(models.Model):
     profession = models.ForeignKey(Professions, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     description = models.TextField(blank=True)
+    status = models.IntegerField(null=True)
 
 
 class ApplicationToNeedProfession(models.Model):
