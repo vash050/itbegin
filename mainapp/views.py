@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
+from django.views.generic import ListView
 
 from mainapp.forms import CreateTaskForm
 from mainapp.models import Task
@@ -11,12 +12,16 @@ def index(request):
     return render(request, 'mainapp/index.html', context=content)
 
 
-def tasks(request):
-    title = 'задачи'
-    tasks = Task.objects.all()
+# def tasks(request):
+#     title = 'задачи'
+#     tasks = Task.objects.all()
+#
+#     content = {'title': title, 'tasks': tasks}
+#     return render(request, 'mainapp/tasks.html', context=content)
 
-    content = {'title': title, 'tasks': tasks}
-    return render(request, 'mainapp/tasks.html', context=content)
+
+class Tasks(ListView):
+    model = Task
 
 
 def task(request, pk):

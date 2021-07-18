@@ -35,7 +35,9 @@
                     <div class="teams__part">
                         <a href="{% url "groupapp:group" object.pk %}"><p class="teams__part__logo"></p></a>
                         <p>{{ object.name }}</p>
-                        <p>Свободно вакансий &#183; 2</p>
+                        <p>всего / занято вакансий &#183;
+                            {{ object.need_profession.count }} / {{ object.team_members.count }}
+                        </p>
                     </div>
                 {% endfor %}
 

@@ -1,0 +1,34 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block conteiner %}
+    <section class="tasks root__container">
+        <div class="tasks__background">
+            <div class="tasks__header root__content">
+                <p>Задачи</p>
+                <div class="teams__drop">
+                    <div class="drop_block"> Категории<i class="fas fa-caret-down drop_caret"></i>
+                        <div class="drop_summary teams__summary">
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
+            {% for task in object_list %}
+                <div class="tasks__content root__content">
+                    <p class="team__headline">{{ task.name }}</p>
+                    <p class="tasks__description">{{ task.full_description }}</p>
+                </div>
+
+            {% endfor %}
+            <a href="{% url 'mainapp:create_task' %}" style="color: white;">Создать задачу</a>
+        </div>
+        </div>
+
+    </section>
+
+{% endblock %}

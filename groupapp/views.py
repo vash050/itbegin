@@ -4,8 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
-from rest_framework.generics import UpdateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 from authapp.models import SiteUser
 from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm
@@ -45,42 +44,6 @@ def user_groups(request, page_num=1):
     return render(request, 'groupapp/mygroups.html', context=content)
 
 
-# class UserGroupView(ListView):
-#     model = Group
-#     template_name = 'groupapp/mygroups.html'
-#     paginate_by = 3
-#
-#     def get_queryset(self):
-#         queryset = Group.objects.filter(author=self.request.user).order_by('date_create')
-#         ordering = self.get_ordering()
-#         if ordering:
-#             if isinstance(ordering, str):
-#                 ordering = (ordering,)
-#             queryset = queryset.order_by(*ordering)
-#         return queryset
-
-
-# def create_group(request):
-#     title = "создание команды"
-#
-#     if request.method == "POST":
-#         create_group_form = CreateGroupForm(request.POST, request.FILES)
-#
-#         if create_group_form.is_valid():
-#             new_group = create_group_form.save(commit=False)
-#             new_group.author = request.user
-#             new_group.save()
-#             new_group.need_profession.add(*create_group_form.data.getlist('need_profession'))
-#             return HttpResponseRedirect(reverse('groupapp:groups'))
-#     else:
-#         create_group_form = CreateGroupForm()
-#
-#     content = {
-#         "title": title,
-#         "object_list": create_group_form
-#     }
-#     return render(request, "groupapp/create_group.html", content)
-
 class GroupCreateView(CreateView):
     model = Group
     form_class = CreateGroupForm
@@ -111,7 +74,6 @@ def group(request, pk):
     professions_all = DescriptionNeedProfessions.objects.filter(group_id=pk)
     need_professions = professions_all.filter(status=0)
     occupied_vacancy = professions_all.filter(status=1)
-
 
     content = {
         'title': title,
@@ -227,19 +189,6 @@ def create_application_need_prof(request, pk):
     return render(request, "groupapp/applicationtoneedprofession_form.html", content)
 
 
-# class CreateApplicationNeedProfView(CreateView):
-#     model = ApplicationToNeedProfession
-#     form_class = CreateApplicationToNeedProfessionForm
-#     success_url = reverse_lazy('groupapp:groups')
-#
-#     def form_valid(self, form):
-#         """If the form is valid, save the associated model."""
-#         print(self.request)
-#         form.instance.author_application = self.request.user.id
-#         form.instance.to_need_profession = self.request
-#         self.object = form.save()
-#         return super().form_valid()
-
 class ApplicationsToTeamsView(ListView):
     model = ApplicationToNeedProfession
 
@@ -254,5 +203,3 @@ class UpdateApplicationsFromTeamApi(RetrieveUpdateDestroyAPIView):
     """
     queryset = ApplicationToNeedProfession.objects.all()
     serializer_class = ApplicationsToTeamSerializer
-
-
