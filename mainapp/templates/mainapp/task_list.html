@@ -17,16 +17,18 @@
                     </div>
                 </div>
             </div>
-        <div>
-            {% for task in object_list %}
-                <div class="tasks__content root__content">
-                    <p class="team__headline">{{ task.name }}</p>
-                    <p class="tasks__description">{{ task.full_description }}</p>
-                </div>
+            <div>
+                {% for object in object_list %}
+                    <div class="tasks__content root__content">
+                        <a href="{% url 'mainapp:task' object.pk  %}">
+                            <p class="team__headline">{{ object.name }}</p>
+                            <p class="tasks__description">{{ object.full_description }}</p>
+                        </a>
+                    </div>
 
-            {% endfor %}
-            <a href="{% url 'mainapp:create_task' %}" style="color: white;">Создать задачу</a>
-        </div>
+                {% endfor %}
+                <a href="{% url 'mainapp:create_task' %}" style="color: white;">Создать задачу</a>
+            </div>
         </div>
 
     </section>
