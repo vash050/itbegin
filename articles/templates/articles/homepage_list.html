@@ -1,0 +1,10 @@
+{% extends 'groupapp/base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block conteiner %}
+    {% for object in object_list %}
+        <p>{{ object }}</p>
+        <p>{{ object.body|richtext }}</p>
+    {% endfor %}
+{% endblock %}
