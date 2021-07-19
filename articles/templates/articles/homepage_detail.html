@@ -3,11 +3,11 @@
 {% load wagtailcore_tags %}
 
 {% block conteiner %}
-    {% for object in object_list %}
-        <a href="{% url 'articles:article' object.pk %}">
+
+        <a href="{% url 'articles:articles' %}">назад</a>
         <p>{{ object }}</p>
         <p>{{ object.body|richtext }}</p>
         <p>{{ object.owner }}</p>
-        </a>
-    {% endfor %}
+
+
 {% endblock %}
