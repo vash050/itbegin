@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch.dispatcher import receiver
 
-from groupapp.models import ApplicationToNeedProfession, MemberTeam, DescriptionNeedProfessions
+from groupapp.models import ApplicationToNeedProfession, MemberTeam
 
 
 @receiver(post_save, sender=ApplicationToNeedProfession)
@@ -19,5 +19,3 @@ def add_to_team(sender, instance, **kwargs):
         obj = instance.to_need_profession
         obj.status = 1
         obj.save()
-
-

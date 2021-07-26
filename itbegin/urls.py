@@ -17,7 +17,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('articles/', include('articles.urls'), name='articles'),
-    path('cms/', include(wagtailadmin_urls)),
+    path('cms/', include(wagtailadmin_urls), name='cms'),
     path('documents/', include(wagtaildocs_urls)),
 ]
 urlpatterns += doc_urls

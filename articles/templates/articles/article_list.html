@@ -1,0 +1,11 @@
+{% extends 'groupapp/base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block conteiner %}
+    {% for object in object_list %}
+        <a href="#">
+        <p>{{ object }}</p>
+        </a>
+    {% endfor %}
+{% endblock %}
