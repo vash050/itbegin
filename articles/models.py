@@ -9,7 +9,7 @@ from authapp.models import SiteUser
 
 class HomePage(Page):
     """
-    delete this class
+    main page
     """
     body = RichTextField(blank=True)
 

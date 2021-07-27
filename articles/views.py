@@ -3,15 +3,19 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
-from articles.models import HomePage, Article
+from articles.models import Article
 
 
 class ArticleView(ListView):
-    model = HomePage
+    """
+    output published articles only
+    """
+    model = Article
+    queryset = Article.objects.filter(has_unpublished_changes=0)
 
 
 class ArticlePage(DetailView):
-    model = HomePage
+    model = Article
 
 
 class MyArticleListView(ListView):

@@ -4,8 +4,11 @@
 
 {% block conteiner %}
     {% for object in object_list %}
-        <a href="#">
+        <a href="{% url 'articles:article' object.pk %}">
         <p>{{ object }}</p>
+        <p>{{ object.body|richtext }}</p>
+        <p>{{ object.owner }}</p>
+        <p>{{ object.last_published_at }}</p>
         </a>
     {% endfor %}
 {% endblock %}
