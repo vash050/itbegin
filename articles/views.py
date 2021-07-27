@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -20,6 +21,10 @@ class ArticlePage(DetailView):
 
 class MyArticleListView(ListView):
     model = Article
+
+    def get_queryset(self):
+        queryset = Article.objects.filter(owner=self.request.user)
+        return queryset
 
 
 def author_create(request):
