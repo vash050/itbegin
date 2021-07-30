@@ -4,10 +4,13 @@ from django.views.generic import ListView, DetailView
 
 from articles.models import Article
 from mainapp.forms import CreateTaskForm
-from mainapp.models import Task
+from mainapp.models import Task, CategoryTask
 
 
 def index(request):
+    """
+    main page
+    """
     title = 'главная'
     news = Article.objects.filter(has_unpublished_changes=0)[:3]
     content = {
@@ -18,7 +21,15 @@ def index(request):
 
 
 class TaskListView(ListView):
+    """
+    page tasks all
+    """
     model = Task
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories_task'] = CategoryTask.objects.all()
+        return context
 
 
 class TaskView(DetailView):
