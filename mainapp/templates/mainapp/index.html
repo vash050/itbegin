@@ -35,15 +35,18 @@
                     </select>
                 </div>
                 {% for article in article_list %}
-                    <div class="news__article">
-                        <img src="/static/img/news1.png" class="news__article-img"/>
-                        <div class="article">
-                            <h2 class="article__label">{{ article.title }}</h2>
-                            <p class="article__text">{{ article.search_description}}</p>
-                            <p class="article__text">{{ article.owner }}</p>
-                            <p class="article__data">{{ article.last_published_at }}</p>
+                    <a href="{% url 'articles:article' article.id %}">
+                        <div class="news__article">
+                            <img src="/static/img/news1.png" class="news__article-img"/>
+
+                            <div class="article">
+                                <h2 class="article__label">{{ article.title }}</h2>
+                                <p class="article__text">{{ article.search_description }}</p>
+                                <p class="article__text">{{ article.owner }}</p>
+                                <p class="article__data">{{ article.last_published_at }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
 
                 <div class="news__footer">
