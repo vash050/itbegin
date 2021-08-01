@@ -34,6 +34,7 @@
                         <p class="account__headline">{{ object.first_name }} {{ object.last_name }}</p>
                         <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
                         <p>Статус: свободен</p>
+                        <a href="{% url 'messageapp:create_dialog' object.id %}">Написать письмо</a>
                     </div>
                 </div>
                 <a href="#">{{ object.about_me }}</a>

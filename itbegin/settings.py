@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'mainapp',
     'authapp',
     'groupapp',
-    'messegeapp',
+    'messageapp',
     'articles',
 
     'signals.apps.GroupAppConfig',

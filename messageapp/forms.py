@@ -1,9 +1,10 @@
 from django.forms.models import ModelForm
-from messegeapp.models import Message
+from messageapp.models import Message, Dialog
 
 
 class MessageForm(ModelForm):
     class Meta:
         model = Message
-        fields = ['massage']
-        labels = {'massage': ""}
+        fields = ['message']
+        labels = {'message': ""}
+
