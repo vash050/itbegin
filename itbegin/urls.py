@@ -1,13 +1,10 @@
-from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.urls import path, include
-
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.documents import urls as wagtaildocs_urls
+
 from .yasg import urlpatterns as doc_urls
-
-
 
 urlpatterns = [
     path('', include('mainapp.urls'), name='mainapp'),
@@ -18,6 +15,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('articles/', include('articles.urls'), name='articles'),
     path('wagtail_admin/', include(wagtailadmin_urls)),
+    path('chat/', include('chatapp.urls'), name='chatapp'),
 ]
 urlpatterns += doc_urls
 
