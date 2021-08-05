@@ -91,7 +91,8 @@
             <div class="team__forum root__content">
                 <div class="account__information">
                     <a href="#">
-                        <p class="team__headline">Чат/Форум</p>
+                        <p class="team__headline">
+                            <a href="{% url 'chatapp:room' this_group.pk %}">Чат</a> /Форум</p>
                     </a>
                 </div>
             </div>
