@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
 from articles.models import Article
+from groupapp.models import Group
 from mainapp.forms import CreateTaskForm
 from mainapp.models import Task, CategoryTask
 
@@ -54,3 +55,12 @@ def create_task(request):
     content = {'title': title, 'create_task_form': create_task_form}
 
     return render(request, "mainapp/create_task.html", context=content)
+
+
+def get_task(request, pk):
+    """
+    add task for group
+    """
+    group_user = Group.objects.filter(author=request.user)[0]
+    group_user.got_task.add(Task.objects.get(id=pk))
+    return HttpResponseRedirect(reverse('mainapp:task', kwargs={'pk': pk}))

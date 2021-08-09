@@ -10,6 +10,7 @@ from authapp.models import SiteUser
 from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm
 from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
 from groupapp.serializers import ApplicationsToTeamSerializer
+from mainapp.models import Task
 
 
 def groups(request, page_num=1):
@@ -203,3 +204,13 @@ class UpdateApplicationsFromTeamApi(RetrieveUpdateDestroyAPIView):
     """
     queryset = ApplicationToNeedProfession.objects.all()
     serializer_class = ApplicationsToTeamSerializer
+
+
+class TaskGroupList(ListView):
+    model = Task
+    template_name = 'groupapp/taskforgroup.html'
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(got_task=self.kwargs['pk'])
+        print(queryset)
+        return queryset

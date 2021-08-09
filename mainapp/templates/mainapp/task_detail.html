@@ -15,6 +15,7 @@
             {% for prof in object.professions.all %}
             <p class="task__description__p">{{ prof }}</p>
             {% endfor %}
+             <a href="{% url 'mainapp:get_task' object.pk %}">Взять задачу</a>
         </div>
     </div>
 </section>

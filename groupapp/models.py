@@ -14,7 +14,6 @@ class Group(models.Model):
     logotype = models.ImageField(blank=True)
     got_task = models.ManyToManyField(to=Task, related_name='got_task', null=True)
     done_task = models.ManyToManyField(to=Task, related_name='done_task', blank=True)
-    # groups_chat = models.URLField()
     date_create = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)

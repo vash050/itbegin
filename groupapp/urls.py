@@ -25,6 +25,7 @@ urlpatterns = [
          name='create_application_need_prof'),
     path('applications_to_team/<int:pk>/', groupapp.ApplicationsToTeamsView.as_view(), name='applications_to_team'),
     path('api/update_applications_to_team/<int:pk>/', groupapp.UpdateApplicationsFromTeamApi.as_view()),
+    path('tasks_for_group/<int:pk>/', groupapp.TaskGroupList.as_view(), name='tasks_for_group'),
 ]
 
 urlpatterns += router.urls

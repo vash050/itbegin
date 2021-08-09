@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from authapp.models import SiteUser, Professions
 
@@ -21,7 +22,6 @@ class Task(models.Model):
     full_description = models.TextField(verbose_name='полное описание')
     tz = models.TextField(verbose_name='техническое задание')
     author = models.ForeignKey(to=SiteUser, on_delete=models.CASCADE)
-    # developers = models.ManyToManyField(to=Groups)
     category = models.ForeignKey(CategoryTask, on_delete=models.CASCADE)
     professions = models.ManyToManyField(to=Professions)
     create_date = models.DateTimeField(auto_now_add=True)
