@@ -1,8 +1,5 @@
 from django.shortcuts import render
 
-
-# def chat(request):
-#     return render(request, 'chatapp/chat.html')
 from chatapp.models import RoomChat, MessageChat
 
 
