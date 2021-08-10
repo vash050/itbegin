@@ -212,5 +212,4 @@ class TaskGroupList(ListView):
 
     def get_queryset(self):
         queryset = self.model.objects.filter(got_task=self.kwargs['pk'])
-        print(queryset)
         return queryset

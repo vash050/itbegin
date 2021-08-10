@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'articles',
     'chatapp',
     'channels',
+    'forumapp',
 
     'signals.apps.GroupAppConfig',
 

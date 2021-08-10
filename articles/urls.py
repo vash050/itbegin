@@ -1,7 +1,4 @@
-from django.urls import path, include
-
-
-from wagtail.core import urls as wagtail_urls
+from django.urls import path
 
 import articles.views as articles
 
