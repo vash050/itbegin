@@ -1,9 +1,9 @@
 from django.urls import path
 
-import forumapp.views as forunapp
+import forumapp.views as forumapp
 
 app_name = 'forunapp'
 
 urlpatterns = [
-    # path(),
+    path('forum/', forumapp.ForumTopicList.as_view(), name='forum'),
 ]

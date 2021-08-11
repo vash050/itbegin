@@ -16,6 +16,7 @@ urlpatterns = [
     path('articles/', include('articles.urls'), name='articles'),
     path('wagtail_admin/', include(wagtailadmin_urls)),
     path('chat/', include('chatapp.urls'), name='chatapp'),
+    path('forum/', include('forumapp.urls'), name='forumapp'),
 ]
 urlpatterns += doc_urls
 

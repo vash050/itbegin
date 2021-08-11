@@ -10,7 +10,7 @@
         <a href="{% url 'groupapp:groups' %}" class="header__link">Команды</a>
         <a href="{% url 'mainapp:tasks' %}" class="header__link">Задачи</a>
         <a href="#" class="header__link">О нас</a>
-        <a href="#" class="header__link">Форум</a>
+        <a href="{% url 'forunapp:forum' %}" class="header__link">Форум</a>
         <a href="{% url 'articles:articles' %}" class="header__link">Статьи</a>
     </nav>
     <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск"/>
