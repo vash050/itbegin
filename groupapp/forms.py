@@ -1,7 +1,7 @@
 from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput
 
-from groupapp.models import Group, Professions, DescriptionNeedProfessions, ApplicationToNeedProfession
+from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
 
 
 class CreateGroupForm(ModelForm):

@@ -19,9 +19,7 @@ class MessagesView(View):
         try:
             chat = Dialog.objects.get(id=dialog_id)
             if request.user in chat.members.all():
-                print('ok')
                 chat.message_set.filter(is_read=False).exclude(author=request.user).update(is_read=True)
-                print(chat)
             else:
                 chat = None
         except Dialog.DoesNotExist:
