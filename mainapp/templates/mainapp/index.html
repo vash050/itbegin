@@ -27,12 +27,12 @@
             <div class="news__articles">
                 <div class="news__header">
                     <p class="news__header-label">Новости</p>
-                    <select class="selects_type_darkGray news__select">
-                        <option value="all">Все категории</option>
-                        <option value="kat1">Категория 1</option>
-                        <option value="kat2">Категория 2</option>
-                        <option value="kat3">Категория 3</option>
-                    </select>
+{#                    <select class="selects_type_darkGray news__select">#}
+{#                        <option value="all">Все категории</option>#}
+{#                        <option value="kat1">Категория 1</option>#}
+{#                        <option value="kat2">Категория 2</option>#}
+{#                        <option value="kat3">Категория 3</option>#}
+{#                    </select>#}
                 </div>
                 {% for article in article_list %}
                     <a href="{% url 'articles:article' article.id %}">
@@ -56,7 +56,15 @@
                 </div>
             </div>
             <div class="news__forum">
-                <img src="/static/img/forum.jpg" alt="Форум"/>
+            <p class="news__header-label">Форум</p>
+                {% for topic in forum %}
+                    <div class="article">
+                        <h2 class="article__label">{{ topic.name }}</h2>
+                        <p class="article__text">{{ topic.description }}</p>
+                        <p class="article__text">{{ topic.author_branch_forum }}</p>
+
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

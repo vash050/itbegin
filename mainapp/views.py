@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
 from articles.models import Article
+from forumapp.models import Branch
 from groupapp.models import Group
 from mainapp.forms import CreateTaskForm
 from mainapp.models import Task, CategoryTask
@@ -14,9 +15,11 @@ def index(request):
     """
     title = 'главная'
     news = Article.objects.filter(has_unpublished_changes=0)[:3]
+    forum = Branch.objects.all()[0:3]
     content = {
         "title": title,
         "article_list": news,
+        "forum": forum,
     }
     return render(request, 'mainapp/index.html', context=content)
 
