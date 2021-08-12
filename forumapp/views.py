@@ -14,6 +14,10 @@ class ForumTopicList(ListView):
 class ForumBranchList(ListView):
     model = Branch
 
+    def get_queryset(self):
+        queryset = self.model.objects.filter(topic_id=self.kwargs['pk'])
+        return queryset
+
 
 class ForumMessageList(View):
     def get(self, request, topic_id):

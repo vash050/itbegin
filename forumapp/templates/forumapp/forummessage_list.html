@@ -4,9 +4,11 @@
 {% block conteiner %}
     <div>
         {% for object in object_list %}
+            <p>----------------------------------------------------------------------------</p>
             <p>{{ object.body }}</p>
             <p> {{ object.author_branch_forum }}</p>
             <p> {{ object.date_create }}</p>
+            <p>----------------------------------------------------------------------------</p>
         {% endfor %}
     </div>
     <div class="registration__form__background">
