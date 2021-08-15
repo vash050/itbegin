@@ -8,10 +8,14 @@ from forumapp.models import MainTopic, Branch, ForumMessage
 
 
 class ForumTopicList(ListView):
+    """main chapters of forum"""
     model = MainTopic
 
 
 class ForumBranchList(ListView):
+    """
+    chapters of main chapters of forum
+    """
     model = Branch
 
     def get_queryset(self):
@@ -20,6 +24,9 @@ class ForumBranchList(ListView):
 
 
 class ForumMessageList(View):
+    """
+    message in branch of forum. read and create.
+    """
     def get(self, request, topic_id):
         object_list = ForumMessage.objects.filter(topic_id=topic_id)
         context = {
@@ -28,7 +35,6 @@ class ForumMessageList(View):
             'topic_pk': topic_id,
             'form': CreateForumMessage()
         }
-        print(object_list)
         return render(request, 'forumapp/forummessage_list.html', context=context)
 
     def post(self, request, topic_id):

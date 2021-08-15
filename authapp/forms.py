@@ -2,10 +2,9 @@ import hashlib
 import random
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms.widgets import HiddenInput, TextInput, PasswordInput
+from django.forms.widgets import HiddenInput
 
-from authapp.models import SiteUser
-from groupapp import forms
+from authapp.models import SiteUser, ContactUser
 
 
 class SiteUserLoginForm(AuthenticationForm):
@@ -48,3 +47,15 @@ class SiteUserUpdateForm(UserChangeForm):
             if field_name == 'password':
                 field.widget = HiddenInput()
 
+
+class SiteUserUpdateContact(UserChangeForm):
+    class Meta:
+        model = ContactUser
+        fields = ('user_phone', 'user_instagram', 'user_vk', 'user_telegram')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "input_type_black registration__form_input"
+            if field_name == 'password':
+                field.widget = HiddenInput()

@@ -1,0 +1,8 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block conteiner %}
+    <p><a href="{% url 'authapp:up_setting_user_cont' request.user.pk %}">редактировать контакты</a></p>
+
+
+{% endblock conteiner %}

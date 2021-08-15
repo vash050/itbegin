@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import UpdateView, FormView, DetailView
+from django.views.generic import UpdateView, FormView, DetailView, ListView
 
-from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm
-from authapp.models import Professions, SiteUser
+from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm, SiteUserUpdateContact
+from authapp.models import Professions, SiteUser, ContactUser
 
 
 def login(request):
@@ -35,7 +35,12 @@ def logout(request):
 def profile(request):
     title = 'личный кабинет'
     professions = SiteUser.objects.get(id=request.user.id).profession.all()
-    content = {"title": title, 'professions': professions}
+    contact = ContactUser.objects.get(user_id=request.user.id)
+    content = {
+        'title': title,
+        'professions': professions,
+        'contact': contact,
+    }
 
     return render(request, 'authapp/profile.html', context=content)
 
@@ -80,3 +85,15 @@ def update(request):
 
 class UserProfile(DetailView):
     model = SiteUser
+
+
+class UserSetting(ListView):
+    """
+    settings profile
+    """
+    model = SiteUser
+
+
+class UpdateUserContact(UpdateView):
+    model = ContactUser
+    form_class = SiteUserUpdateContact

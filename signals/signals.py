@@ -1,6 +1,8 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_init
+from django.db.utils import OperationalError
 from django.dispatch.dispatcher import receiver
 
+from authapp.models import SiteUser, ContactUser
 from groupapp.models import ApplicationToNeedProfession, MemberTeam
 
 
@@ -19,3 +21,12 @@ def add_to_team(sender, instance, **kwargs):
         obj = instance.to_need_profession
         obj.status = 1
         obj.save()
+
+
+@receiver(post_save, sender=SiteUser)
+def add_contact_user(sender, instance, **kwargs):
+    try:
+        if ContactUser.objects.get(user_id=instance.id) is None:
+            ContactUser.objects.create(user_id=instance.id)
+    except OperationalError as e:
+        print(e)

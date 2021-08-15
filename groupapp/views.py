@@ -14,6 +14,9 @@ from mainapp.models import Task
 
 
 def groups(request, page_num=1):
+    """
+    постраничный вывод команд
+    """
     title = 'команды'
     groups = Group.objects.filter(is_active=True).order_by('date_create')
 
@@ -30,6 +33,9 @@ def groups(request, page_num=1):
 
 
 def user_groups(request, page_num=1):
+    """
+    вывод команд в который пользователь состоит или является основателем
+    """
     title = 'команды'
     groups = Group.objects.filter(author=request.user).order_by('date_create')
 
@@ -68,6 +74,9 @@ class GroupCreateView(CreateView):
 
 
 def group(request, pk):
+    """
+    вывод страницы конкретной команды
+    """
     title = 'команда'
     this_group = Group.objects.get(pk=pk)
     team_professions = SiteUser.objects.get(id=request.user.id).profession.all()
@@ -169,6 +178,9 @@ class NeedProfessionDescriptionView(DetailView):
 
 
 def create_application_need_prof(request, pk):
+    """
+    создание заявки на вакансию в команду
+    """
     need_prof_pk = pk
 
     if request.method == "POST":
@@ -191,6 +203,9 @@ def create_application_need_prof(request, pk):
 
 
 class ApplicationsToTeamsView(ListView):
+    """
+    заявки в команду
+    """
     model = ApplicationToNeedProfession
 
     def get_queryset(self):
@@ -207,6 +222,9 @@ class UpdateApplicationsFromTeamApi(RetrieveUpdateDestroyAPIView):
 
 
 class TaskGroupList(ListView):
+    """
+    задачи взятые командой
+    """
     model = Task
     template_name = 'groupapp/taskforgroup.html'
 

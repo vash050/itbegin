@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class SiteUser(AbstractUser):
@@ -32,6 +33,9 @@ class ContactUser(models.Model):
     class Meta:
         verbose_name = 'контакты'
         verbose_name_plural = 'контакты'
+
+    def get_absolute_url(self):
+        return reverse('authapp:profile')
 
 
 class Professions(models.Model):
