@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -231,3 +232,17 @@ class TaskGroupList(ListView):
     def get_queryset(self):
         queryset = self.model.objects.filter(got_task=self.kwargs['pk'])
         return queryset
+
+
+class SearchGroupName(ListView):
+    model = Group
+    template_name ='groupapp/search_groups.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        queryset = self.model.objects.filter(Q(name=query))
+        return queryset
+
+
+def search_group_by_name(request):
+    return render(request, "groupapp/search_name_form.html")

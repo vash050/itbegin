@@ -92,7 +92,10 @@
                 <div class="account__information">
                     <a href="#">
                         <p class="team__headline">
-                            <a href="{% url 'chatapp:room' this_group.pk %}">Чат</a> /Форум</p>
+                            <a href="{% url 'chatapp:room' this_group.pk %}">Чат</a>
+                            /
+                            <a href="{% url 'forunapp:forum' %}">Форум</a>
+                        </p>
                     </a>
                 </div>
             </div>

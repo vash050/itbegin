@@ -11,7 +11,7 @@
                 <div class="teams__drop">
                     <div class="drop_block"> Поиск команды<i class="fas fa-caret-down drop_caret"></i>
                         <div class="drop_summary teams__summary">
-                            <a href="{% url 'groupapp:search_group_by_name' %}">Название</a>
+                            <a href="#">Название</a>
                             <a href="#">Свободные вакансии</a>
                             <a href="#">Дата создания</a>
                         </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="teams__block root__content">
 
-                {% for object in page_obj %}
+                {% for object in object_list %}
                     <div class="teams__part">
                         <a href="{% url "groupapp:group" object.pk %}"><p class="teams__part__logo"></p></a>
                         <p>{{ object.name }}</p>
@@ -45,7 +45,7 @@
             <div class="teams__pages__block root__content">
                 {% if page_obj.has_previous %}
                     <div class="teams__pages">
-                        <a href="{% url 'groupapp:groups_paginator' page_obj.previous_page_number %}">
+                        <a href="{% url 'groupapp:user_groups_paginator' page_obj.previous_page_number %}">
                             <
                             {{ page_obj.previous_page_number }}
                         </a>
@@ -54,7 +54,7 @@
                 <div class="page__active teams__pages">{{ page_obj.number }}</div>
                 {% if page_obj.has_next %}
                     <div class="teams__pages">
-                        <a href="{% url 'groupapp:groups_paginator' page_obj.next_page_number %}">
+                        <a href="{% url 'groupapp:user_groups_paginator' page_obj.next_page_number %}">
                             {{ page_obj.next_page_number }}
                             >
                         </a>
