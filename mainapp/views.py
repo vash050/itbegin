@@ -64,6 +64,10 @@ def get_task(request, pk):
     """
     add task for group
     """
-    group_user = Group.objects.filter(author=request.user)[0]
-    group_user.got_task.add(Task.objects.get(id=pk))
-    return HttpResponseRedirect(reverse('mainapp:task', kwargs={'pk': pk}))
+    try:
+        group_user = Group.objects.filter(author=request.user)[0]
+        group_user.got_task.add(Task.objects.get(id=pk))
+        return HttpResponseRedirect(reverse('mainapp:task', kwargs={'pk': pk}))
+    except Exception as e:
+        print(e)
+        return HttpResponseRedirect(reverse('mainapp:tasks'))

@@ -3,22 +3,27 @@
 
 
 {% block conteiner %}
-<section class="task root__container">
-    <div class="task__background">
-        <div class="task__header root__content">
-            <p>Задача</p>
-        </div>
-        <div class="task__description root__content">
-            <p class="task__description__p">{{ object.name }}</p>
-            <p class="task__description__p">{{ object.full_description }}</p>
-            <p class="task__description__p">{{ object.tz }}</p>
-            {% for prof in object.professions.all %}
-            <p class="task__description__p">{{ prof }}</p>
-            {% endfor %}
-             <a href="{% url 'mainapp:get_task' object.pk %}">Взять задачу</a>
-        </div>
-    </div>
-</section>
+    <section class="task root__container">
+        <div class="task__background">
+            <div class="task__header root__content">
+                <p>Задача</p>
+            </div>
+            <div class="task__description root__content">
+                <p class="task__description__p">{{ object.name }}</p>
+                <p class="task__description__p">{{ object.full_description }}</p>
+                <p class="task__description__p">{{ object.tz }}</p>
+                {% for prof in object.professions.all %}
+                    <p class="task__description__p">{{ prof }}</p>
+                {% endfor %}
+                <button class="account__button buttons_type_white">
+                    <a href="{% url 'mainapp:get_task' object.pk %}">
+                        Взять задачу
+                    </a>
+                </button>
 
-<a href="{% url 'mainapp:tasks' %}">задачи</a>
+            </div>
+        </div>
+    </section>
+
+    <a href="{% url 'mainapp:tasks' %}">задачи</a>
 {% endblock %}

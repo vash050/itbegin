@@ -16,7 +16,12 @@
                     </div>
 
                 {% endfor %}
-                <a href="{% url 'mainapp:create_task' %}" style="color: white;">Создать задачу</a>
+                <button class="account__button buttons_type_white">
+                    <a href="{% url 'mainapp:create_task' %}">
+                        Создать задачу
+                    </a>
+                </button>
+
             </div>
         </div>
 
