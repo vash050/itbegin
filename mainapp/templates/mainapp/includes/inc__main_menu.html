@@ -6,19 +6,37 @@
     </a>
     <nav class="header__links">
 
-        <a href="{% url 'mainapp:index' %}" class="header__link header__link_activ">Главная</a>
-        <a href="{% url 'groupapp:groups' %}" class="header__link">Команды</a>
-        <a href="{% url 'mainapp:tasks' %}" class="header__link">Задачи</a>
-        <a href="#" class="header__link">О нас</a>
-        <a href="{% url 'forunapp:forum' %}" class="header__link">Форум</a>
-        <a href="{% url 'articles:articles' %}" class="header__link">Статьи</a>
+        <a href="{% url 'mainapp:index' %}"
+           class="header__link {% if request.resolver_match.url_name == 'index' %}header__link_activ{% endif %}">
+            Главная
+        </a>
+        <a href="{% url 'groupapp:groups' %}"
+           class="header__link {% if request.resolver_match.url_name == 'groups' %}header__link_activ{% endif %}">
+            Команды
+        </a>
+        <a href="{% url 'mainapp:tasks' %}"
+           class="header__link {% if request.resolver_match.url_name == 'tasks' %}header__link_activ{% endif %}">
+            Задачи
+        </a>
+        <a href="#"
+           class="header__link {% if request.resolver_match.url_name == '' %}header__link_activ{% endif %}">
+            О нас
+        </a>
+        <a href="{% url 'forunapp:forum' %}"
+           class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">
+            Форум
+        </a>
+        <a href="{% url 'articles:articles' %}"
+           class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">
+            Статьи
+        </a>
     </nav>
     <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск"/>
 
     {% if user.is_authenticated %}
         <li style="color: #FFFFFF">
             <a href="{% url 'authapp:profile' %}">
-              <img class="footer__logo" src="{% static '/img/avatar.png' %}" alt="Лого"/>
+                <img class="footer__logo" src="{% static '/img/avatar.png' %}" alt="Лого"/>
             </a>
         </li>
 

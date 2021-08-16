@@ -47,8 +47,12 @@
                     {% endfor %}
                 </div>
                 <div class="account__content__div">
-                    <p class="account__headline">Работы</p>
-                    <p>Landing page &#183; Интернет-магазин</p>
+
+                    <p class="account__headline">
+                        <a href="{{ request.user.link_to_portfolio }}">
+                            Портфолио
+                        </a>
+                    </p>
                 </div>
             </div>
             <div class="root__content">
@@ -58,9 +62,9 @@
                     <a href="{{ contact.user_vk }}"><img src="/static/img/vkontakte-logo.png" alt="vkontakte"></a>
                     <a href="#"><img src="/static/img/telegram-logo.png" alt="telrgram"></a>
                     </br>
-                        <p class="account__links">
+                    <p class="account__links">
                         {{ contact.user_phone }}
-                        </p>
+                    </p>
                 </div>
                 <div class="account__information">
                     <a href="{% url 'articles:my_article' %}">
