@@ -1,0 +1,21 @@
+{% extends 'groupapp/base.html' %}
+{% load static %}
+
+{% block conteiner %}
+    <div>
+<p>
+<h3>Вы уверены, что хотите удалить данный команду?</h3>
+</p>
+<p>
+<form action="{% url 'groupapp:delete_group' object.pk %}" method="post">
+    {% csrf_token %}
+    <div>
+        <a href="{% url 'groupapp:group' object.pk %}" class="btn btn-outline-secondary"
+            role="button">{{ "отмена"|capfirst }}</a>
+        <button type="submit" class="btn btn-outline-danger">{{ "удалить"|capfirst }}</button>
+    </div>
+</form>
+</p>
+    </div>
+
+{% endblock %}
