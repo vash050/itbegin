@@ -16,9 +16,9 @@
                             class="far fa-envelope"></i><sup>2</sup></a>
                     <div class="drop_block account__drop"> Возможности<i class="fas fa-caret-down drop_caret"></i>
                         <div class="drop_summary account__summary">
-                            <a href="#">Найти задачу</a>
-                            <a href="#">Найти проект</a>
-                            <a href="#">Создать проект</a>
+                            <a href="{% url 'groupapp:groups' %}">Найти команду</a>
+                            <a href="{% url 'mainapp:tasks' %}">Найти проект</a>
+                            <a href="{% url 'mainapp:create_task' %}">Создать проект</a>
                         </div>
                     </div>
 
