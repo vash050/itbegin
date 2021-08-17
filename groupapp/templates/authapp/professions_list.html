@@ -1,0 +1,34 @@
+{% extends 'groupapp/base.html' %}
+{% load static %}
+
+{% block conteiner %}
+    <div class="registration__form__background" style="background-color: #212121">
+        <section class="registration__form__content root__container">
+            <a href="{% url 'groupapp:groups' %}" class="button__registration__form">
+                <img class="button__registration__form__img" src="/static/img/Arrow.png">
+                Назад
+            </a>
+            <h1 class="registration__form__content__h1">
+                Выберите профессию
+            </h1>
+            <form action="{% url 'groupapp:search_group_by_prof' %}" class="registration__form" method="get">
+
+                <div>
+                    <select name="q">
+                        {% for prof in professions_list %}
+                            <option value="{{ prof.id }}">
+                                <p style="background-color: #212121">
+                                    {{ prof }}
+                                </p>
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <input type="submit" value="Создать"
+                       class="buttons_type_white button__submit__registration__form" id="submit__application">
+            </form>
+        </section>
+
+    </div>
+{% endblock %}

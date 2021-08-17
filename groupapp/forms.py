@@ -1,6 +1,7 @@
 from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput
 
+from authapp.models import Professions
 from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
 
 
@@ -37,3 +38,9 @@ class CreateApplicationToNeedProfessionForm(ModelForm):
             field.widget.attrs["class"] = "input_type_black registration__form_input"
             if field_name == 'author_application':
                 field.widget = HiddenInput()
+
+
+class SearchGroupProfForm(ModelForm):
+    class Meta:
+        model = Professions
+        fields = ('profession_name',)

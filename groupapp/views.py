@@ -7,8 +7,9 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
-from authapp.models import SiteUser
-from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm
+from authapp.models import SiteUser, Professions
+from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm, \
+    SearchGroupProfForm
 from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
 from groupapp.serializers import ApplicationsToTeamSerializer
 from mainapp.models import Task
@@ -236,7 +237,7 @@ class TaskGroupList(ListView):
 
 class SearchGroupName(ListView):
     model = Group
-    template_name ='groupapp/search_groups.html'
+    template_name = 'groupapp/search_groups.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
@@ -246,3 +247,26 @@ class SearchGroupName(ListView):
 
 def search_group_by_name(request):
     return render(request, "groupapp/search_name_form.html")
+
+
+class ChoiceVacation(ListView):
+    model = Professions
+
+
+class SearchGroupProf(ListView):
+    model = Group
+    template_name = 'groupapp/search_groups.html'
+
+    def get_queryset(self):
+        """
+        метод нужно оптимизировать
+        :return:
+        """
+        query = int(self.request.GET.get('q'))
+        id_group = DescriptionNeedProfessions.objects.filter(Q(status=0) & Q(profession=query))
+        print(id_group)
+        queryset = []
+        for el in id_group:
+            queryset.append(Group.objects.get(id=el.group.id))
+        print(queryset)
+        return queryset
