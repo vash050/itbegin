@@ -1,0 +1,23 @@
+            <div class="account__header root__content">
+                <p>Команды</p>
+                <div class="teams__drop">
+                    <div class="drop_block"> Поиск команды<i class="fas fa-caret-down drop_caret"></i>
+                        <div class="drop_summary teams__summary">
+                            <a href="{% url 'groupapp:search_group_by_name' %}">Название</a>
+                            <a href="{% url 'groupapp:search_group_prof' %}">Свободные вакансии</a>
+                            <a href="#">Дата создания</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="teams__buttons root__content">
+                <button class="account__button buttons_type_white">Найти команду</button>
+                <button class="account__button buttons_type_white">
+                    <a href="{% url 'groupapp:create_group' %}">
+                        Создать команду
+                    </a>
+                </button>
+                <a href="{% url 'groupapp:user_groups' %}">
+                    <button class="account__button buttons_type_white">Мои команды</button>
+                </a>
+            </div>
