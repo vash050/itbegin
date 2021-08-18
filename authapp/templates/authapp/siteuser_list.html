@@ -3,6 +3,8 @@
 
 {% block conteiner %}
     <p><a href="{% url 'authapp:up_setting_user_cont' request.user.pk %}">редактировать контакты</a></p>
+    <p><a href="{% url 'authapp:update' %}"> Редактировать профиль</a></p>
+    <p><a href="{% url 'authapp:change_password' %}"> Сменить пароль</a></p>
 
 
 {% endblock conteiner %}

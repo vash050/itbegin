@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -97,3 +98,8 @@ class UserSetting(ListView):
 class UpdateUserContact(UpdateView):
     model = ContactUser
     form_class = SiteUserUpdateContact
+
+
+class ChangePassword(PasswordChangeView):
+    model = SiteUser
+    template_name = 'authapp/change_password_form.html'
