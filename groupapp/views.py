@@ -8,8 +8,7 @@ from django.views.generic import ListView, UpdateView, DeleteView, CreateView, D
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 from authapp.models import SiteUser, Professions
-from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm, \
-    SearchGroupProfForm
+from groupapp.forms import CreateGroupForm, UpdateVacancyForm, CreateApplicationToNeedProfessionForm
 from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
 from groupapp.serializers import ApplicationsToTeamSerializer
 from mainapp.models import Task
@@ -254,19 +253,15 @@ class ChoiceVacation(ListView):
 
 
 class SearchGroupProf(ListView):
+    """
+    search group by need profession
+    """
     model = Group
     template_name = 'groupapp/search_groups.html'
 
     def get_queryset(self):
-        """
-        метод нужно оптимизировать
-        :return:
-        """
         query = int(self.request.GET.get('q'))
-        id_group = DescriptionNeedProfessions.objects.filter(Q(status=0) & Q(profession=query))
-        print(id_group)
-        queryset = []
-        for el in id_group:
-            queryset.append(Group.objects.get(id=el.group.id))
-        print(queryset)
+        queryset = self.model.objects.filter(
+            Q(descriptionneedprofessions__status=0) & Q(descriptionneedprofessions__profession=query)
+        )
         return queryset
