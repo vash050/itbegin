@@ -3,7 +3,6 @@
 
 {% block conteiner %}
     <div>
-    {{ request.resolver_match.kwargs.pk }}
     <a href="{% url 'groupapp:update_vacancy'  request.resolver_match.kwargs.pk %}">редактировать вакансии</a>
     </div>
      <div>

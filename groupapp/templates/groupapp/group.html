@@ -24,8 +24,7 @@
                     <div class="drop_block team__drop"> Задачи<i class="fas fa-caret-down drop_caret"></i>
                         <div class="drop_summary account__summary">
                             <a href="{% url 'groupapp:tasks_for_group' this_group.pk %}">Взятые</a>
-                            <a href="#">В работе</a>
-                            <a href="#">Сделанные</a>
+                            <a href="{% url 'groupapp:tasks_done_for_group' this_group.pk %}">Сделанные</a>
                         </div>
                     </div>
                 </div>

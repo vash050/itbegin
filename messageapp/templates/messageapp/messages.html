@@ -1,6 +1,5 @@
 {% load wagtailcore_tags %}
 {% load i18n %}
-{{ chat.pk }}
 {% if not chat %}
     <div class="panel panel-body">
         {% trans "Невозможно начать беседу. Не найден пользователь или вы не имеете доступа к данной беседе." %}
@@ -12,7 +11,6 @@
             <div id="innerMessages">
 
                 {% for message in chat.message_set.all %}
-                    {{ message }}
                     {% include 'messageapp/message.html' with message_item=message %}
                 {% endfor %}
             </div>

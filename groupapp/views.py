@@ -265,3 +265,15 @@ class SearchGroupProf(ListView):
             Q(descriptionneedprofessions__status=0) & Q(descriptionneedprofessions__profession=query)
         )
         return queryset
+
+
+class TaskDoneGroupList(ListView):
+    """
+    задачи взятые командой
+    """
+    model = Task
+    template_name = 'groupapp/taskforgroup.html'
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(done_task=self.kwargs['pk'])
+        return queryset

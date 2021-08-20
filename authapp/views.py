@@ -37,10 +37,13 @@ def profile(request):
     title = 'личный кабинет'
     professions = SiteUser.objects.get(id=request.user.id).profession.all()
     contact = ContactUser.objects.get(user_id=request.user.id)
+    unread_dialogs_counter = SiteUser.objects.get(id=request.user.id).dialog_set.unread(user=request.user).count()
+    print(unread_dialogs_counter)
     content = {
         'title': title,
         'professions': professions,
         'contact': contact,
+        'unread_dialogs_counter': unread_dialogs_counter,
     }
 
     return render(request, 'authapp/profile.html', context=content)

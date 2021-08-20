@@ -30,6 +30,7 @@ urlpatterns = [
     path('search_group_by_name/', groupapp.search_group_by_name, name='search_group_by_name'),
     path('search_group_prof/', groupapp.ChoiceVacation.as_view(), name='search_group_prof'),
     path('search_group_by_prof/', groupapp.SearchGroupProf.as_view(), name='search_group_by_prof'),
+    path('tasks_done_for_group/<int:pk>/', groupapp.TaskDoneGroupList.as_view(), name='tasks_done_for_group'),
 ]
 
 urlpatterns += router.urls

@@ -5,8 +5,21 @@ from wagtail.core.fields import RichTextField
 from authapp.models import SiteUser
 
 
+class ChatManager(models.Manager):
+    use_for_related_fields = True
+
+    # Метод принимает пользователя, для которого должна производиться выборка
+    # Если пользователь не добавлен, то будет возвращены все диалоги,
+    # в которых хотя бы одно сообщение не прочитано
+    def unread(self, user=None):
+        qs = self.get_queryset().exclude(last_message__isnull=True).filter(last_message__is_read=False)
+        return qs.exclude(last_message__author=user) if user else qs
+
+
 class Dialog(models.Model):
     members = models.ManyToManyField(SiteUser, verbose_name='участник')
+    last_message = models.ForeignKey('Message', related_name='last_message', null=True, on_delete=models.SET_NULL)
+    objects = ChatManager()
 
     def get_absolute_url(self):
         return reverse('messageapp:messages', kwargs={'dialog_id': self.pk})
