@@ -16,7 +16,7 @@ class SiteUser(AbstractUser):
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
 
-    def avatar_or_default(self, default_path="../../static/img/avatar.png"):
+    def avatar_or_default(self, default_path="../static/img/avatar.png"):
         if self.avatar:
             return self.avatar
         return default_path

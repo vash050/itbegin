@@ -27,7 +27,7 @@
             <div class="account__profile root__content">
                 <div class="account__profile__info">
                     <div class="account__avatar">
-                        <img src=" {{ user.avatar_or_defaul }}"
+                        <img src=" /media/{{ user.avatar|default:user.avatar_or_default }}"
                              alt="avatar">
                         <a href="#"><i class="fas fa-pen"></i> Изменить</a>
                     </div>
