@@ -1,43 +1,69 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 
 <head>
-    <meta charset="utf-8">
-    <style>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ title|default:"IT-Begin" }}</title>
 
-    </style>
-    <title>
-        {% block title %}
-            {{ title|title }}
-        {% endblock %}
-    </title>
     {% block css %}
         <link rel="stylesheet" href="{% static 'css/pages/index.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/pages/account.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/pages/authorization.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/pages/registration.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/pages/task.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/pages/tasks.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/pages/team.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/pages/teams.css' %}"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link
                 href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,700;1,600&family=Rubik:wght@400;500&family=Vollkorn:wght@600&display=swap"
-                rel="stylesheet"
-        />
+                rel="stylesheet"/>
+
     {% endblock %}
 
+
     {% block js %}
-         <script src="{% static 'js/script.js' %}"></script>
-    {% endblock js %}
+        <script src="https://kit.fontawesome.com/4c151273f1.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/script.js' %}" defer></script>
+    {% endblock %}
 
 </head>
 
-{#<body class="root registration__form__background">#}
-<body>
+<body class="root">
+<section class="header root__container">
+    {% include 'authapp/includes/inc__main_menu.html' %}
 
-{% block content %}
-{% endblock content %}
+</section>
+{% block conteiner %}
 
-
+{% endblock %}
+<section class="footer root__container">
+    <div class="footer__content root__content">
+        <a href={% url 'mainapp:index' %}>
+            <img class="footer__logo" src="{% static '/img/logo-black.png' %}" alt="Лого"/>
+        </a>
+        <div class="footer__about">
+            <a href="#" class="footer__link">О проекте</a>
+            <a href="#" class="footer__link">Контакты</a>
+        </div>
+        <div class="footer__questions">
+            <a href="#" class="footer__link">Пользовательское соглашение</a>
+            <a href="#" class="footer__link">Задать вопрос</a>
+        </div>
+        <div class="footer__subscribe">
+            <p class="footer__subscribe-title">Подписаться на новости</p>
+            <input name="email" placeholder="E-mail" type="e-mail"
+                   class="input_type_white footer__subscribe-input"/>
+            <button class="buttons_type_darkGray footer__button">
+                Подписаться
+            </button>
+        </div>
+    </div>
+</section>
 </body>
+
 </html>
