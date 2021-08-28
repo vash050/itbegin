@@ -4,8 +4,6 @@
 
 {% block conteiner %}
 
-
-
     <section class="account root__container">
         <div class="account__background">
             <div class="account__header root__content">
@@ -21,6 +19,7 @@
                             <span class="account__close">&times;</span>
                             <div id="accountInsertMail"></div>
                         </div>
+
                     </div>
                     <div class="drop_block account__drop"> Возможности<i class="fas fa-caret-down drop_caret"></i>
                         <div class="drop_summary account__summary">
@@ -30,18 +29,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="account__profile root__content">
-                    <div class="account__profile__info">
-                        <div class="account__avatar">
-                            <img src=" /media/{{ user.avatar|default:user.avatar_or_default }}"
-                                 alt="avatar">
-                            <a href="#"><i class="fas fa-pen"></i> Изменить</a>
-                        </div>
-                        <div class="account__info">
-                            <p class="account__headline">{{ user.first_name }} {{ user.last_name }}</p>
-                            <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
-                            <p>Статус: свободен</p>
-                        </div>
+            </div>
+            <div class="account__profile root__content">
+                <div class="account__profile__info">
+                    <div class="account__avatar">
+                        <img src=" {{ user.avatar_or_default }}" alt="avatar">
+                        <a href="#"><i class="fas fa-pen"></i> Изменить</a>
+                    </div>
+                    <div class="account__info">
+                        <p class="account__headline">{{ user.first_name }} {{ user.last_name }}</p>
+                        <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
+                        <p>Статус: свободен</p>
                     </div>
                 </div>
                 <a href="#">{{ user.about_me }}</a>
