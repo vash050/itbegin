@@ -1,0 +1,55 @@
+@import url("../blocks/root/root.css");
+@import url("../blocks/root/__container/root__container.css");
+@import url("../blocks/root/__content/root__content.css");
+
+@import url("../blocks/buttons/_type/buttons_type_white.css");
+@import url("../blocks/buttons/_type/buttons_type_darkGray.css");
+
+@import url("../blocks/input/_type/input_type_white.css");
+
+@import url("../blocks/header/header.css");
+@import url("../blocks/header/__content/header__content.css");
+@import url("../blocks/header/__link/header__link.css");
+@import url("../blocks/header/__link/_activ/header__link_activ.css");
+@import url("../blocks/header/__links/header__links.css");
+@import url("../blocks/header/__button/header__button.css");
+
+@import url("../blocks/main/__button/main__button.css");
+@import url("../blocks/main/__buttons/main__buttons.css");
+@import url("../blocks/main/__content/main__content.css");
+@import url("../blocks/main/__subtitle/main__subtitle.css");
+@import url("../blocks/main/__title/main__title.css");
+@import url("../blocks/main/__background/main__background.css");
+@import url("../blocks/main/main.css");
+
+@import url("../blocks/news/news.css");
+@import url("../blocks/news/__articles/news__articles.css");
+@import url("../blocks/news/__content/news__content.css");
+@import url("../blocks/news/__forum/news__forum.css");
+@import url("../blocks/news/__header/news__header.css");
+@import url("../blocks/news/__header-label/news__header-label.css");
+@import url("../blocks/news/__select/news__select.css");
+@import url("../blocks/news/__article/news__article.css");
+@import url("../blocks/news/__load/news__load.css");
+@import url("../blocks/news/__footer/news__footer.css");
+@import url("../blocks/news/__article-img/news__article-img.css");
+
+@import url("../blocks/article/article.css");
+@import url("../blocks/article/__data/article__data.css");
+@import url("../blocks/article/__label/article__label.css");
+@import url("../blocks/article/__text/article__text.css");
+
+
+
+@import url("../blocks/selects/_type/selects_type_darkGray.css");
+
+@import url("../blocks/footer/footer.css");
+@import url("../blocks/footer/__about/footer__about.css");
+@import url("../blocks/footer/__content/footer__content.css");
+@import url("../blocks/footer/__questions/footer__questions.css");
+@import url("../blocks/footer/__subscribe/footer__subscribe.css");
+@import url("../blocks/footer/__link/footer__link.css");
+@import url("../blocks/footer/__subscribe-title/footer__subscribe-title.css");
+@import url("../blocks/footer/__subscribe-input/footer__subscribe-input.css");
+@import url("../blocks/footer/__button/footer__button.css");
+@import url("../blocks/footer/__logo/footer__logo.css");

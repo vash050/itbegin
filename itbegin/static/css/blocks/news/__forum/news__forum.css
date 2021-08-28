@@ -1,0 +1,5 @@
+.news__forum {
+  flex-grow: 1;
+border-left: 1px solid #212121;
+padding-left: 24px;
+}

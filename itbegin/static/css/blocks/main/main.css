@@ -1,0 +1,7 @@
+.main {
+  background-image: url("/static/img/background.jpg");
+  height: calc(100vh - 100px);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}

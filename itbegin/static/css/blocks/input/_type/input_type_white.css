@@ -1,0 +1,12 @@
+.input_type_white {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+ 
+  color: #818181;
+  background: #FFFFFF;
+
+  border: 1px solid #818181;
+  box-sizing: border-box;
+  border-radius: 10px;
+}

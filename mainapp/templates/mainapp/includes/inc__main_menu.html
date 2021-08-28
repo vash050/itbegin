@@ -2,48 +2,47 @@
 
 <div class="header__content root__content">
     <a href={% url 'mainapp:index' %}>
-        <img class="footer__logo" src="{% static '/img/logo.png' %}" alt="Лого"/>
+        <img class="footer__logo" src="{% static '/img/logo.png' %}" alt="Лого" />
     </a>
     <nav class="header__links">
 
         <a href="{% url 'mainapp:index' %}"
-           class="header__link {% if request.resolver_match.url_name == 'index' %}header__link_activ{% endif %}">
+            class="header__link {% if request.resolver_match.url_name == 'index' %}header__link_activ{% endif %}">
             Главная
         </a>
         <a href="{% url 'groupapp:groups' %}"
-           class="header__link {% if request.resolver_match.url_name == 'groups' %}header__link_activ{% endif %}">
+            class="header__link {% if request.resolver_match.url_name == 'groups' %}header__link_activ{% endif %}">
             Команды
         </a>
         <a href="{% url 'mainapp:tasks' %}"
-           class="header__link {% if request.resolver_match.url_name == 'tasks' %}header__link_activ{% endif %}">
+            class="header__link {% if request.resolver_match.url_name == 'tasks' %}header__link_activ{% endif %}">
             Задачи
         </a>
-        <a href="#"
-           class="header__link {% if request.resolver_match.url_name == '' %}header__link_activ{% endif %}">
+        <a href="#" class="header__link {% if request.resolver_match.url_name == '' %}header__link_activ{% endif %}">
             О нас
         </a>
         <a href="{% url 'forunapp:forum' %}"
-           class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">
+            class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">
             Форум
         </a>
         <a href="{% url 'articles:articles' %}"
-           class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">
+            class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">
             Статьи
         </a>
     </nav>
-    <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск"/>
+    <img src="{% static 'img/search_24px_outlined.svg' %}" alt="Поиск" />
 
     {% if user.is_authenticated %}
-        <li style="color: #FFFFFF">
-            <a href="{% url 'authapp:profile' %}">
-                <img class="footer__logo" src="{% static '/img/avatar.png' %}" alt="Лого"/>
-            </a>
-        </li>
+    <li style="color: #FFFFFF">
+        <a href="{% url 'authapp:profile' %}">
+            <img class="footer__avatar" src="{% static '/img/avatar.png' %}" alt="Avatar" />
+        </a>
+    </li>
 
     {% else %}
-        <a href="{% url 'authapp:login' %}" class="buttons_type_white header__button">
-            Войти
-        </a>
+    <a href="{% url 'authapp:login' %}" class="buttons_type_white header__button">
+        Войти
+    </a>
     {% endif %}
 
 </div>

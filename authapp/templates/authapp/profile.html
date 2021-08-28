@@ -6,23 +6,30 @@
 
 
 
-    <section class="account root__container">
-        <div class="account__background">
-            <div class="account__header root__content">
-                <p>Профиль</p>
-                <div class="account__header__left">
-                    <a href="{% url 'authapp:setting_user' user.id %}" class="account__link"><i class="fas fa-cog"></i></a>
-                    <a href="{% url 'messageapp:dialog' %}" class="account__link"><i
-                            class="far fa-envelope"></i><sup>{{ unread_dialogs_counter }}</sup></a>
-                    <div class="drop_block account__drop"> Возможности<i class="fas fa-caret-down drop_caret"></i>
-                        <div class="drop_summary account__summary">
-                            <a href="{% url 'groupapp:groups' %}">Найти команду</a>
-                            <a href="{% url 'mainapp:tasks' %}">Найти проект</a>
-                            <a href="{% url 'mainapp:create_task' %}">Создать проект</a>
-                        </div>
+<section class="account root__container">
+    <div class="account__background">
+        <div class="account__header root__content">
+            <p>Профиль</p>
+            <div class="account__header__left">
+                <a href="{% url 'authapp:setting_user' user.id %}" class="account__link"><i class="fas fa-cog"></i></a>
+                <div class="account__link" data-link="{% url 'messageapp:dialog' %}" id="accountMyMailBtn">
+                    <i class="far fa-envelope"></i>
+                    <sup>{{ unread_dialogs_counter }}</sup>
+                </div>
+                <div id="accountMyModal" class="account__modal">
+                    <div class="account__mailContent">
+                        <span class="account__close">&times;</span>
+                        <div id="accountInsertMail"></div>
                     </div>
 
                 </div>
+
+                <div class="drop_block account__drop"> Возможности<i class="fas fa-caret-down drop_caret"></i>
+                    <div class="drop_summary account__summary">
+                        <a href="{% url 'groupapp:groups' %}">Найти команду</a>
+                        <a href="{% url 'mainapp:tasks' %}">Найти проект</a>
+                        <a href="{% url 'mainapp:create_task' %}">Создать проект</a>
+
             </div>
             <div class="account__profile root__content">
                 <div class="account__profile__info">
@@ -35,65 +42,73 @@
                         <p class="account__headline">{{ user.first_name }} {{ user.last_name }}</p>
                         <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
                         <p>Статус: свободен</p>
-                    </div>
-                </div>
-                <a href="#">{{ user.about_me }}</a>
-            </div>
-            <div class="account__content root__content">
-                <div class="account__content__div">
-                    <p class="account__headline">Специализации</p>
-                    {% for profession in professions %}
-                        <p class="account__headline">{{ profession }}</p>
-                    {% endfor %}
-                </div>
-                <div class="account__content__div">
 
-                    <p class="account__headline">
-                        <a href="{{ request.user.link_to_portfolio }}">
-                            Портфолио
-                        </a>
-                    </p>
+
                 </div>
             </div>
-            <div class="root__content">
-                <div class="account__information">
-                    <p class="account__headline">Контакты</p>
+            <a href="#">{{ user.about_me }}</a>
+        </div>
+        <div class="account__content root__content">
+            <div class="account__content__div">
+                <p class="account__headline">Специализации</p>
+                {% for profession in professions %}
+                <p class="account__headline">{{ profession }}</p>
+                {% endfor %}
+            </div>
+            <div class="account__content__div">
+
+                <p class="account__headline">
+                    <a href="{{ request.user.link_to_portfolio }}">
+                        Портфолио
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="root__content">
+            <div class="account__information">
+                <p class="account__headline">Контакты</p>
+
+                <p class="account__links">
                     <a href="#"><img src="/static/img/instagram-logo.png" alt="instagram"></a>
                     <a href="{{ contact.user_vk }}"><img src="/static/img/vkontakte-logo.png" alt="vkontakte"></a>
                     <a href="#"><img src="/static/img/telegram-logo.png" alt="telrgram"></a>
-                    </br>
-                    <p class="account__links">
-                        {{ contact.user_phone }}
-                    </p>
-                </div>
-                <div class="account__information">
-                    <a href="{% url 'articles:my_article' %}">
-                        <p class="account__headline">Мои статьи</p>
-                    </a>
-                    <a href="{% url 'articles:author_create' %}">
-                        <p class="account__headline">Стать автором</p>
-                    </a>
-                    <a href="{% url 'wagtailadmin_home' %}">
-                        <p class="account__headline">Написать статью</p>
-                    </a>
-                    <a href="#" class="account__link account__links"><i class="far fa-heart"></i></a>
-                </div>
-                <div class="account__information">
-                    <a href="#">
-                        <p class="account__headline">Форум</p>
-                    </a>
-                    <a href="#" class="account__link account__links"><i class="far fa-heart"></i></a>
-                </div>
+                    {{ contact.user_phone }}
+                </p>
             </div>
-            <div class="account__buttons root__content">
-                <a href="{% url 'groupapp:user_groups' %}">
-                    <button class="account__button buttons_type_white">Мои команды</button>
+            <div class="account__information">
+                <a href="{% url 'articles:my_article' %}">
+                    <p class="account__headline">Мои статьи</p>
                 </a>
-                <button class="account__button buttons_type_white">Мои проекты</button>
-                <button class="account__exit__btn buttons_type_white"><a href="{% url 'authapp:logout' %}">Выход</a>
-                </button>
+                <a href="#" class="account__link account__links"><i class="far fa-heart"></i></a>
+            </div>
+            <div class="account__information">
+                <a href="{% url 'articles:author_create' %}">
+                    <p class="account__headline">Стать автором</p>
+                </a>
+                <a href="#" class="account__link account__links"><i class="far fa-heart"></i></a>
+            </div>
+            <div class="account__information">
+                <a href="{% url 'wagtailadmin_home' %}">
+                    <p class="account__headline">Написать статью</p>
+                </a>
+                <a href="#" class="account__link account__links"><i class="far fa-heart"></i></a>
+            </div>
+            <div class="account__information">
+                <a href="#">
+                    <p class="account__headline">Форум</p>
+                </a>
+                <a href="#" class="account__link account__links"><i class="far fa-heart"></i></a>
             </div>
         </div>
-    </section>
+        <div class="account__buttons root__content">
+            <a href="{% url 'groupapp:user_groups' %}">
+                <button class="account__button buttons_type_white">Мои команды</button>
+            </a>
+            <button class="account__button buttons_type_white">Мои проекты</button>
+            <button class="account__exit__btn buttons_type_white"><a href="{% url 'authapp:logout' %}">Выход</a>
+            </button>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
