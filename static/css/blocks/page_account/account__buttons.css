@@ -1,5 +1,5 @@
 .account__buttons {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 76px;
+    padding-bottom: 76px;
 }

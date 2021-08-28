@@ -1,0 +1,16 @@
+.main__title {
+  font-family: Vollkorn;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 64px;
+  /* identical to box height, or 133% */
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  /* White */
+
+  color: #FFFFFF;
+  margin: 0 auto;
+}

@@ -47,3 +47,6 @@
 @import url("../blocks/page_account/account__buttons.css");
 @import url("../blocks/page_account/account__summary.css");
 @import url("../blocks/page_account/account__drop.css");
+@import url("../blocks/page_account/account__modal.css");
+@import url("../blocks/page_account/account__mailContent.css");
+@import url("../blocks/page_account/account__close.css");

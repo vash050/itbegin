@@ -3,6 +3,6 @@
     flex-direction: column;
     color: #818181;
     height: 240px;
-    margin-top: 25px;
+    padding-top: 25px;
     justify-content: space-between;
 }

@@ -1,0 +1,12 @@
+.account__close {
+    right: 10%;
+    position: absolute;
+    font-size: 30px;
+}
+
+.account__close:hover {
+    color: #DFE3DE;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    cursor: pointer;
+}

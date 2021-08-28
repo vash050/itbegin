@@ -1,0 +1,18 @@
+.buttons_type_darkGray {
+  background: #212121;
+  border-radius: 10px;
+  border: none;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+  /* DarkGray */
+
+ color: #FFFFFF;
+}
+
+.buttons_type_darkGray:hover {
+background: #4CB6CB;
+cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.news__select {
+    height: 50px;
+    width: 250px;
+    padding-left: 12px;
+    padding-right: 22px;
+
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+}
