@@ -32,72 +32,72 @@
             <div class="team__profile root__content">
                 <div class="account__profile__info">
                     <div class="team__logo__block">
-                        <div class="team__logo">{{ this_group.logotype }}</div>
-                        <p>{{ this_group.description }}</p>
-                    </div>
-                    <div>
-                        <p>{{ this_group.name }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team__persons__block root__content">
-                <div class="account__content__div">
-                    <p class="team__headline">Состав команды</p>
-                    <div class="team__persons">
-                        {% for object in members %}
-                            <div class="team__person">
-                                <a href="{% url 'authapp:user_profile' object.pk %}">
-                                    <img src="{{ object.avatar_or_default }}" alt="avatar">
-                                </a>
-                                <p>{{ object.first_name }}</p>
-                                <p>{{ object.last_name }}</p>
-                                <p>{{ object.profession.first }}</p>
-                            </div>
-                        {% endfor %}
-
-
+                        <div class="team__logo">
+                            <p>{{ this_group.description }}</p>
+                        </div>
+                        <div>
+                            <p>{{ this_group.name }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="team__vacancy__block root__content">
-                <div class="drop_block team__headline">
-                    Занятые вакансии<i class="fas fa-caret-down drop_caret"></i>
-                    <div class="drop_summary team__summary">
-                        {% for prof in occupied_vacancy %}
-                            <div>
-                                {{ prof.profession }}
-                            </div>
-                        {% endfor %}
+                <div class="team__persons__block root__content">
+                    <div class="account__content__div">
+                        <p class="team__headline">Состав команды</p>
+                        <div class="team__persons">
+                            {% for object in members %}
+                                <div class="team__person">
+                                    <a href="{% url 'authapp:user_profile' object.pk %}">
+                                        <img src="{{ object.avatar_or_default }}" alt="avatar">
+                                    </a>
+                                    <p>{{ object.first_name }}</p>
+                                    <p>{{ object.last_name }}</p>
+                                    <p>{{ object.profession.first }}</p>
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
                     </div>
                 </div>
-
-
-                <div class="drop_block team__headline">
-                    Свободные вакансии<i class="fas fa-caret-down drop_caret"></i>
-                    <div class="drop_summary team__summary">
-
-                        {% for prof in need_professions %}
-                            <div>
-                                <a href="{% url 'groupapp:need_prof_view' prof.pk %}">
+                <div class="team__vacancy__block root__content">
+                    <div class="drop_block team__headline">
+                        Занятые вакансии<i class="fas fa-caret-down drop_caret"></i>
+                        <div class="drop_summary team__summary">
+                            {% for prof in occupied_vacancy %}
+                                <div>
                                     {{ prof.profession }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
 
-                                </a>
-                            </div>
-                        {% endfor %}
+
+                    <div class="drop_block team__headline">
+                        Свободные вакансии<i class="fas fa-caret-down drop_caret"></i>
+                        <div class="drop_summary team__summary">
+
+                            {% for prof in need_professions %}
+                                <div>
+                                    <a href="{% url 'groupapp:need_prof_view' prof.pk %}">
+                                        {{ prof.profession }}
+
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="team__forum root__content">
+                    <div class="account__information">
+                        <a href="#">
+                            <p class="team__headline">
+                                <a href="{% url 'chatapp:room' this_group.pk %}">Чат</a>
+                                /
+                                <a href="{% url 'forunapp:forum' %}">Форум</a>
+                            </p>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="team__forum root__content">
-                <div class="account__information">
-                    <a href="#">
-                        <p class="team__headline">
-                            <a href="{% url 'chatapp:room' this_group.pk %}">Чат</a>
-                            /
-                            <a href="{% url 'forunapp:forum' %}">Форум</a>
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </div>
     </section>
 {% endblock %}
