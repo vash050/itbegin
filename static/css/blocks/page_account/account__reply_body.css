@@ -1,0 +1,5 @@
+.account__reply_body {
+    display: flex;
+    /* align-items: flex-start; */
+    flex-direction: column;
+}

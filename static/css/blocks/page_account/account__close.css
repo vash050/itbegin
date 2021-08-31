@@ -1,7 +1,8 @@
 .account__close {
-    right: 10%;
+    padding-top: 5px;
+    right: 11%;
     position: absolute;
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .account__close:hover {
