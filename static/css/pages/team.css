@@ -52,3 +52,12 @@
 @import url("../blocks/page_team/team__vacancy__block.css");
 @import url("../blocks/page_team/team__summary.css");
 @import url("../blocks/page_team/team__forum.css");
+
+@import url("../blocks/page_team/team__application__block.css");
+@import url("../blocks/page_team/team__person__avatar.css");
+@import url("../blocks/page_team/team__application__block_user.css");
+@import url("../blocks/page_team/team__application_block_avatar.css");
+@import url("../blocks/page_team/team__application__block_buttons.css");
+@import url("../blocks/page_team/team__application__block_reject.css");
+@import url("../blocks/page_team/team__application__button.css");
+@import url("../blocks/page_account/account__close.css");

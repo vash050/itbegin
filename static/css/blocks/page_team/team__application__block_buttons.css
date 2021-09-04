@@ -1,0 +1,8 @@
+.team__application__block_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 24px;
+    height: auto;
+    min-height: 168px;
+}
