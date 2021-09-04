@@ -1,0 +1,1 @@
+[{"model": "authapp.professions", "pk": 1, "fields": {"profession_name": "дизайнер"}}, {"model": "authapp.professions", "pk": 2, "fields": {"profession_name": "разработчик back-end"}}, {"model": "authapp.professions", "pk": 3, "fields": {"profession_name": "front-end разработчик"}}]
