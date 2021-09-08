@@ -8,7 +8,6 @@ let mailBtn = document.getElementById("accountMyMailBtn");
 let link = mailBtn.getAttribute("data-link");
 let insertMail = document.getElementById("accountInsertMail");
 
-console.log(link);
 
 datamap.forEach((value, key) => {
     doModal(key, value);
@@ -32,17 +31,51 @@ function doModal(anchor, popupbox) {
     });
 }
 
-const getData = function () {
-    console.log('getData clicked');
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", link);
 
-    xhr.onload = function () {
-        const data = xhr.response;
-        insertMail.innerHTML = data;
-    };
-    xhr.send();
+async function getAsyncData(url) {
+    const res = await fetch(url);
+    let text = await res.text();
+    return text;
+}
 
-};
+async function getButton(url) {
+    const res = await getAsyncData(url);
+    return res;
+}
 
-mailBtn.addEventListener("click", getData);
+async function getButtons() {
+
+    let btnOne = await getButton(link);
+    insertMail.innerHTML = btnOne;
+
+    let btnTwoId = document.getElementById("accountChat")
+    let urlTwo = btnTwoId.getAttribute("data-link");
+    let blockTwo = document.getElementById("accountOpenChat");
+
+    let btnTwo = await getButton(urlTwo);
+
+    btnTwoId.addEventListener("click", function () {
+        blockTwo.innerHTML = btnTwo
+        let jsForm = document.getElementById("messageFormJs");
+        let actionForm = jsForm.getAttribute("data-action");
+
+        jsForm.onsubmit = async (e) => {
+            e.preventDefault();
+
+            let response = await fetch(actionForm, {
+                method: 'POST',
+                body: new FormData(jsForm),
+                enctype: "multipart/form-data"
+            });
+
+            let result = await response;
+            console.log(result);
+            getButtons();
+        };
+    });
+}
+
+mailBtn.addEventListener("click", async function () {
+    getButtons()
+});
+

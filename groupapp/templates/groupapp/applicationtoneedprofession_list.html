@@ -2,20 +2,62 @@
 {% load static %}
 
 {% block conteiner %}
-    <div>
+<div class="team root__container">
+    <div class="account__background root__content">
+        <div class="account__header root__content">
+            <p>Заявки в команду</p>
+            <a href="#" class="team__application__close">&times;</a>
+        </div>
+
         {% for object in object_list %}
-            {% if object.acceptation == 0 or 1 %}
-                <div>
-                    {{ object.to_need_profession.profession }}
+        {% if object.acceptation == 0 or 1 %}
+        <div class="team__application__block">
+            <div class="team__application__block_user">
+                <div class="team__application_block_avatar">
+                    <a href="{% url 'authapp:profile' %}">
+                        <img class="team__person__avatar" src="{% static '/img/avatar.png' %}" alt="Avatar" />
+                    </a>
+                    {% csrf_token %}
                     {{ object.author_application }}
+                    <br>
+                    {{ object.to_need_profession.profession }}
+                </div>
+                <div>
                     {{ object.description_self }}
                     {{ object.to_need_profession.group.pk }}
                 </div>
-                <a class="add-one-to-team" href="">ADD</a>
-                <a class="delete-application-to-team-from-team" href="">Delete</a>
-            {% endif %}
+            </div>
+            <div class="team__application__block_buttons">
+                <button class="add-one-to-team buttons_type_white team__application__button" id= "add{{ object.id }}">Принять</button>
+                <button class="delete-application-to-team-from-team buttons_type_white team__application__button" id= "del{{ object.id }}">Отклонить</button>
+            </div>
+        </div>
+
+        {% endif %}
 
         {% endfor %}
+        <div class="team__application__block_reject">
+            <div class="team__application__block_user">
+                <div class="team__application_block_avatar">
+                    <a href="{% url 'authapp:profile' %}">
+                        <img class="team__person__avatar" src="{% static '/img/avatar.png' %}" alt="Avatar" />
+                    </a>
+                   
+                    {{ object.author_application }}
+                    <br>
+                    {{ object.to_need_profession.profession }}
+                </div>
+                <div>
+                    {{ object.description_self }}
+                    {{ object.to_need_profession.group.pk }}
+                </div>
+            </div>
+            <div class="team__application__block_buttons">
+                Заявка отклонена
+            </div>
+        </div>
     </div>
+
+</div>
 
 {% endblock %}

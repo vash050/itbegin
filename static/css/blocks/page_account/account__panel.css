@@ -1,0 +1,5 @@
+.account__panel {
+    display: flex;
+    /* background-color: red; */
+    flex-direction: row;
+}

@@ -1,0 +1,14 @@
+.team__application__block_reject {
+   
+    border: 1px solid #303030;
+    color: #818181;
+    
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 32px;
+    min-height: 168px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

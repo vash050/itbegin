@@ -1,0 +1,6 @@
+.team__application__block_user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 500px;
+}
