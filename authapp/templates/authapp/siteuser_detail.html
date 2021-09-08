@@ -1,4 +1,4 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'authapp/base.html' %}
 {% load static %}
 
 
@@ -11,45 +11,48 @@
             <div class="account__header root__content">
                 <p>Профиль</p>
 
+            </div>
+        </div>
+        <div class="account__profile root__content">
+            <div class="account__profile__info">
+                <div class="account__avatar">
+                    <img src="{{ object.avatar|default:object.avatar_or_default }}"
+                         alt="avatar">
+                </div>
+                <div class="account__info">
+                    <p class="account__headline">{{ object.first_name }} {{ object.last_name }}</p>
+                    <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
+                    <p>Статус: свободен</p>
+                    <a href="{% url 'messageapp:create_dialog' object.id %}">Написать письмо</a>
                 </div>
             </div>
-            <div class="account__profile root__content">
-                <div class="account__profile__info">
-                    <div class="account__avatar">
-                        <img src="{{ object.avatar_or_default }}"
-                             alt="avatar">
-                    </div>
-                    <div class="account__info">
-                        <p class="account__headline">{{ object.first_name }} {{ object.last_name }}</p>
-                        <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
-                        <p>Статус: свободен</p>
-                        <a href="{% url 'messageapp:create_dialog' object.id %}">Написать письмо</a>
-                    </div>
-                </div>
-                <a href="#">{{ object.about_me }}</a>
+            <a href="#">{{ object.about_me }}</a>
+        </div>
+        <div class="account__content root__content">
+            <div class="account__content__div">
+                <p class="account__headline">Специализации</p>
+                {% for profession in object.profession.all %}
+                    <p class="account__headline">{{ profession }}</p>
+                {% endfor %}
             </div>
-            <div class="account__content root__content">
-                <div class="account__content__div">
-                    <p class="account__headline">Специализации</p>
-                    {% for profession in object.profession.all %}
-                        <p class="account__headline">{{ profession }}</p>
-                    {% endfor %}
-                </div>
-                <div class="account__content__div">
-                    <p class="account__headline">Работы</p>
-                    <p>Landing page &#183; Интернет-магазин</p>
-                </div>
+            <div class="account__content__div">
+                <p class="account__headline">Работы</p>
+                <p>Landing page &#183; Интернет-магазин</p>
             </div>
-            <div class="root__content">
-                <div class="account__information">
-                    <p class="account__headline">Контакты</p>
-                    <p class="account__links">
-                        <a href="{{ object.contactuser.user_instagram }}"><img src="/static/img/instagram-logo.png" alt="instagram"></a>
-                        <a href="{{ object.contactuser.user_vk }}"><img src="/static/img/vkontakte-logo.png" alt="vkontakte"></a>
-                        <a href="{{ object.contactuser.user_telegram }}"><img src="/static/img/telegram-logo.png" alt="telrgram"></a>
-                    </p>
-                </div>
+        </div>
+        <div class="root__content">
+            <div class="account__information">
+                <p class="account__headline">Контакты</p>
+                <p class="account__links">
+                    <a href="{{ object.contactuser.user_instagram }}"><img src="/static/img/instagram-logo.png"
+                                                                           alt="instagram"></a>
+                    <a href="{{ object.contactuser.user_vk }}"><img src="/static/img/vkontakte-logo.png"
+                                                                    alt="vkontakte"></a>
+                    <a href="{{ object.contactuser.user_telegram }}"><img src="/static/img/telegram-logo.png"
+                                                                          alt="telrgram"></a>
+                </p>
             </div>
+        </div>
 
     </section>
 

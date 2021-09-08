@@ -8,6 +8,7 @@ let mailBtn = document.getElementById("accountMyMailBtn");
 let link = mailBtn.getAttribute("data-link");
 let insertMail = document.getElementById("accountInsertMail");
 
+
 datamap.forEach((value, key) => {
     doModal(key, value);
 });
@@ -29,6 +30,7 @@ function doModal(anchor, popupbox) {
         }
     });
 }
+
 
 async function getAsyncData(url) {
     const res = await fetch(url);
@@ -76,3 +78,4 @@ async function getButtons() {
 mailBtn.addEventListener("click", async function () {
     getButtons()
 });
+

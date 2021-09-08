@@ -1,8 +1,8 @@
 {% extends 'authapp/base.html' %}
 {% load static %}
 
-{% block content %}
-    <div class="registration__form__background"  style="background-color: #212121">
+{% block conteiner %}
+    <div class="registration__form__background" style="background-color: #212121">
         <section class="registration__form__content root__container">
             <a href="{% url 'authapp:profile' %}" class="button__registration__form">
                 <img class="button__registration__form__img" src="/static/img/Arrow.png">
@@ -11,15 +11,16 @@
             <h1 class="registration__form__content__h1">
                 Заполни форму
             </h1>
-            <form action="{% url 'authapp:update' %}" class="registration__form" method="post" enctype="multipart/form-data">
+            <form action="{% url 'authapp:update' %}" class="registration__form" method="post"
+                  enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for form in forms %}
                     {% if form.label != 'Пароль' %}
-                    <div>
-                        <label for="{{ form.id_for_label }}"
-                               class="registration__form_input_label"> {{ form.label }} </label>
-                        {{ form }}
-                    </div>
+                        <div>
+                            <label for="{{ form.id_for_label }}"
+                                   class="registration__form_input_label"> {{ form.label }} </label>
+                            {{ form }}
+                        </div>
                     {% endif %}
                 {% endfor %}
                 <input type="submit" value="Сохранить"
@@ -28,5 +29,5 @@
         </section>
     </div>
 
-{% endblock content %}
+{% endblock %}
 

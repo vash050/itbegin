@@ -1,7 +1,7 @@
 {% extends 'authapp/base.html' %}
 {% load static %}
 
-{% block content %}
+{% block conteiner %}
     <div class="root darkgrey_background authorization__page">
         <section class="authorization__block">
             <a href="{% url 'authapp:login' %}">Вход</a>
@@ -30,4 +30,4 @@
     </div>
 
 
-{% endblock content %}
+{% endblock %}

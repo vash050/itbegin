@@ -1,4 +1,5 @@
 from django.contrib import auth
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import HttpResponseRedirect
@@ -88,14 +89,14 @@ def update(request):
 
 
 class UserProfile(DetailView):
-    model = SiteUser
+    model = get_user_model()
 
 
 class UserSetting(ListView):
     """
     settings profile
     """
-    model = SiteUser
+    model = get_user_model()
 
 
 class UpdateUserContact(UpdateView):
