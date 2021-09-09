@@ -3,12 +3,52 @@
 {% load wagtailcore_tags %}
 
 {% block conteiner %}
-    {% for object in object_list %}
-        <a href="{% url 'articles:article' object.pk %}">
-        <p>{{ object }}</p>
-        <p>{{ object.body|richtext }}</p>
-        <p>{{ object.owner }}</p>
-        <p>{{ object.last_published_at }}</p>
-        </a>
-    {% endfor %}
+<section class="articles root__container">
+    <div class="article__background">
+        <div class="tasks__header root__content">
+            <p>Статьи</p>
+            <div class="teams__drop">
+                <div class="drop_block"> Теги<i class="fas fa-caret-down drop_caret"></i>
+                    <div class="drop_summary teams__summary">
+
+                        <a href="#"></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <class class="article__content root__content">
+            <div>
+                {% for object in object_list %}
+
+            <a href="{% url 'articles:article' object.pk %}" class="article__box">
+                <img src=" /media/image.jpg" alt="" class="article__img">
+                <div class="article__titles">
+                    <div>
+                        <p class="header__link_activ">Тэг</p>
+                        <p class="article__title">{{ object }}</p>
+                        <p>{{ object.body|richtext }}</p>
+                        <p>{{ object.owner }}</p>
+                    </div>
+
+                    <p class="article__date">{{ object.last_published_at }}</p>
+                </div>
+
+            </a>
+
+            {% endfor %}
+            </div>
+            <div>
+                <div class="article__subscribe">
+                    <p class="article__subscribe__title">Подписаться на статьи</p>
+                    <input name="email" placeholder="E-mail" type="e-mail"
+                        class="input_type_white footer__subscribe-input" />
+                    <button class="buttons_type_lightGray footer__button">
+                        Подписаться
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

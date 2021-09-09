@@ -1,0 +1,5 @@
+.article__content {
+    display: flex;
+    padding-top: 32px;
+    justify-content: space-between;
+}

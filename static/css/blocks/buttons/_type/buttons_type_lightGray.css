@@ -1,0 +1,21 @@
+.buttons_type_lightGray {
+    background: #818181;
+    border-radius: 10px;
+    border: none;
+  
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+    /* DarkGray */
+  
+   color: #FFFFFF;
+  }
+  
+  .buttons_type_lightGray:hover {
+    background: #FAFD5A;
+    box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+    border-radius: 16px;
+    color: #212121;
+    cursor: pointer;
+  }

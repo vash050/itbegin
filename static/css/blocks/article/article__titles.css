@@ -1,0 +1,8 @@
+.article__titles {
+    padding-left: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    
+}

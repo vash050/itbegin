@@ -1,0 +1,11 @@
+@import url("../blocks/article/articles.css");
+@import url("../blocks/article/article_background.css");
+@import url("../blocks/article/article__box.css");
+@import url("../blocks/article/article__img.css");
+@import url("../blocks/article/article__titles.css");
+@import url("../blocks/article/article__date.css");
+@import url("../blocks/article/article__title.css");
+@import url("../blocks/article/article__content.css");
+@import url("../blocks/article/article__subscribe.css");
+@import url("../blocks/buttons/_type/buttons_type_lightGray.css");
+@import url("../blocks/article/article__subscribe__title.css");

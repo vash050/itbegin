@@ -1,0 +1,8 @@
+.articles {
+    background-image: url("../../../img/background_article.jpg");
+    height: calc(100vh - 100px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    
+  }

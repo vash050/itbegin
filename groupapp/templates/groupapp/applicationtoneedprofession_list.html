@@ -12,7 +12,7 @@
         </div>
 
         {% for object in object_list %}
-        
+
         <div class="team__application__block" id="blc{{ object.id }}">
             <div class="team__application__block_user">
                 <div class="team__application_block_avatar">
@@ -46,14 +46,17 @@
             <div class="team__application__block_buttons" id="bts{{ object.id }}">
                 Заявка отклонена
             </div>
-        </div>
-        
 
-        
-        {% endif %}
+            {% endif %}
+
+        </div>
+
+
+
+
 
         {% endfor %}
-        
+
     </div>
 
 </div>
