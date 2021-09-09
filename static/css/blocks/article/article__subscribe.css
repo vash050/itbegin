@@ -1,0 +1,11 @@
+.article__subscribe {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    width: 355px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    
+}
