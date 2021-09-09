@@ -5,7 +5,7 @@
 {% block conteiner %}
 
 
-=======
+
     <section class="account root__container">
         <div class="account__background">
             <div class="account__header root__content">
@@ -22,16 +22,17 @@
                             <div id="accountInsertMail"></div>
                         </div>
 
-
-
+                </div>
                 <div class="drop_block account__drop"> Возможности<i class="fas fa-caret-down drop_caret"></i>
                     <div class="drop_summary account__summary">
                         <a href="{% url 'groupapp:groups' %}">Найти команду</a>
                         <a href="{% url 'mainapp:tasks' %}">Найти проект</a>
                         <a href="{% url 'mainapp:create_task' %}">Создать проект</a>
-
+                    </div>
             </div>
-
+        
+        </div>
+        </div>
         <div class="account__profile root__content">
             <div class="account__profile__info">
                 <div class="account__avatar">
