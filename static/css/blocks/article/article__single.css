@@ -1,7 +1,7 @@
-.articles {
-    background-image: url("../../../img/background_article.jpg");
+.article__single {
+    background-color: #303030;
     min-height: calc(100vh - 350px);
     background-repeat: no-repeat;
     background-size: cover;
-       
+    
   }

@@ -3,11 +3,52 @@
 {% load wagtailcore_tags %}
 
 {% block conteiner %}
-
-        <a href="{% url 'articles:articles' %}">назад</a>
-        <p>{{ object }}</p>
-        <p>{{ object.body|richtext }}</p>
-        <p>{{ object.owner }}</p>
-
-
+<section class="article__single root__container">
+        <div class="article__header root__content">
+                <div class="article__header__list">
+                        <p>Главная</p>
+                        <img src="{% static '/img/arrow_drop_down.png' %}" alt="" class="article__arrow">
+                        <p>Тэг</p>
+                        <img src="{% static '/img/arrow_drop_down.png' %}" alt="" class="article__arrow">
+                        <p>{{ object }}</p>
+                </div>
+                <a href="{% url 'articles:articles' %}">назад</a>
+        </div>
+        <div class="article__background root__content">
+                <div class="article__info">
+                        <div>
+                                <img src=" /media/image.jpg" alt="" class="article__info__img">
+                                <div class="article__info__owner">
+                                        <p>{{ object.owner }}</p>
+                                        <p>Дата</p>
+                                        <p>Комментарии &#183; 0</p>
+                                </div>
+                        </div>
+                        <div class="article__info__content">
+                                <h1>{{ object }}</h1>
+                                <div class="article__info__block">
+                                       <button id="accordion" class="accordion">Содержание статьи</button>
+                                       <div class="article__panel">
+                                               <ul class="article__panel__titles">
+                                                       <li class="article__panel__titles__li">Заголовок</li>
+                                                       <li class="article__panel__titles__li">Заголовок</li>
+                                                       <li class="article__panel__titles__li">Заголовок</li>
+                                                       <li class="article__panel__titles__li">Заголовок</li>
+                                                       
+                                               </ul>
+                                       </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="article__text__zone">
+                        <p class="article__text">
+                                {{ object.body|richtext }}
+                        </p>
+                        <p class="article__text__login">Войдите, что бы оставить комментарий</p>
+                        <p class="article__text__comments">Комментарии &#183; 0</p>
+                </div>
+                
+                
+        </div>
+</section>
 {% endblock %}
