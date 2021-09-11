@@ -1,0 +1,40 @@
+.article__panel {
+    max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  display: block;
+}
+
+  .accordion {
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 32px;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+  }
+
+  .accordion:after {
+    font-size: 18px;
+    font-weight: 500;
+    content: "\25be";
+    color: #FAFD5A;
+    float: right;
+    margin-left: 5px;
+    margin-right: 25px;
+    margin-top: 14px;
+  }
+  
+  .active:after {
+    
+    content: "Скрыть\00a0\00a0\25b4";
+  }
+
+  .accordion__arrow {
+    font-size: 10px;
+  }

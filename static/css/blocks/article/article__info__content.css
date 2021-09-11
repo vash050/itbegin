@@ -1,0 +1,9 @@
+.article__info__content {
+    height: 400px;
+    width: 530px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    flex-direction: column;
+    text-align: left;
+}
