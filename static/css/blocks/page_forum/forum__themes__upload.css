@@ -1,0 +1,6 @@
+.forum__themes__upload {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

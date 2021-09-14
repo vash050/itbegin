@@ -1,0 +1,10 @@
+.forum__theme__block {
+    border: 1px solid #818181;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 180px;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

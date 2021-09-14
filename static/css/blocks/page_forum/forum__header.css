@@ -1,0 +1,14 @@
+.forum__header {
+    border-bottom: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    /* margin-top: 53px; */
+    padding-top: 57px;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    align-items: center;
+    margin-bottom: 24px;
+}
