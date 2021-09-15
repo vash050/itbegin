@@ -6,6 +6,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import UpdateView, FormView, DetailView, ListView
+from django.contrib.auth.models import Group
 
 from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm, SiteUserUpdateContact
 from authapp.models import Professions, SiteUser, ContactUser
@@ -39,7 +40,6 @@ def profile(request):
     professions = SiteUser.objects.get(id=request.user.id).profession.all()
     contact = ContactUser.objects.get(user_id=request.user.id)
     unread_dialogs_counter = SiteUser.objects.get(id=request.user.id).dialog_set.unread(user=request.user).count()
-    print(unread_dialogs_counter)
     content = {
         'title': title,
         'professions': professions,

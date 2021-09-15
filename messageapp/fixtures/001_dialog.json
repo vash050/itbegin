@@ -1,1 +1,1 @@
-[{"model": "messageapp.dialog", "pk": 1, "fields": {"last_message": 4, "members": [1, 2]}}, {"model": "messageapp.dialog", "pk": 2, "fields": {"last_message": null, "members": [1]}}]
+[{"model": "messageapp.dialog", "pk": 1, "fields": {"last_message": 4, "members": [1, 2]}}, {"model": "messageapp.dialog", "pk": 2, "fields": {"last_message": null, "members": [1]}}, {"model": "messageapp.dialog", "pk": 3, "fields": {"last_message": 5, "members": [2, 3]}}]
