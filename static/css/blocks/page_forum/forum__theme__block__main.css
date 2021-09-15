@@ -1,0 +1,8 @@
+.forum__theme__block__main {
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    
+}

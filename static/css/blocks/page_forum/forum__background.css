@@ -1,0 +1,7 @@
+.forum__background {
+    background-color: #303030;
+    min-height: calc(100vh - 350px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFFFFF;
+  }

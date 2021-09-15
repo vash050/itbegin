@@ -2,17 +2,53 @@
 {% load static %}
 
 {% block conteiner %}
-    <div>
+<section class="forum__background root__container">
+    <div class="forum__header root__content">
+        <p>Форум</p>
+
+        <div class="teams__drop">
+            <button class="buttons_type_lightGray footer__button forum__button__create">Создать тему</button>
+            <div class="drop_block"> Разделы<i class="fas fa-caret-down drop_caret"></i>
+                <div class="drop_summary teams__summary">
+
+                    <a href="#"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="forum__themes root__content">
         {% for object in object_list %}
-            <p>----------------------------------------------------------------------------</p>
-            <p>{{ object.name }}</p>
-            <p> {{ object.description }}</p>
-            {% for subtopic in object.subtopic_set.all %}
-                <a href="{% url 'forunapp:branch' subtopic.pk %}"><p>{{ subtopic.name }}</p></a>
-            {% endfor %}
-            <p>----------------------------------------------------------------------------</p>
+        <div class="forum__theme__block">
+            <div class="forum__theme__block__main">
+                <img src=" /media/image.jpg" alt="" class="forum__theme__img">
+                <div>
+                    <p class="forum__topic">{{ object.name }}</p>
+                    <p class="forum__theme">Тема</p> 
+                    
+                    {% for subtopic in object.subtopic_set.all %}
+                    <a href="{% url 'forunapp:branch' subtopic.pk %}">
+                        <p>{{ subtopic.name }}</p>
+                    </a>
+                    {% endfor %}
+                    <p> {{ object.description }}</p>
+                </div>
+            </div>
+
+            <div class="forum__theme__block__descr">
+                <p>Author</p>
+                <p>Answers</p>
+                <p>Views</p>
+                <p>Date</p>
+            </div>
+
+
+        </div>
         {% endfor %}
     </div>
+    <div class="forum__themes__upload root__content">
+        <button class="buttons_type_darkGray forum__button__upload">Загрузить еще</button>
+    </div>
 
-
+</section>
 {% endblock %}
