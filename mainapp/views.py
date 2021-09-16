@@ -24,6 +24,14 @@ def index(request):
     return render(request, 'mainapp/index.html', context=content)
 
 
+def about(request):
+    title = 'главная'
+    content = {
+        "title": title,
+    }
+    return render(request, 'mainapp/about.html', context=content)
+
+
 class TaskListView(ListView):
     """
     page tasks all
