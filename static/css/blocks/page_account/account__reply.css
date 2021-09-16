@@ -1,0 +1,6 @@
+.account__reply {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}

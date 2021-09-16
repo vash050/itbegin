@@ -57,4 +57,7 @@
 @import url("../blocks/page_account/account__message_date.css");
 @import url("../blocks/page_account/account__reply_body.css");
 @import url("../blocks/page_account/account__list_inline.css");
-
+@import url("../blocks/page_account/account__reply.css");
+@import url("../blocks/page_account/account__reply__inline.css");
+@import url("../blocks/page_account/account__message.css");
+@import url("../blocks/page_account/account__reply__item.css");

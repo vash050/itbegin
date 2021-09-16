@@ -12,25 +12,27 @@
     {% get_companion request.user chat as companion %}
     <div id="accountChat" data-link="{{ chat.get_absolute_url }}">
         <img class="avatar-messages" src="{{ companion.user_profile.avatar_or_default }}">
-        <div class="reply-body">
-            <ul class="list-inline">
-                <li class="drop-left-padding">
+        <div class="reply-body account__reply">
+            <img class="avatar-messages" src="{{ companion.user_profile.avatar_or_default }}">
+            <ul class="list-inline account__reply__inline">
+                <li class="drop-left-padding account__reply__item">
                     <strong class="list-group-item-heading">{{ companion.username }}</strong>
                 </li>
-                <li class="pull-right text-muted"><small>{{ last_message.pub_date|utc }}</small></li>
+                <!-- <li class="pull-right text-muted"><small>{{ last_message.pub_date|utc }}</small></li> -->
             </ul>
             {% if companion != last_message.author %}
-            <div>
+            <div id="accountOpenChat">
                 <img class="avatar-rounded-sm" src="{{ last_message.author.user_profile.avatar_or_default }}">
-                <div class="attached-reply-body {% if not last_message.is_read %}unreaded{% endif %}">
+                <div class="account__message attached-reply-body {% if not last_message.is_read %}unreaded{% endif %}">
                     {{ last_message.message|truncatechars_html:"200"|safe|striptags }}</div>
+                <p class="account__message_date">{{ last_message.pub_date|utc }}</p>
+                {% else %}
+                <div class="account__message">{{ last_message.message|truncatechars_html:"200"|safe|striptags }}</div>
+                {% endif %}
             </div>
-            {% else %}
-            <div>{{ last_message.message|truncatechars_html:"200"|safe|striptags }}</div>
-            {% endif %}
         </div>
     </div>
-    <div id="accountOpenChat"></div>
+    <!-- <div id="accountOpenChat"></div> -->
     {% endwith %}
     {% endif %}
     {% endfor %}
