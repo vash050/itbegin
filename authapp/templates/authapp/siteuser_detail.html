@@ -16,7 +16,7 @@
         <div class="account__profile root__content">
             <div class="account__profile__info">
                 <div class="account__avatar">
-                    <img src="{{ object.avatar|default:object.avatar_or_default }}"
+                    <img src="/media/{{ object.avatar|default:'../static/ing/avatar.png' }}"
                          alt="avatar">
                 </div>
                 <div class="account__info">
