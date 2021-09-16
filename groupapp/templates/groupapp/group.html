@@ -34,7 +34,7 @@
                 <div class="account__profile__info">
                     <div class="team__logo__block">
 
-                        <img class="team__logo" src="/media/{{ this_group.logotype }}" alt="">
+                        <img class="team__logo" src="/media/{{ this_group.logotype|default:this_group.avatar_or_default }}" alt="">
                         <!-- <div class="team__logo">{{ this_group.logotype }}</div> -->
                         <p>{{ this_group.description }}</p>
                     </div>
