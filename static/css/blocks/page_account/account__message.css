@@ -1,0 +1,11 @@
+.account__message {
+    width: 600px;
+    height: 80px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #818181;
+    padding: 8px;
+}
