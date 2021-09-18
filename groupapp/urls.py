@@ -1,6 +1,10 @@
+import re
+
+from django.conf.urls import url
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
+import authapp.views as authapp
 import groupapp.views as groupapp
 
 app_name = 'groupapp'

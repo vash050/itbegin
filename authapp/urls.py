@@ -1,4 +1,4 @@
-
+from django.conf.urls import url
 from django.urls import path
 
 import authapp.views as authapp
@@ -15,4 +15,6 @@ urlpatterns = [
     path('setting_user/<int:pk>/', authapp.UserSetting.as_view(), name='setting_user'),
     path('up_setting_user_cont/<int:pk>/', authapp.UpdateUserContact.as_view(), name='up_setting_user_cont'),
     path('change_password/', authapp.ChangePassword.as_view(), name='change_password'),
+    url(r'^authapp/login/.?', authapp.login),
+
 ]

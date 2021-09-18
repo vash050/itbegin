@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView, CreateView
 
@@ -27,6 +29,7 @@ class ForumMessageList(View):
     """
     message in branch of forum. read and create.
     """
+
     def get(self, request, topic_id):
         object_list = ForumMessage.objects.filter(topic_id=topic_id)
         context = {
@@ -49,3 +52,7 @@ class ForumMessageList(View):
             'topic_id': topic_id,
         }
         return redirect(reverse('forunapp:forum_message', kwargs=context))
+
+    @method_decorator(user_passes_test(lambda x: x.is_authenticated))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
