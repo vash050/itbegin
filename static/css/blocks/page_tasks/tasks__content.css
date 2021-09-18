@@ -1,3 +1,9 @@
 .tasks__content {
     color: #FFFFFF;
+    border: 1px solid #818181;
+    min-height: 140px;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+
 }

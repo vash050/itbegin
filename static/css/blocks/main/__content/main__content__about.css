@@ -1,0 +1,12 @@
+.main__content__about {
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 550px;
+    padding-top: 60px;
+}

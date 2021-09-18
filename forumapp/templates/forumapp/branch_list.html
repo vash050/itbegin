@@ -2,14 +2,16 @@
 {% load static %}
 
 {% block conteiner %}
-    <div>
+<div class="forum__background root__container">
+    <div class="root__content">
         {% for object in object_list %}
-            <a href="{% url 'forunapp:forum_message' object.pk %}">
-                <p>{{ object.name }}</p>
-                <p> {{ object.description }}</p>
-            </a>
+        <a href="{% url 'forunapp:forum_message' object.pk %}">
+            <p>{{ object.name }}</p>
+            <p> {{ object.description }}</p>
+        </a>
         {% endfor %}
     </div>
+</div>
 
 
 {% endblock %}

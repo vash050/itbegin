@@ -1,3 +1,4 @@
 .task__description__p {
     margin-top: 18px;
+    min-height: 60px;
 }

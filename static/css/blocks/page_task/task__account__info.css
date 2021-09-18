@@ -1,0 +1,7 @@
+.task__account__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 75px;
+    margin-top: 22px;
+}

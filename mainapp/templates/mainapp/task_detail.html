@@ -3,27 +3,61 @@
 
 
 {% block conteiner %}
-    <section class="task root__container">
-        <div class="task__background">
-            <div class="task__header root__content">
+<section class="task root__container">
+    <div class="task__background">
+        <!-- <div class="task__header root__content">
                 <p>Задача</p>
-            </div>
-            <div class="task__description root__content">
-                <p class="task__description__p">{{ object.name }}</p>
-                <p class="task__description__p">{{ object.full_description }}</p>
-                <p class="task__description__p">{{ object.tz }}</p>
-                {% for prof in object.professions.all %}
-                    <p class="task__description__p">{{ prof }}</p>
-                {% endfor %}
-                <button class="account__button buttons_type_white">
-                    <a href="{% url 'mainapp:get_task' object.pk %}">
-                        Взять задачу
-                    </a>
-                </button>
-
+            </div> -->
+        <div class="tasks__header root__content">
+            <p>Задачa</p>
+            <div class="teams__drop">
+                <div class="drop_block"> <i class="fas fa-cog"></i></i><i class="fas fa-caret-down drop_caret"></i>
+                    <div class="drop_summary teams__summary">
+                        <a href="#">Редактировать задачу</a>
+                        <a href="#">Сменить лидера</a>
+                        <a href="#">Удалить задачу</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+        <div class="task__profile root__content">
+            <div class="account__profile__info">
+                <div class="account__avatar">
+                    <img class="account__avatar__img" src=" /media/{{ user.avatar|default:user.avatar_or_default }}"
+                        alt="avatar">
+                </div>
+                <div class="task__account__info">
+                    <p class="account__headline">{{ user.first_name }} {{ user.last_name }}</p>
+                    <p>Опубликовано заданий 0 &#183; Отзывы 5</p>
 
-    <a href="{% url 'mainapp:tasks' %}">задачи</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="task__description root__content">
+            <p class="task__description__p">{{ object.name }}</p>
+            <p class="task__description__pbig">{{ object.full_description }}</p>
+            <p class="task__description__pbig">{{ object.tz }}</p>
+            {% for prof in object.professions.all %}
+            <p class="task__description__p">{{ prof }}</p>
+            {% endfor %}
+            
+
+            <p class="task__description__p">Срок выполнения:</p>
+            <p class="task__description__p">Дата публикации:</p>
+            <div class="task__buttons">
+                <a class="account__button buttons_type_white" href="{% url 'mainapp:get_task' object.pk %}">
+                    Взять задачу
+                </a>
+                <a class="account__button buttons_type_white" href="{% url 'mainapp:tasks' %}">
+                    Назад
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
 {% endblock %}
