@@ -37,7 +37,7 @@
                 {% for article in article_list %}
                     <a href="{% url 'articles:article' article.id %}">
                         <div class="news__article">
-                            <img src="/static/img/news1.png" class="news__article-img"/>
+                            <img src="/media/{{ article.image|default:article.avatar_or_default }}" class="news__article-img"/>
 
                             <div class="article">
                                 <h2 class="article__label">{{ article.title }}</h2>
