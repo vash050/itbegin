@@ -9,20 +9,28 @@ class HomePage(Page):
     """
     main page
     """
+    parent_page_types = []
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
     ]
+
+    settings_panels = []
+    promote_panels = []
 
 
 class Article(Page):
     """
     model article
     """
+    subpage_types = []
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
         FieldPanel('owner', classname="full"),
     ]
+
+    settings_panels = []
+    promote_panels = []
