@@ -1,4 +1,7 @@
 .account__button {
     height: 48px;
     width: 250px;
+    display: block;
+    font-size: 18px;
+    line-height: 47px;
 }

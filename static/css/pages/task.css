@@ -31,6 +31,7 @@
 @import url("../blocks/page_task/task__header.css");
 @import url("../blocks/page_task/task__description.css");
 @import url("../blocks/page_task/task__description__p.css");
-
-
-
+@import url("../blocks/page_task/task__buttons.css");
+@import url("../blocks/page_task/task__profile.css");
+@import url("../blocks/page_task/task__account__info.css");
+@import url("../blocks/page_task/task__description__pbig.css");

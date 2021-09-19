@@ -3,3 +3,7 @@
     align-items: center;
     justify-content: flex-end;
 }
+
+.teams__drop:hover {
+    color: #FAFD5A;
+}

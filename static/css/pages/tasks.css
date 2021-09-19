@@ -40,6 +40,6 @@
 @import url("../blocks/page_tasks/tasks__content.css");
 @import url("../blocks/page_tasks/tasks__description.css");
 @import url("../blocks/page_tasks/tasks__background.css");
-
-
-
+@import url("../blocks/page_tasks/tasks__list.css");
+@import url("../blocks/page_tasks/tasks__comments.css");
+@import url("../blocks/page_account/account__button.css");

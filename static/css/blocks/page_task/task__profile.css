@@ -1,0 +1,8 @@
+.task__profile {
+    display: flex;
+    flex-direction: column;
+    color: #818181;
+    height: 150px;
+    padding-top: 25px;
+    justify-content: space-between;
+}

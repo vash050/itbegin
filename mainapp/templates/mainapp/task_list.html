@@ -3,28 +3,35 @@
 
 
 {% block conteiner %}
-    <section class="tasks root__container">
-        <div class="tasks__background">
-            {% include 'mainapp/includes/inc__category_task.html' %}
-            <div>
-                {% for object in object_list %}
-                    <div class="tasks__content root__content">
-                        <a href="{% url 'mainapp:task' object.pk %}">
-                            <p class="team__headline">{{ object.name }}</p>
-                            <p class="tasks__description">{{ object.full_description }}</p>
-                        </a>
+<section class="tasks root__container">
+    <div class="tasks__background">
+        {% include 'mainapp/includes/inc__category_task.html' %}
+        <div class="tasks__list">
+            {% for object in object_list %}
+            <div class="tasks__content root__content">
+                <a href="{% url 'mainapp:task' object.pk %}">
+                    <p class="team__headline">{{ object.name }}</p>
+                    <p class="tasks__description">{{ object.full_description }}</p>
+                    <div class="tasks__comments">
+                        <p>Комментарии &#183; 0</p>
+                        <p>Откликов &#183; 0</p>
                     </div>
-
-                {% endfor %}
-                <button class="account__button buttons_type_white">
-                    <a href="{% url 'mainapp:create_task' %}">
-                        Создать задачу
-                    </a>
-                </button>
+                </a>
 
             </div>
-        </div>
 
-    </section>
+            {% endfor %}
+            <div class="root__content">
+                <!-- <button class="account__button buttons_type_white"> -->
+                    <a class="account__button buttons_type_white" href="{% url 'mainapp:create_task' %}">
+                        Создать задачу
+                    </a>
+                <!-- </button> -->
+            </div>
+
+        </div>
+    </div>
+
+</section>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 .task__description {
-    background-color: #818181;
-    height: 162px;
+    /* background-color: #818181; */
+    min-height: 600px;
     color: #ffffff;
     font-size: 20px;
-    padding-left: 21px;
+    /* padding-left: 21px; */
 }
