@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
+from django.views.generic.list import MultipleObjectMixin
 
 from articles.models import Article
 from forumapp.models import Branch
@@ -33,16 +35,43 @@ def about(request):
     return render(request, 'mainapp/about.html', context=content)
 
 
-class TaskListView(ListView):
+class CategoryTaskMixin(MultipleObjectMixin):
+    """
+    Category tasks
+    """
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories_task'] = CategoryTask.objects.all()
+        return context
+
+
+class TaskListView(ListView, CategoryTaskMixin):
     """
     page tasks all
     """
     model = Task
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories_task'] = CategoryTask.objects.all()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['categories_task'] = CategoryTask.objects.all()
+    #     return context
+
+
+class CategoryTaskListView(ListView, CategoryTaskMixin):
+    """
+    Choose category tasks
+    """
+    model = Task
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['categories_task'] = CategoryTask.objects.all()
+    #     return context
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        queryset = self.model.objects.filter(Q(category_id=query))
+        return queryset
 
 
 class TaskView(DetailView):

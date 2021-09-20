@@ -16,7 +16,7 @@
         <div class="account__profile root__content">
             <div class="account__profile__info">
                 <div class="account__avatar">
-                    <img src="/media/{{ object.avatar|default:object.avatar_or_default }}"
+                    <img class="account__avatar__img" src="/media/{{ object.avatar|default:object.avatar_or_default }}"
                          alt="avatar">
                 </div>
                 <div class="account__info">
@@ -32,7 +32,7 @@
             <div class="account__content__div">
                 <p class="account__headline">Специализации</p>
                 {% for profession in object.profession.all %}
-                    <p class="account__headline">{{ profession }}</p>
+                    <p>{{ profession }}</p>
                 {% endfor %}
             </div>
             <div class="account__content__div">
