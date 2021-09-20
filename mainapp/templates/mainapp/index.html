@@ -4,69 +4,71 @@
 
 {% block conteiner %}
 
-    <section class="main root__container">
-        <div class="main__background">
-            <div class="main__content root__content">
-                <h1 class="main__title">Получи опыт в своей новой IT профессии</h1>
-                <h2 class="main__subtitle">
-                    Находи задачи и создавай команды для реализации своих идей!
-                </h2>
-                <div class="main__buttons">
-                    <a href="{% url 'mainapp:tasks' %}" class="buttons_type_white main__button">
-                        Найти задачу
-                    </a>
-                    <a href="{% url 'groupapp:create_group' %}" class="buttons_type_white main__button">
-                        Создать команду
-                    </a>
-                </div>
+<section class="main root__container">
+    <div class="main__background">
+        <div class="main__content root__content">
+            <h1 class="main__title">Получи опыт в своей новой IT профессии</h1>
+            <h2 class="main__subtitle">
+                Находи проекты и создавай команды для реализации своих идей!
+            </h2>
+            <div class="main__buttons">
+                <a href="{% url 'mainapp:tasks' %}" class="buttons_type_white main__button">
+                    Найти проект
+                </a>
+                <a href="{% url 'groupapp:create_group' %}" class="buttons_type_white main__button">
+                    Создать команду
+                </a>
             </div>
         </div>
-    </section>
-    <section class="news root__container">
-        <div class="news__content root__content">
-            <div class="news__articles">
-                <div class="news__header">
-                    <p class="news__header-label">Новости</p>
-{#                    <select class="selects_type_darkGray news__select">#}
-{#                        <option value="all">Все категории</option>#}
-{#                        <option value="kat1">Категория 1</option>#}
-{#                        <option value="kat2">Категория 2</option>#}
-{#                        <option value="kat3">Категория 3</option>#}
-{#                    </select>#}
-                </div>
-                {% for article in article_list %}
-                    <a href="{% url 'articles:article' article.id %}">
-                        <div class="news__article">
-                            <img src="/media/{{ article.image|default:article.avatar_or_default }}" class="news__article-img"/>
-
-                            <div class="article">
-                                <h2 class="article__label">{{ article.title }}</h2>
-                                <p class="article__text">{{ article.search_description }}</p>
-                                <p class="article__text">{{ article.owner }}</p>
-                                <p class="article__data">{{ article.last_published_at }}</p>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-
-                <div class="news__footer">
-                    <button class="buttons_type_darkGray news__load">
-                        Загрузить еще
-                    </button>
-                </div>
+    </div>
+</section>
+<section class="news root__container">
+    <div class="news__content root__content">
+        <div class="news__articles">
+            <div class="news__header">
+                <p class="news__header-label">Новости</p>
+                {# <select class="selects_type_darkGray news__select">#}
+                    {# <option value="all">Все категории</option>#}
+                    {# <option value="kat1">Категория 1</option>#}
+                    {# <option value="kat2">Категория 2</option>#}
+                    {# <option value="kat3">Категория 3</option>#}
+                    {# </select>#}
             </div>
-            <div class="news__forum">
-            <p class="news__header-label">Форум</p>
-                {% for topic in forum %}
+            {% for article in article_list %}
+            <a href="{% url 'articles:article' article.id %}">
+                <div class="news__article">
+                    <img src="/media/{{ article.image|default:article.avatar_or_default }}" class="news__article-img" />
+
                     <div class="article">
-                        <h2 class="article__label__forum">{{ topic.name }}</h2>
-                        <p class="article__text">{{ topic.description }}</p>
-                        <p class="article__text">{{ topic.author_branch_forum }}</p>
-
+                        <h2 class="article__label">{{ article.title }}</h2>
+                        <p class="article__text">{{ article.search_description }}</p>
+                        <p class="article__text">{{ article.owner }}</p>
+                        <p class="article__data">{{ article.last_published_at }}</p>
                     </div>
-                {% endfor %}
+                </div>
+            </a>
+            {% endfor %}
+
+            <div class="news__footer">
+                <!-- <button > -->
+                    <a class="buttons_type_darkGray news__load" href="{% url 'articles:articles' %}">
+                        Перейти на страницу
+                    </a>
+                <!-- </button> -->
             </div>
         </div>
-    </section>
+        <div class="news__forum">
+            <p class="news__header-label">Форум</p>
+            {% for topic in forum %}
+            <div class="article">
+                <h2 class="article__label__forum">{{ topic.name }}</h2>
+                <p class="article__text">{{ topic.description }}</p>
+                <p class="article__text">{{ topic.author_branch_forum }}</p>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}
