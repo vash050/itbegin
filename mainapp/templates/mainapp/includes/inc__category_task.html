@@ -6,7 +6,7 @@
         <div class="drop_block"> Категории<i class="fas fa-caret-down drop_caret"></i>
             <div class="drop_summary teams__summary">
                 {% for category in categories_task %}
-                    <a href="#">{{ category }}</a>
+                    <a href="{% url 'mainapp:tasks_category' %}?q={{ category.id }}">{{ category }}</a>
                 {% endfor %}
             </div>
         </div>
