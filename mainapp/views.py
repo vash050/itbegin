@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
@@ -48,6 +49,7 @@ class TaskView(DetailView):
     model = Task
 
 
+@login_required
 def create_task(request):
     title = 'создание задачи'
 
@@ -68,6 +70,7 @@ def create_task(request):
     return render(request, "mainapp/create_task.html", context=content)
 
 
+@login_required
 def get_task(request, pk):
     """
     add task for group

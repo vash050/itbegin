@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
@@ -33,6 +35,7 @@ def groups(request, page_num=1):
     return render(request, 'groupapp/groups.html', context=content)
 
 
+@login_required
 def user_groups(request, page_num=1):
     """
     вывод команд в который пользователь состоит или является основателем
@@ -73,7 +76,12 @@ class GroupCreateView(CreateView):
         else:
             return self.form_invalid(form)
 
+    @method_decorator(user_passes_test(lambda x: x.is_authenticated))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
+
+@login_required
 def group(request, pk):
     """
     вывод страницы конкретной команды
@@ -178,6 +186,7 @@ class NeedProfessionDescriptionView(DetailView):
     model = DescriptionNeedProfessions
 
 
+@login_required
 def create_application_need_prof(request, pk):
     """
     создание заявки на вакансию в команду

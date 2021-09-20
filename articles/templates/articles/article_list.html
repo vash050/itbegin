@@ -22,7 +22,7 @@
                 {% for object in object_list %}
 
             <a href="{% url 'articles:article' object.pk %}" class="article__box">
-                <img src=" /media/image.jpg" alt="" class="article__img">
+                <img src="/media/{{ object.image|default:object.avatar_or_default }}" alt="" class="article__img">
                 <div class="article__titles">
                     <div>
                         <p class="header__link_activ">Тэг</p>

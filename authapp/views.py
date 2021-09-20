@@ -37,9 +37,10 @@ def logout(request):
 
 def profile(request):
     title = 'личный кабинет'
-    professions = SiteUser.objects.get(id=request.user.id).profession.all()
+    user = SiteUser.objects.get(id=request.user.id)
+    professions = user.profession.all()
     contact = ContactUser.objects.get(user_id=request.user.id)
-    unread_dialogs_counter = SiteUser.objects.get(id=request.user.id).dialog_set.unread(user=request.user).count()
+    unread_dialogs_counter = user.dialog_set.unread(user=request.user).count()
     content = {
         'title': title,
         'professions': professions,
