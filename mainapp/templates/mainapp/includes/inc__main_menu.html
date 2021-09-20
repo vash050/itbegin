@@ -16,9 +16,9 @@
         </a>
         <a href="{% url 'mainapp:tasks' %}"
             class="header__link {% if request.resolver_match.url_name == 'tasks' %}header__link_activ{% endif %}">
-            Задачи
+            Проекты
         </a>
-        <a href="{% url 'mainapp:about' %}" class="header__link {% if request.resolver_match.url_name == '' %}header__link_activ{% endif %}">
+        <a href="{% url 'mainapp:about' %}" class="header__link {% if request.resolver_match.url_name == 'about' %}header__link_activ{% endif %}">
             О нас
         </a>
         <a href="{% url 'forunapp:forum' %}"

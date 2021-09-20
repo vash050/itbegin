@@ -1,3 +1,4 @@
 .team__persons__block {
-    height: 300px;
+    min-height: 300px;
+    display: inline-flex;
 }

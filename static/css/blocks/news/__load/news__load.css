@@ -2,8 +2,8 @@
     height: 50px;
     width: 250px;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 50px;
     margin-top: 50px;
     align-self: center;
-
+    display: block;
 }

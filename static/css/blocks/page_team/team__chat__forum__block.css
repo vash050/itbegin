@@ -1,0 +1,8 @@
+.team__chat__forum__block {
+    display: inline-flex;
+    color: #FFFFFF;
+    font-size: 24px;
+    width: 295px;
+    margin-bottom: 48px;
+    justify-content: left;
+}
