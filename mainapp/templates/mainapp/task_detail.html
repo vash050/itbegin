@@ -9,13 +9,13 @@
                 <p>Задача</p>
             </div> -->
         <div class="tasks__header root__content">
-            <p>Задачa</p>
+            <p>Проект</p>
             <div class="teams__drop">
                 <div class="drop_block"> <i class="fas fa-cog"></i></i><i class="fas fa-caret-down drop_caret"></i>
                     <div class="drop_summary teams__summary">
-                        <a href="#">Редактировать задачу</a>
+                        <a href="#">Редактировать проект</a>
                         <a href="#">Сменить лидера</a>
-                        <a href="#">Удалить задачу</a>
+                        <a href="#">Удалить проект</a>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="task__account__info">
                     <p class="account__headline">{{ user.first_name }} {{ user.last_name }}</p>
-                    <p>Опубликовано заданий 0 &#183; Отзывы 5</p>
+                    <p>Опубликовано проектов 0 &#183; Отзывы 5</p>
 
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <p class="task__description__p">Дата публикации:</p>
             <div class="task__buttons">
                 <a class="account__button buttons_type_white" href="{% url 'mainapp:get_task' object.pk %}">
-                    Взять задачу
+                    Взять проект
                 </a>
                 <a class="account__button buttons_type_white" href="{% url 'mainapp:tasks' %}">
                     Назад

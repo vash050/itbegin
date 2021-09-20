@@ -6,9 +6,9 @@
     <section class="tasks root__container">
         <div class="tasks__background">
             {% include 'mainapp/includes/inc__category_task.html' %}
-            <div>
+            <div class=" root__content tasks__list">
                 {% for object in object_list %}
-                    <div class="tasks__content root__content">
+                    <div class="tasks__content">
                         <a href="{% url 'mainapp:task' object.pk %}">
                             <p class="team__headline">{{ object.name }}</p>
                             <p class="tasks__description">{{ object.full_description }}</p>
@@ -16,8 +16,10 @@
                     </div>
 
                 {% endfor %}
-                <h1 style="color: white;">Task</h1>
-                <a href="{% url 'mainapp:create_task' %}" style="color: white;">Создать задачу</a>
+                <!-- <h1 style="color: white;">Task</h1> -->
+                <a href="{% url 'mainapp:create_task' %}" class="account__button buttons_type_white">
+                    Создать задачу
+                </a>
             </div>
         </div>
 
