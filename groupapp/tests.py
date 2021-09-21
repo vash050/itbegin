@@ -31,7 +31,7 @@ class TestAuthapp(TestCase):
         self.assertEqual(response.status_code, 200)
 
         response = self.client.get("/group/create_group/")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         # response = self.client.get("/group/group/1/")
         # self.assertEqual(response.status_code, 200)
@@ -55,7 +55,7 @@ class TestAuthapp(TestCase):
         self.assertEqual(response.status_code, 200)
 
         response = self.client.get("/group/create_application_need_prof/1/")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         response = self.client.get("/group/applications_to_team/1/")
         self.assertEqual(response.status_code, 200)
