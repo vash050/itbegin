@@ -19,6 +19,7 @@ class TestMainapp(TestCase):
         "messageapp/fixtures/001_dialog.json",
         "messageapp/fixtures/001_message.json",
     ]
+
     def setUp(self):
         self.client = Client()
 

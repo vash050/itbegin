@@ -8,7 +8,7 @@ class SiteUser(AbstractUser):
     date_born = models.DateField(verbose_name="день рождения", null=True)
     profession = models.ManyToManyField(verbose_name="профессии", to='Professions', blank=True)
     about_me = models.CharField(verbose_name="обо мне", max_length=1000, blank=True)
-    link_to_portfolio = models.CharField(max_length=150, blank=True)
+    link_to_portfolio = models.CharField(verbose_name='ссылка на портфолио', max_length=150, blank=True)
     free = models.BooleanField(default=True)
     date_update_profile = models.DateTimeField(auto_now=True)
 
