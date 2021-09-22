@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, CheckboxSelectMultiple
 
 from mainapp.models import Task
 
@@ -7,6 +7,9 @@ class CreateTaskForm(ModelForm):
     class Meta:
         model = Task
         fields = ('category', 'name', 'short_description', 'full_description', 'tz', 'professions')
+        widgets = {
+            'professions': CheckboxSelectMultiple(attrs={}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(CreateTaskForm, self).__init__(*args, **kwargs)
