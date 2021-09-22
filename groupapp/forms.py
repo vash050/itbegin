@@ -1,5 +1,5 @@
 from django.forms.models import ModelForm
-from django.forms.widgets import HiddenInput
+from django.forms.widgets import HiddenInput, CheckboxSelectMultiple
 
 from authapp.models import Professions
 from groupapp.models import Group, DescriptionNeedProfessions, ApplicationToNeedProfession
@@ -9,6 +9,9 @@ class CreateGroupForm(ModelForm):
     class Meta:
         model = Group
         fields = ('name', 'description', 'need_profession', 'logotype')
+        widgets = {
+            'need_profession': CheckboxSelectMultiple(attrs={}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
