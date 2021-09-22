@@ -20,8 +20,9 @@
                         {% endfor %}
                     {% else %}
                         <div>
-                            <label for="{{ field.id_for_label }}"
-                                   class="registration__form_input_label"> {{ field.label }} </label>
+                            <label for="{{ field.id_for_label }}" class="registration__form_input_label">
+                                {{ field.label }}
+                            </label>
                             {{ field }}
                         </div>
                     {% endif %}
