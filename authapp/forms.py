@@ -2,7 +2,7 @@ import hashlib
 import random
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms.widgets import HiddenInput
+from django.forms.widgets import HiddenInput, CheckboxSelectMultiple
 
 from authapp.models import SiteUser, ContactUser
 
@@ -39,6 +39,9 @@ class SiteUserUpdateForm(UserChangeForm):
         model = SiteUser
         fields = ('avatar', 'first_name', 'last_name', 'date_born', 'username',
                   'profession', 'about_me', 'link_to_portfolio')
+        widgets = {
+            'profession': CheckboxSelectMultiple(attrs={}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
