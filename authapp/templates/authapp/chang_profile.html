@@ -15,12 +15,18 @@
                   enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for form in forms %}
-                    {% if form.label != 'Пароль' %}
-                        <div>
-                            <label for="{{ form.id_for_label }}"
-                                   class="registration__form_input_label"> {{ form.label }} </label>
-                            {{ form }}
-                        </div>
+                    {% if form.label == 'Профессии' %}
+                        {% for prof in form %}
+                            {{ prof }}
+                        {% endfor %}
+                    {% else %}
+                        {% if form.label != 'Пароль' %}
+                            <div>
+                                <label for="{{ form.id_for_label }}"
+                                       class="registration__form_input_label"> {{ form.label }} </label>
+                                {{ form }}
+                            </div>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
                 <input type="submit" value="Сохранить"
