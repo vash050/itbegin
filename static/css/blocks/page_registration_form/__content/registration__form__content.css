@@ -5,5 +5,5 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-top: 60px;
+    padding: 60px 0;
 }

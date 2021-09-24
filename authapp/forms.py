@@ -49,6 +49,8 @@ class SiteUserUpdateForm(UserChangeForm):
             field.widget.attrs["class"] = "input_type_black registration__form_input"
             if field_name == 'password':
                 field.widget = HiddenInput()
+            if field_name == 'profession':
+                field.widget.attrs["class"] = "input_type_checkbox"
 
 
 class SiteUserUpdateContact(UserChangeForm):
