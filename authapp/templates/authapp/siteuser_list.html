@@ -2,9 +2,20 @@
 {% load static %}
 
 {% block conteiner %}
-    <p><a href="{% url 'authapp:up_setting_user_cont' request.user.pk %}">редактировать контакты</a></p>
-    <p><a href="{% url 'authapp:update' %}"> Редактировать профиль</a></p>
-    <p><a href="{% url 'authapp:change_password' %}"> Сменить пароль</a></p>
-
+<div class="root darkgrey_background authorization__userlist">
+    <a href="{% url 'authapp:profile' %}" class="authorization__back root__content">
+        <img class="button__registration__form__img" src="/static/img/Arrow.png">
+        Назад
+    </a>
+    <a href="{% url 'authapp:up_setting_user_cont' request.user.pk %}" class="buttons_type_white account__button">
+        Редактировать контакты
+    </a>
+    <a href="{% url 'authapp:update' %}" class="buttons_type_white account__button">
+        Редактировать профиль
+    </a>
+    <a href="{% url 'authapp:change_password' %}" class="buttons_type_white account__button">
+        Сменить пароль
+    </a>
+</div>
 
 {% endblock %}

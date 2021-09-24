@@ -14,13 +14,15 @@
                   enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in create_task_form %}
-                    <div>
+                    <div class="registration__form__block">
                         <label for="{{ field.id_for_label }}"
                                class="registration__form_input_label"> {{ field.label }} </label>
                         {% if field.label == 'Professions' %}
+                        <div class="registration__form__check">
                             {% for prof in field %}
                                 {{ prof }}
                             {% endfor %}
+                        </div>
                         {% else %}
                             {{ field }}
                         {% endif %}
