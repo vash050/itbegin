@@ -1,0 +1,32 @@
+.input_type_checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #818181;
+    border-radius: 4px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: 0;
+  }
+  .input_type_checkbox::before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: -3px;
+    left: 7px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+  .input_type_checkbox:checked {
+    color: #fff;
+  }
+  .input_type_checkbox:checked::before {
+    opacity: 1;
+  }
+  

@@ -8,7 +8,7 @@
             <a href="{% url 'authapp:register' %}">Регистрация</a>
         </section>
         <section class="authorization__main root__container">
-            <form action="{% url 'authapp:login' %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'authapp:login' %}" method="post" enctype="multipart/form-data" class="authorization__form">
                 {% csrf_token %}
                 {% for form in forms %}
                     <div>
@@ -17,8 +17,8 @@
                         {{ form }}
                     </div>
                 {% endfor %}
-                </br>
-                <label class="registration__form_checkbox"><input type="checkbox" required name="personalinfo"
+                <!-- </br> -->
+                <label class="registration__form_checkbox"><input type="checkbox" name="personalinfo"
                                                                   id="personalinfo">
                     <span class="registration__form_checkmark"></span>
                     Запомнить меня</label>

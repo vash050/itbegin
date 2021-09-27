@@ -1,0 +1,17 @@
+.registration__form__check {
+    display: flex;
+    flex-direction: column;
+    width: 454px;
+    height: 100px;
+    justify-content: space-between;
+    margin-top: 10px;
+    position: relative;
+}
+
+.registration__form__check > label {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
