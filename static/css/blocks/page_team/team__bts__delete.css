@@ -1,5 +1,4 @@
-.teams__block {
+.team__bts__delete {
     display: flex;
-    height: 360px;
     gap: 30px;
 }

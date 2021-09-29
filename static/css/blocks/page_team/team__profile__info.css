@@ -1,0 +1,7 @@
+.team__profile__info {
+    display: flex;
+    justify-content: left;
+    margin-top: 36px;   
+    flex-direction: column;
+    gap: 20px;
+}

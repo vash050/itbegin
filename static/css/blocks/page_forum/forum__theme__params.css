@@ -1,0 +1,6 @@
+.forum__theme__params {
+    display: flex;
+    gap: 60px;
+    height: 100%;
+    align-items: center;
+}
