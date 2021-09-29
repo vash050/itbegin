@@ -1,0 +1,6 @@
+.team__descr_prof {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    margin-bottom: 60px;
+}

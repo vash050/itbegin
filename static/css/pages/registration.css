@@ -24,3 +24,5 @@
 @import url("../blocks/page_registration_form/textarea.css");
 @import url("../blocks/page_registration_form/registration__form__block.css");
 @import url("../blocks/page_registration_form/registration__form__select.css");
+@import url("../blocks/page_registration_form/registration__change__password.css");
+@import url("../blocks/page_registration_form/registration__change__password__block.css");

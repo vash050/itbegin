@@ -1,0 +1,6 @@
+.forum__theme__topic {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 12px;
+}

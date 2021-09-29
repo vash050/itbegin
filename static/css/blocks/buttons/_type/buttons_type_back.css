@@ -1,0 +1,9 @@
+.buttons_type_back {
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}

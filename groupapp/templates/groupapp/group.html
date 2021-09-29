@@ -31,19 +31,16 @@
                 </div>
             </div>
             <div class="team__profile root__content">
-                <div class="account__profile__info">
+                <div class="team__profile__info">
                     <div class="team__logo__block">
 
                         <img class="team__logo" src="/media/{{ this_group.logotype|default:this_group.avatar_or_default }}" alt="">
-                        <!-- <div class="team__logo">{{ this_group.logotype }}</div> -->
-                        <p>{{ this_group.description }}</p>
-                    </div>
-                    <div>
                         <p>{{ this_group.name }}</p>
-
                     </div>
+                    <p>{{ this_group.description }}</p>
+                    
                 </div>
-                <div class="team__persons__block root__content">
+                <div class="team__persons__block">
                     <div class="account__content__div">
                         <p class="team__headline">Состав команды</p>
                         <div class="team__persons">
@@ -60,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="team__vacancy__block root__content">
+                <div class="team__vacancy__block">
                     <div class="drop_block team__headline">
                         Занятые вакансии<i class="fas fa-caret-down drop_caret"></i>
                         <div class="drop_summary team__summary">
@@ -88,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="team__forum root__content">
+                <div class="team__forum">
                     <div class="team__chat__forum__block">
                         <a href="#">
                             <p class="team__headline">

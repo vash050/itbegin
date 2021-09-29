@@ -1,0 +1,5 @@
+.forum__theme__params__div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

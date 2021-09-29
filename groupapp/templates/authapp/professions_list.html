@@ -12,12 +12,11 @@
                 Выберите профессию
             </h1>
             <form action="{% url 'groupapp:search_group_by_prof' %}" class="registration__form" method="get">
-
-                <div>
+                <div class="registration__form__block">
                     <select name="q">
                         {% for prof in professions_list %}
                             <option value="{{ prof.id }}">
-                                <p style="background-color: #212121">
+                                <p>
                                     {{ prof }}
                                 </p>
                             </option>

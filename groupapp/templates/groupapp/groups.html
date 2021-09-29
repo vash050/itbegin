@@ -11,7 +11,9 @@
 
                 {% for object in page_obj %}
                     <div class="teams__part">
-                        <a href="{% url "groupapp:group" object.pk %}"><p class="teams__part__logo"></p></a>
+                        <a href="{% url "groupapp:group" object.pk %}">
+                            <img class="team__logo" src="/media/{{ object.logotype }}" alt="">
+                        </a>
                         <p>{{ object.name }}</p>
                         <p>всего / занято вакансий &#183;
                             {{ object.need_profession.count }} / {{ object.team_members.count }}
