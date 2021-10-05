@@ -1,0 +1,7 @@
+#registration__send {
+    z-index: 1;
+    position: absolute;
+    right: 20px;
+    top: 19px;
+    cursor: pointer;
+}
