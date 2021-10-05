@@ -8,6 +8,35 @@ let mailBtn = document.getElementById("accountMyMailBtn");
 let link = mailBtn.getAttribute("data-link");
 let insertMail = document.getElementById("accountInsertMail");
 
+function gotoBottom(id) {
+    var element = document.getElementById(id);
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+
+function getForm(formId) {
+    let jsForm = document.getElementById(formId);
+    let actionForm = jsForm.getAttribute("data-action");
+
+    return [jsForm, actionForm];
+}
+
+function getEventListener(input, form, id) {
+    $(input).keypress(function (e) {
+        if (e.which == 13) {
+            $(form).submit();
+            // $("textarea").val("");
+            //   return false;    //<---- Add this line 
+        }
+
+    });
+
+    $(id).click(function () {
+        $(form).submit();
+        // $("textarea").val("");
+        //   return false;    //<---- Add this line 
+
+    });
+}
 
 datamap.forEach((value, key) => {
     doModal(key, value);
@@ -48,34 +77,89 @@ async function getButtons() {
     let btnOne = await getButton(link);
     insertMail.innerHTML = btnOne;
 
-    let btnTwoId = document.getElementById("accountChat")
-    let urlTwo = btnTwoId.getAttribute("data-link");
     let blockTwo = document.getElementById("accountOpenChat");
 
-    let btnTwo = await getButton(urlTwo);
+    let btnsTwo = document.getElementsByClassName("attached-reply-body");
 
-    btnTwoId.addEventListener("click", function () {
-        blockTwo.innerHTML = btnTwo
-        let jsForm = document.getElementById("messageFormJs");
-        let actionForm = jsForm.getAttribute("data-action");
 
-        jsForm.onsubmit = async (e) => {
-            e.preventDefault();
+    for (const message of btnsTwo) {
+        let urlTwo = message.getAttribute("data-link");
+        let btnTwo = await getButton(urlTwo);
+        // console.log(btnTwo);
+        let users = document.getElementsByClassName("tablinks");
+        console.log(users);
+        let tabcontentFirst = document.getElementsByClassName("tabcontent");
+        tabcontentFirst[0].style.display = "block";
 
-            let response = await fetch(actionForm, {
-                method: 'POST',
-                body: new FormData(jsForm),
-                enctype: "multipart/form-data"
-            });
+        for (const user of users) {
+            let userName = user.getAttribute("data-id");
+            user.addEventListener("click", function () {
+                openCity(event, userName);
+            })
+        }
 
-            let result = await response;
-            console.log(result);
-            getButtons();
-        };
-    });
+        function openCity(evt, cityName) {
+            console.log('func work');
+            // Declare all variables
+            var tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the link that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+
+        message.addEventListener("click", function () {
+            blockTwo.innerHTML = btnTwo;
+            gotoBottom("accountOpenChat");
+
+            let jsForm = document.getElementById("messageFormJs");
+            let actionForm = jsForm.getAttribute("data-action");
+
+            getEventListener('#id_message', 'form#messageFormJs', '#registration__send');
+
+            jsForm.onsubmit = async (e) => {
+                e.preventDefault();
+
+                blockTwo.innerHTML = await submitForm(jsForm, actionForm);
+                gotoBottom("accountOpenChat");
+                getEventListener('#id_message', 'form#messageFormJs', '#registration__send');
+                // let jsForm = document.getElementById("messageFormJs");
+                // let actionForm = jsForm.getAttribute("data-action");
+
+            }
+
+            // blockTwo.innerHTML = submitForm(jsForm[0], jsForm[1]);
+
+        });
+
+    }
 }
 
+async function submitForm(form, action) {
+
+    let response = await fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        enctype: "multipart/form-data"
+    })
+    return response.text();
+};
+
 mailBtn.addEventListener("click", async function () {
+    
     getButtons()
 });
 

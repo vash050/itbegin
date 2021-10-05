@@ -50,7 +50,6 @@
 @import url("../blocks/page_account/account__modal.css");
 @import url("../blocks/page_account/account__mailContent.css");
 @import url("../blocks/page_account/account__close.css");
-@import url("../blocks/page_account/account__panel.css");
 @import url("../blocks/page_account/accountChat.css");
 @import url("../blocks/page_account/accountOpenChat.css");
 @import url("../blocks/page_account/account__message_inline.css");
@@ -62,3 +61,5 @@
 @import url("../blocks/page_account/account__message.css");
 @import url("../blocks/page_account/account__reply__item.css");
 @import url("../blocks/page_account/account__avatar__img.css");
+@import url("../blocks/page_account/account__link.css");
+@import url("../blocks/page_account/tab.css");

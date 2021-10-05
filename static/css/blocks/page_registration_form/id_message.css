@@ -1,0 +1,15 @@
+#id_message {
+    height: 45px !important;   
+    width: 98%;
+    border-style: none; 
+    border-color: Transparent; 
+    outline: none;
+    resize: none;
+    padding-left: 21px;
+}
+
+#id_message::placeholder {
+    
+    font-size: 16px;
+    line-height: 24px;
+}
