@@ -33,17 +33,26 @@
                 {% if companion != last_message.author %}
                 <div class="registration__inner__messages">
 
-                <img class="avatar-rounded-sm" src="{{ last_message.author.user_profile.avatar_or_default }}">
-                <div class="account__message attached-reply-body {% if not last_message.is_read %}unreaded{% endif %}"
-                    data-link="{{ chat.get_absolute_url }}">
-                    {{ last_message.message|truncatechars_html:"200"|safe|striptags }}
-                </div>
-                <p class="account__message_date">{{ last_message.pub_date|utc }}</p>
-                {% else %}
-                <div class="account__message">
-                    {{ last_message.message|truncatechars_html:"200"|safe|striptags }}
-                </div>
-                {% endif %}
+                    <img class="avatar-rounded-sm" src="{{ last_message.author.user_profile.avatar_or_default }}">
+                    <div class="account__message attached-reply-body {% if not last_message.is_read %}unreaded{% endif %}"
+                        data-link="{{ chat.get_absolute_url }}">
+                        {% for mes in chat.message_set.all %}
+                        {{ mes.author }}
+                        <div class="account__message">
+                            {{ mes|truncatechars_html:"200"|safe|striptags }}
+
+                        </div>
+                        <p class="account__message_date">{{ mes.pub_date|utc }}</p>
+                        {% endfor %}
+                         <!--{# {{ last_message.message|truncatechars_html:"200"|safe|striptags }}  #}-->
+                    </div>
+                    <p class="account__message_date">{{ last_message.pub_date|utc }}</p>
+                    {% else %}
+                    <div class="account__message">
+                        <!-- {# {{ last_message.message|truncatechars_html:"200"|safe|striptags }} #} -->
+                        
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endwith %}
@@ -52,5 +61,5 @@
         </div>
     </div>
 
-   
+
 </div>
