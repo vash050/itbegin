@@ -6,15 +6,19 @@
     <div class="account__background root__content">
         <div class="account__header root__content">
             <p>Заявки в команду</p>
-            <a href="{% url 'groupapp:groups' %}">
-                <img class="button__registration__form__img" src="/static/img/Arrow.png">
+            <a href="{% url 'groupapp:groups' %}" class="team__link__back">
+                <img class="button__registration__form__img" src="/static/img/Arrow.png"> Назад
             </a>
         </div>
 
         {% for object in object_list %}
-
+        {% if object.acceptation == 0  or object.acceptation == 1 %}
         <div class="team__application__block" id="blc{{ object.id }}">
+        {% else %}
+        <div class="team__application__block_reject">
+        {% endif %} 
             <div class="team__application__block_user">
+            
                 <div class="team__application_block_avatar">
                     <a href="{% url 'authapp:profile' %}">
                         <img class="team__person__avatar" src="{% static '/img/avatar.png' %}" alt="Avatar" />
@@ -50,10 +54,6 @@
             {% endif %}
 
         </div>
-
-
-
-
 
         {% endfor %}
 

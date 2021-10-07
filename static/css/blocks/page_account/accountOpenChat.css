@@ -1,8 +1,10 @@
 #accountOpenChat {
     background-color: #818181;
-    width: 100%;
-    padding: 24px 24px 0 78px;
+    /* width: 100%; */
     margin-top: 54px;
-    margin-bottom: 56px;
-    min-height: 200px;
+    height: 600px;
+    overflow-y: auto;
+    position: relative;
+    border-bottom-right-radius: 10px;
 }
+

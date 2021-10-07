@@ -4,6 +4,10 @@
     padding: 15px 0;
 }
 
+.drop_block:hover {
+	color: #FAFD5A;    
+}
+
 .drop_block:hover .drop_summary {
     display: flex;
 }

@@ -62,3 +62,9 @@
 @import url("../blocks/page_team/team__application__button.css");
 @import url("../blocks/page_account/account__close.css");
 @import url("../blocks/page_team/team__chat__forum__block.css");
+@import url("../blocks/page_team/team__profile__info.css");
+@import url("../blocks/page_team/team__descr_prof.css");
+@import url("../blocks/page_team/team__descr__button.css");
+@import url("../blocks/page_team/team__link__back.css");
+@import url("../blocks/page_team/team__group__list.css");
+@import url("../blocks/page_team/team__bts__delete.css");

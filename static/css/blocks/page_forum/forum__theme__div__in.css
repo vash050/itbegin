@@ -1,0 +1,5 @@
+.forum__theme__div__in {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

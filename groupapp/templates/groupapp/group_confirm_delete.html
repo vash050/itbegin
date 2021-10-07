@@ -2,20 +2,28 @@
 {% load static %}
 
 {% block conteiner %}
-    <div>
-<p>
-<h3>Вы уверены, что хотите удалить данный команду?</h3>
-</p>
-<p>
-<form action="{% url 'groupapp:delete_group' object.pk %}" method="post">
-    {% csrf_token %}
-    <div>
-        <a href="{% url 'groupapp:group' object.pk %}" class="btn btn-outline-secondary"
-            role="button">{{ "отмена"|capfirst }}</a>
-        <button type="submit" class="btn btn-outline-danger">{{ "удалить"|capfirst }}</button>
-    </div>
-</form>
-</p>
-    </div>
+<div class="registration__form__background">
+    <section class="registration__form__content root__container">
+        <a href="{% url 'groupapp:groups' %}" class="button__registration__form">
+            <img class="button__registration__form__img" src="/static/img/Arrow.png">
+            Назад
+        </a>
+        <h3>Вы уверены, что хотите удалить данную команду?</h3>
+
+        
+        <form action="{% url 'groupapp:delete_group' object.pk %}" method="post" class="registration__form">
+            {% csrf_token %}
+            <div class="team__bts__delete">
+                <a href="{% url 'groupapp:group' object.pk %}" class="btn btn-outline-secondary buttons_type_white team__descr__button" role="button">
+                    {{ "отмена"|capfirst }}
+                </a>
+                <button type="submit" class="btn btn-outline-danger buttons_type_white team__descr__button">
+                    {{ "удалить"|capfirst }}
+                </button>
+            </div>
+        </form>
+        
+    </section>
+</div>
 
 {% endblock %}

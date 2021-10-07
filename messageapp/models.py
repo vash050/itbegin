@@ -22,7 +22,7 @@ class Dialog(models.Model):
     objects = ChatManager()
 
     def get_absolute_url(self):
-        return reverse('messageapp:messages', kwargs={'dialog_id': self.pk})
+        return reverse('messageapp:dialog', kwargs={'dialog_id': self.pk})
 
 
 class Message(models.Model):

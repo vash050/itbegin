@@ -7,6 +7,12 @@
 @import url("../blocks/page_forum/forum__theme__block__main.css");
 @import url("../blocks/page_forum/forum__topic.css");
 @import url("../blocks/page_forum/forum__theme.css");
-@import url("../blocks/page_forum/forum__theme__block__descr.css");
+@import url("../blocks/page_forum/forum__drop__block.css");
 @import url("../blocks/page_forum/forum__button__upload.css");
 @import url("../blocks/page_forum/forum__themes__upload.css");
+@import url("../blocks/page_forum/forum__theme__div.css");
+@import url("../blocks/page_forum/forum__theme__div__in.css");
+@import url("../blocks/page_forum/forum__theme__params.css");
+@import url("../blocks/page_forum/forum__theme__params__div.css");
+@import url("../blocks/page_forum/forum__avatar.css");
+@import url("../blocks/page_forum/forum__theme__topic.css");

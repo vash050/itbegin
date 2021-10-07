@@ -1,0 +1,7 @@
+.forum__theme__div {
+    height: 106px;
+    border-bottom: 1px solid #818181;
+    display: flex;
+    align-items: center;
+    
+}

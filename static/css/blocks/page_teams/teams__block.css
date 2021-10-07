@@ -1,5 +1,5 @@
 .teams__block {
     display: flex;
     height: 360px;
-    justify-content: space-between;
+    gap: 30px;
 }
