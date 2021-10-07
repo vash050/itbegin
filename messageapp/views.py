@@ -27,15 +27,16 @@ class DialogsView(View):
         }
         return render(request, 'messageapp/dialog_list.html', context=context)
 
-    def post(self, request, dialog_id):
+    def post(self, request):
         form = MessageForm(data=request.POST)
-        chat = Dialog.objects.get(id=dialog_id)
+        print(self.kwargs['dialog_id'])
+        chat = Dialog.objects.get(id=self.kwargs['dialog_id'])
         if form.is_valid():
             message = form.save(commit=False)
             message.dialog = chat
             message.author = request.user
             message.save()
-        return redirect(reverse('messageapp:dialog', kwargs={'dialog_id': dialog_id}))
+        return redirect(reverse('messageapp:dialog', kwargs={'dialog_id': self.kwargs['dialog_id']}))
 
 
 # class MessagesView(View):
