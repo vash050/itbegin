@@ -217,3 +217,18 @@ WAGTAIL_SITE_NAME = 'itbegin'
 #     "debug_toolbar.panels.profiling.ProfilingPanel",
 #     "template_profiler_panel.panels.template.TemplateProfilerPanel",
 # ]
+
+DOMAIN_NAME = "http://localhost:8000"
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = "25"
+
+EMAIL_USE_SSL = False
+
+# EMAIL_HOST_USER = "admin@it-begin.ru"
+# EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "tmp/email-messages"

@@ -27,8 +27,8 @@ class SiteUserRegisterForm(UserCreationForm):
     def save(self):
         user = super(SiteUserRegisterForm, self).save()
 
-        user.is_active = True
-        salt = hashlib.sha1(str(random.random()).encode('utf')).hexdigest()[:6]
+        user.is_active = False
+        salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
         user.activation_key = hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
         user.save()
         return user
