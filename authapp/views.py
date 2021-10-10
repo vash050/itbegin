@@ -1,17 +1,21 @@
+import logging
+
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import UpdateView, FormView, DetailView, ListView
-from django.contrib.auth.models import Group
+from django.views.generic import UpdateView, DetailView, ListView
 
 from authapp.forms import SiteUserLoginForm, SiteUserRegisterForm, SiteUserUpdateForm, SiteUserUpdateContact
-from authapp.models import Professions, SiteUser, ContactUser
+from authapp.models import SiteUser, ContactUser
+
+import logs.log_conf
+
+SERVER_LOGGER = logging.getLogger('server')
 
 
 def login(request):
@@ -62,9 +66,9 @@ def register(request):
         if register_form.is_valid():
             user = register_form.save()
             if send_verify_mail(user):
-                print("сообщение для потверждения регистрации отправлено")
+                SERVER_LOGGER.info(f"сообщение для потверждения регистрации отправлено")
                 return HttpResponseRedirect(reverse("authapp:login"))
-            print(f"ошибка отправки сообщения для потверждения регистрации")
+            SERVER_LOGGER.critical(f"ошибка отправки сообщения для потверждения регистрации")
             return HttpResponseRedirect(reverse('authapp:login'))
     else:
         register_form = SiteUserRegisterForm()
@@ -123,7 +127,7 @@ def send_verify_mail(user):
     message = f"Для потверждения учетной записи {user.username} на портале {settings.DOMAIN_NAME} прейти по ссылке: \
         \n{settings.DOMAIN_NAME}{verify_link}"
 
-    print(f"from: {settings.EMAIL_HOST_USER}, to: {user.email}")
+    SERVER_LOGGER.debug(f"from: {settings.EMAIL_HOST_USER}, to: {user.email}")
     return send_mail(tittle, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False, )
 
 
@@ -131,16 +135,16 @@ def verify(request, email, activation_key):
     try:
         user = SiteUser.objects.get(email=email)
         if user.activation_key == activation_key and not user.is_activation_key_expired():
-            print(f"user {user} is activated")
+            SERVER_LOGGER.debug(f"user {user} is activated")
             user.is_active = True
             user.save()
             auth.login(request, user)
 
             return render(request, "authapp/verification.html")
 
-        print(f"error activation user: {user}")
+        SERVER_LOGGER.critical(f"error activation user: {user}")
         return render(request, "authapp/verification.html")
     except Exception as e:
-        print(f"error activation user: {e.args}")
+        SERVER_LOGGER.critical(f"error activation user: {e.args}")
 
     return HttpResponseRedirect(reverse("mainapp:index"))
