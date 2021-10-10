@@ -220,15 +220,15 @@ WAGTAIL_SITE_NAME = 'itbegin'
 
 DOMAIN_NAME = "http://localhost:8000"
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = "25"
+EMAIL_HOST = 'smtp.beget.com'
+EMAIL_PORT = "993"
 
-EMAIL_USE_SSL = False
+EMAIL_USE_SSL = True
 
 # EMAIL_HOST_USER = "admin@it-begin.ru"
 # EMAIL_HOST_PASSWORD = 'password'
-EMAIL_HOST_USER = None
-EMAIL_HOST_PASSWORD = None
+EMAIL_HOST_USER = "admin@it-begin.ru"
+EMAIL_HOST_PASSWORD = "ZxngP2z%"
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = "tmp/email-messages"
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_FILE_PATH = "tmp/email-messages"
