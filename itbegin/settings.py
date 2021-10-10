@@ -148,9 +148,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'itbegin',
-            'USER': 'bigfish',
-            'PASSWORD': '22World96',
+            'NAME': '',
+            'USER': '',
+            'PASSWORD': '',
             'HOST': 'localhost'
         }
     }
@@ -236,14 +236,14 @@ WAGTAIL_SITE_NAME = 'itbegin'
 DOMAIN_NAME = "http://localhost:8000"
 
 EMAIL_HOST = 'smtp.beget.com'
-EMAIL_PORT = "993"
+EMAIL_PORT = ""
 
 EMAIL_USE_SSL = True
 
-# EMAIL_HOST_USER = "admin@it-begin.ru"
+# EMAIL_HOST_USER = ""
 # EMAIL_HOST_PASSWORD = 'password'
-EMAIL_HOST_USER = "admin@it-begin.ru"
-EMAIL_HOST_PASSWORD = "ZxngP2z%"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 # EMAIL_FILE_PATH = "tmp/email-messages"
