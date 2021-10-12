@@ -246,5 +246,5 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = None
 EMAIL_HOST_PASSWORD = None
 
-# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-# EMAIL_FILE_PATH = "tmp/email-messages"
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "tmp/email-messages"
