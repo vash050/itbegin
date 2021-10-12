@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
@@ -18,6 +20,10 @@ from forumapp.models import Branch
 from groupapp.models import Group
 from mainapp.forms import CreateTaskForm
 from mainapp.models import Task, CategoryTask
+
+import logs.log_conf
+
+SERVER_LOGGER = logging.getLogger('server')
 
 
 def index(request):
@@ -126,6 +132,7 @@ def password_reset_request(request):
     if request.method == "POST":
         password_reset_form = PasswordResetForm(request.POST)
         if password_reset_form.is_valid():
+            SERVER_LOGGER.info(f"форма адреса для васстоновления пароля валидна")
             data = password_reset_form.cleaned_data['email']
             associated_users = SiteUser.objects.filter(Q(email=data))
             if associated_users.exists():
@@ -141,10 +148,12 @@ def password_reset_request(request):
                         'token': default_token_generator.make_token(user),
                         'protocol': 'http',
                     }
+                    SERVER_LOGGER.info(f'"email": {user.email}, "user": {user}')
                     email = render_to_string(email_template_name, c)
                     try:
                         send_mail(subject, email, 'admin@example.com', [user.email], fail_silently=False)
-                    except BadHeaderError:
+                    except BadHeaderError as e:
+                        SERVER_LOGGER.critical(f"ошибка отправки письма восстановления пароля {e.args}")
                         return HttpResponse('Invalid header found.')
                     return redirect("/password_reset/done/")
     password_reset_form = PasswordResetForm()
