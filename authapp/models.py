@@ -9,7 +9,7 @@ from django.utils.timezone import now
 class SiteUser(AbstractUser):
     avatar = models.ImageField(verbose_name="аватар пользователя", upload_to="user_avatars", blank=True)
     date_born = models.DateField(verbose_name="день рождения", null=True)
-    profession = models.ManyToManyField(verbose_name="профессии", to='Professions', blank=True)
+    profession = models.ManyToManyField(verbose_name="профессия", to='Professions', blank=True)
     about_me = models.CharField(verbose_name="обо мне", max_length=1000, blank=True)
     link_to_portfolio = models.CharField(verbose_name='ссылка на портфолио', max_length=150, blank=True)
     free = models.BooleanField(default=True)

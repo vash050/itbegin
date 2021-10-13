@@ -43,6 +43,8 @@ class CreateApplicationToNeedProfessionForm(ModelForm):
             field.widget.attrs["class"] = "input_type_black registration__form_input"
             if field_name == 'author_application':
                 field.widget = HiddenInput()
+            if field_name == 'description_self':
+                field.label = 'расскажите о себе'
 
 
 class SearchGroupProfForm(ModelForm):

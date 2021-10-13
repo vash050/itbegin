@@ -9,7 +9,7 @@ class Group(models.Model):
     name = models.CharField(max_length=120, verbose_name='название команды')
     author = models.ForeignKey(to=SiteUser, related_name='author_group', on_delete=models.CASCADE)
     description = models.CharField(max_length=200, verbose_name='описание', blank=True)
-    need_profession = models.ManyToManyField(to=Professions, through='DescriptionNeedProfessions')
+    need_profession = models.ManyToManyField(verbose_name='нужные профессии', to=Professions, through='DescriptionNeedProfessions')
     team_members = models.ManyToManyField(to=SiteUser, through='MemberTeam')
     logotype = models.ImageField(upload_to="group_avatars", blank=True)
     got_task = models.ManyToManyField(to=Task, related_name='got_task', null=True)
@@ -32,19 +32,19 @@ class Group(models.Model):
 
 
 class DescriptionNeedProfessions(models.Model):
-    profession = models.ForeignKey(Professions, on_delete=models.CASCADE)
+    profession = models.ForeignKey(Professions, verbose_name='профессия', on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    description = models.TextField(blank=True)
+    description = models.TextField(verbose_name='описание', blank=True)
     status = models.IntegerField(default=0, null=True)
 
 
 class ApplicationToNeedProfession(models.Model):
-    to_need_profession = models.ForeignKey(DescriptionNeedProfessions, on_delete=models.CASCADE)
+    to_need_profession = models.ForeignKey(DescriptionNeedProfessions,verbose_name='профессия', on_delete=models.CASCADE)
     author_application = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
     date_create = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     acceptation = models.IntegerField(default=0)
-    description_self = models.TextField(blank=True)
+    description_self = models.TextField(verbose_name='расскажите о себе', blank=True)
 
 
 class MemberTeam(models.Model):
