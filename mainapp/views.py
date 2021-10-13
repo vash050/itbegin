@@ -159,3 +159,15 @@ def password_reset_request(request):
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="mainapp/password/password_reset.html",
                   context={"password_reset_form": password_reset_form})
+
+
+def send_mail_reg(request):
+    """
+    страница с сообщение об отправлении письма для подтверждения регистрации
+    """
+    title = 'письмо отправлено'
+
+    content = {
+        "title": title,
+    }
+    return render(request, 'mainapp/password/send_mail_reg.html', context=content)

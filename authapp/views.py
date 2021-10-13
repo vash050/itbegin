@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
@@ -62,14 +62,20 @@ def register(request):
 
     if request.method == "POST":
         register_form = SiteUserRegisterForm(request.POST, request.FILES)
-
-        if register_form.is_valid():
-            user = register_form.save()
-            if send_verify_mail(user):
-                SERVER_LOGGER.info(f"сообщение для потверждения регистрации отправлено")
-                return HttpResponseRedirect(reverse("authapp:login"))
-            SERVER_LOGGER.critical(f"ошибка отправки сообщения для потверждения регистрации")
-            return HttpResponseRedirect(reverse('authapp:login'))
+        try:
+            if register_form.is_valid():
+                user = register_form.save()
+                if send_verify_mail(user):
+                    SERVER_LOGGER.info(f"сообщение для потверждения регистрации отправлено")
+                    messages.success(request, 'сообщение для потверждения регистрации отправлено')
+                    return HttpResponseRedirect(reverse("mainapp:send_mail_reg"))
+                SERVER_LOGGER.critical(f"ошибка отправки сообщения для потверждения регистрации")
+                return HttpResponseRedirect(reverse('authapp:login'))
+            SERVER_LOGGER.error(f"форма не валидна {register_form}")
+            messages.error(request, f'ошибка регистрации, неверные данные')
+        except Exception as e:
+            SERVER_LOGGER.error(f"ошибка регистрации {e.args}")
+            messages.error(request, 'ошибка регистрации')
     else:
         register_form = SiteUserRegisterForm()
 

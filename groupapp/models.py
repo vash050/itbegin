@@ -6,9 +6,9 @@ from mainapp.models import Task
 
 
 class Group(models.Model):
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, verbose_name='название команды')
     author = models.ForeignKey(to=SiteUser, related_name='author_group', on_delete=models.CASCADE)
-    description = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=200, verbose_name='описание', blank=True)
     need_profession = models.ManyToManyField(to=Professions, through='DescriptionNeedProfessions')
     team_members = models.ManyToManyField(to=SiteUser, through='MemberTeam')
     logotype = models.ImageField(upload_to="group_avatars", blank=True)

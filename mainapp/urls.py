@@ -14,5 +14,6 @@ urlpatterns = [
     path('create_task/', mainapp.create_task, name='create_task'),
     path('get_task/<int:pk>/', mainapp.get_task, name='get_task'),
     path('about/', mainapp.about, name='about'),
-    path("password_reset/", mainapp.password_reset_request, name="password_reset")
+    path("password_reset/", mainapp.password_reset_request, name="password_reset"),
+    path('send_mail_reg/', mainapp.send_mail_reg, name='send_mail_reg')
 ]

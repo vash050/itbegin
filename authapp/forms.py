@@ -23,6 +23,10 @@ class SiteUserRegisterForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "input_type_black registration__form_input"
+            if field_name == 'password1':
+                field.help_text = "Пароль не должен быть слишком похож на другую вашу личную информацию. Ваш пароль " \
+                                  "должен содержать как минимум 8 символов. Пароль не должен быть часто используемым. " \
+                                  "Пароль не может состоять только из цифр. "
 
     def save(self):
         user = super(SiteUserRegisterForm, self).save()
