@@ -36,7 +36,7 @@ class SiteUser(AbstractUser):
 
 
 class ContactUser(models.Model):
-    user = models.OneToOneField(SiteUser, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(SiteUser, unique=True, null=False, db_index=True,primary_key=True, on_delete=models.CASCADE)
     user_phone = models.CharField(verbose_name="телефон", max_length=20, blank=True)
     user_email = models.EmailField(verbose_name="email", blank=True)
     user_instagram = models.URLField(verbose_name="инстаграмм", blank=True)
