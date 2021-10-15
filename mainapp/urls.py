@@ -1,7 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 
 import authapp
 import mainapp.views as mainapp
+
 
 app_name = 'mainapp'
 
@@ -13,4 +14,6 @@ urlpatterns = [
     path('create_task/', mainapp.create_task, name='create_task'),
     path('get_task/<int:pk>/', mainapp.get_task, name='get_task'),
     path('about/', mainapp.about, name='about'),
+    path("password_reset/", mainapp.password_reset_request, name="password_reset"),
+    path('send_mail_reg/', mainapp.send_mail_reg, name='send_mail_reg')
 ]

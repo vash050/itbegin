@@ -21,11 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('./temp/secretkey.txt') as f:
-    SECRET_KEY = f.read().strip()
+DEBUG = True
+if DEBUG:
+    with open('./temp/secretkey.txt') as f:
+        SECRET_KEY = f.read().strip()
+else:
+    SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.getenv("DJANGO_PRODUCTION", default=None) else True
+# DEBUG = False if os.getenv("DJANGO_PRODUCTION", default=None) else True
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,6 +54,7 @@ INSTALLED_APPS = [
     'chatapp',
     'channels',
     'forumapp',
+    'logs',
 
     'signals.apps.GroupAppConfig',
 
@@ -133,12 +138,23 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': '',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': 'localhost'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -217,3 +233,18 @@ WAGTAIL_SITE_NAME = 'itbegin'
 #     "debug_toolbar.panels.profiling.ProfilingPanel",
 #     "template_profiler_panel.panels.template.TemplateProfilerPanel",
 # ]
+
+DOMAIN_NAME = "http://localhost:8000"
+
+# EMAIL_HOST = 'smtp.beget.com'
+# EMAIL_PORT = "993"
+
+EMAIL_USE_SSL = True
+
+# EMAIL_HOST_USER = "admin@it-begin.ru"
+# EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "tmp/email-messages"

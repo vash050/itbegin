@@ -12,7 +12,6 @@
         <div class="team__descr_prof">
             <h3> {{ object.profession }}</h3>
             <h4>{{ object.description }}</h4>
-            {{ object.pk }}
         </div>
         <a href="{% url 'groupapp:create_application_need_prof' object.pk %}" class="buttons_type_white team__descr__button">
             Подать заявку

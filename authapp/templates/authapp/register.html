@@ -19,9 +19,22 @@
                     <div>
                         <label for="{{ form.id_for_label }}"
                                class="registration__form_input_label"> {{ form.label }} </label>
-                        {{ form }}
+                        <p style="color: #FFFFFF">{{ form }}</p>
+                        {% if form.help_text %}
+                            <small style="color: white">{{ form.help_text|safe }}</small>
+                        {% endif %}
                     </div>
                 {% endfor %}
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li class="{{ message.tags }}">
+                                {{ message|safe }}
+                             <a href="{% url 'authapp:register' %}" class="close" style="color: red">✖</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 
                 <label class="registration__form_checkbox">
                     <input type="checkbox" required name="personalinfo" id="personalinfo">

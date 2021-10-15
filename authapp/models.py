@@ -1,16 +1,23 @@
+from datetime import timedelta
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
+from django.utils.timezone import now
 
 
 class SiteUser(AbstractUser):
     avatar = models.ImageField(verbose_name="аватар пользователя", upload_to="user_avatars", blank=True)
     date_born = models.DateField(verbose_name="день рождения", null=True)
-    profession = models.ManyToManyField(verbose_name="профессии", to='Professions', blank=True)
+    profession = models.ManyToManyField(verbose_name="профессия", to='Professions', blank=True)
     about_me = models.CharField(verbose_name="обо мне", max_length=1000, blank=True)
     link_to_portfolio = models.CharField(verbose_name='ссылка на портфолио', max_length=150, blank=True)
     free = models.BooleanField(default=True)
     date_update_profile = models.DateTimeField(auto_now=True)
+    activation_key = models.CharField(verbose_name="ключ подтверждения", max_length=128, blank=True)
+    activation_key_expires = models.DateTimeField(
+        verbose_name="актуальность ключа", default=(now() + timedelta(hours=48))
+    )
 
     class Meta:
         verbose_name = 'пользователь'
@@ -21,9 +28,15 @@ class SiteUser(AbstractUser):
             return self.avatar
         return default_path
 
+    def is_activation_key_expired(self):
+        if now() <= self.activation_key_expires:
+            return False
+        else:
+            return True
+
 
 class ContactUser(models.Model):
-    user = models.OneToOneField(SiteUser, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(SiteUser, unique=True, null=False, db_index=True,primary_key=True, on_delete=models.CASCADE)
     user_phone = models.CharField(verbose_name="телефон", max_length=20, blank=True)
     user_email = models.EmailField(verbose_name="email", blank=True)
     user_instagram = models.URLField(verbose_name="инстаграмм", blank=True)
