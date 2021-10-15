@@ -1,6 +1,11 @@
 .forum__theme__block__main {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;

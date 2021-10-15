@@ -6,8 +6,13 @@
     background-color: #818181;
     height: 200px;
     width: 250px;
-    justify-content: space-evenly;
-    flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     padding-left: 22px;
     position: absolute;
     margin-top: 42px;

@@ -4,6 +4,7 @@
     font-size: 18px;
     line-height: 50px;
     margin-top: 50px;
-    align-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
     display: block;
 }

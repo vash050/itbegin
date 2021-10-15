@@ -1,8 +1,12 @@
 .account__information {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     color: #FFFFFF;
     font-size: 24px;
     width: 400px;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-bottom: 48px;
 }
