@@ -30,6 +30,7 @@ class DialogsView(View):
     def post(self, request):
         form = MessageForm(data=request.POST)
         print(self.kwargs['dialog_id'])
+        
         chat = Dialog.objects.get(id=self.kwargs['dialog_id'])
         if form.is_valid():
             message = form.save(commit=False)

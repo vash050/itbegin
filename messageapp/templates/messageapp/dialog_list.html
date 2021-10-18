@@ -5,89 +5,58 @@
     {% load tz %}
     {% if chats.count == 0 %}
 
-        <div class="panel panel-body">
-            {% trans "Нет ни одного начатого диалога" %}
-        </div>
+    <div class="panel panel-body">
+        {% trans "Нет ни одного начатого диалога" %}
+    </div>
 
     {% endif %}
     <div id="accountChat">
         <div class="tab">
             {% for chat in chats %}
-                {% if chat.message_set.count != 0 %}
-                    {% with last_message=chat.message_set.last %}
-                        {#                         выводит юзера с которым чат#}
-                        {% get_companion request.user chat as companion %}
-                        <button class="tablinks" data-id="{{ companion.username }}">
-                            <img class="avatar-messages" src="{{ companion.user_profile.avatar_or_default }}">
-                            {{ companion.username }}
-                        </button>
-                    {% endwith %}
-                {% endif %}
+            {% if chat.message_set.count != 0 %}
+            {% with last_message=chat.message_set.last %}
+            {# выводит юзера с которым чат#}
+            {% get_companion request.user chat as companion %}
+            <button class="tablinks" data-id="{{ chat.id }}">
+                <img class="avatar-messages" src="{{ companion.user_profile.avatar_or_default }}">
+                {{ companion.username }}
+            </button>
+            {% endwith %}
+            {% endif %}
 
             {% endfor %}
         </div>
 
         <div id="accountOpenChat">
+
             {% for chat in chats %}
-{#                настроить вывод сообщений в этом цикле#}
+            <div class="tabcontent" id="{{ chat.id }}">
+                {# настроить вывод сообщений в этом цикле#}
                 {{ chat.id }}
+
                 {% if chat.message_set.count != 0 %}
-                    {% for message in  chat.message_set.all %}
-                        {{ message }}
-                    {% endfor %}
-{#настроить отправку этой формы, урл настроен вроде)))))#}
-                    <form id="messageFormJs" data-action="{% url 'messageapp:dialog' chat.id %}" method="post"
-                          enctype="multipart/form-data">
+                {% for message in chat.message_set.all %}
+                {{ message }}
+                {% endfor %}
 
-                        {% csrf_token %}
-                        <span>
-            <img src="/static/img/send_24px.png" alt="" id="registration__send">
-        </span>
-                        <div class="message__form">
+                {#настроить отправку этой формы, урл настроен вроде)))))#}
 
-                            {{ form }}
+                <form id="messageFormJs{{ chat.id }}" data-action="{% url 'messageapp:dialog' chat.id %}" method="post"
+                    enctype="multipart/form-data" name="sendForm{{ chat.id }}">
 
-                        </div>
-                        <!-- <input type="submit" value="submit"> -->
-                    </form>
+                    {% csrf_token %}
+                    <span>
+                        <img src="/static/img/send_24px.png" alt="" id="registration__send{{ chat.id }}">
+                    </span>
+                    <div class="message__form" id="message__form{{ chat.id }}">
 
-                    {#                    {% with last_message=chat.message_set.last %}#}
-                    {#                        {% get_companion request.user chat as companion %}#}
-                    {#                        <div class="tabcontent" id="{{ companion.username }}">#}
-                    {#                            {% if companion != last_message.author %}#}
-                    {#                                <div class="registration__inner__messages">#}
-                    {##}
-                    {#                                <img class="avatar-rounded-sm"#}
-                    {#                                     src="{{ last_message.author.user_profile.avatar_or_default }}">#}
-                    {#                                <div class="account__message attached-reply-body {% if not last_message.is_read %}unreaded{% endif %}"#}
-                    {#                                     data-link="{{ chat.get_absolute_url }}">#}
-                    {#                                    {% for mes in chat.message_set.all %}#}
-                    {##}
-                    {#                                        {{ mes.author }}#}
-                    {#                                        <div class="account__message">#}
-                    {#                                            {{ mes|truncatechars_html:"200"|safe|striptags }}#}
-                    {##}
-                    {#                                        </div>#}
-                    {#                                        <p class="account__message_date">{{ mes.pub_date|utc }}</p>#}
-                    {#                                    {% endfor %}#}
-                    {#                                    <!--{# {{ last_message.message|truncatechars_html:"200"|safe|striptags }}  #}
-                    {#                                </div>#}
-                    {#                                <p class="account__message_date">{{ last_message.pub_date|utc }}</p>#}
-                    {#                            {% else %}#}
-                    {#                                <div class="account__message">#}
-                    {#                                    <!-- {# {{ last_message.message|truncatechars_html:"200"|safe|striptags }} #}
-                    {##}
-                    {#                                </div>#}
-                    {#                            {% endif %}#}
-                    {##}
-                    {#                            </div>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                    {% endwith %}#}
+                        {{ form }}
 
-                {% endif %}
-
-
+                    </div>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+            {% endif %}
             {% endfor %}
 
         </div>
