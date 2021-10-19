@@ -41,7 +41,7 @@
 
                 {#настроить отправку этой формы, урл настроен вроде)))))#}
 
-                <form id="messageFormJs{{ chat.id }}" data-action="{% url 'messageapp:dialog' chat.id %}" method="post"
+                <form id="messageFormJs{{ chat.id }}" data-action="{% url 'messageapp:dialog' dialog_id=chat.id %}" method="post"
                     enctype="multipart/form-data" name="sendForm{{ chat.id }}">
 
                     {% csrf_token %}
@@ -49,11 +49,12 @@
                         <img src="/static/img/send_24px.png" alt="" id="registration__send{{ chat.id }}">
                     </span>
                     <div class="message__form" id="message__form{{ chat.id }}">
+                        {{ chat.id }}
 
                         {{ form }}
 
                     </div>
-                    <input type="submit" value="submit">
+                    <input type="submit" value="кнопочка">
                 </form>
             </div>
             {% endif %}
@@ -66,4 +67,3 @@
 </div>
 
 
-</div>
