@@ -1,5 +1,7 @@
 .account__links {
     width: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     /* justify-content: space-between; */
     gap: 20px;

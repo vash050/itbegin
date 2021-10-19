@@ -1,5 +1,7 @@
 .news__articles {
   margin-right: 24px;
-  flex-grow: 2;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
 
 }

@@ -14,7 +14,8 @@
   
   .buttons_type_lightGray:hover {
     background: #FAFD5A;
-    box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+    -webkit-box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+            box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
     border-radius: 16px;
     color: #212121;
     cursor: pointer;

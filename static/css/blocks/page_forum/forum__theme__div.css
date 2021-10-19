@@ -1,7 +1,11 @@
 .forum__theme__div {
     height: 106px;
     border-bottom: 1px solid #818181;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     
 }

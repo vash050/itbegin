@@ -6,6 +6,7 @@
 }
 
 ::-webkit-calendar-picker-indicator {
-    filter: invert(0.5);
+    -webkit-filter: invert(0.5);
+            filter: invert(0.5);
 }
 
