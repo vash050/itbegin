@@ -11,7 +11,7 @@ class Group(models.Model):
     description = models.CharField(max_length=200, verbose_name='описание', blank=True)
     need_profession = models.ManyToManyField(verbose_name='нужные профессии', to=Professions, through='DescriptionNeedProfessions')
     team_members = models.ManyToManyField(to=SiteUser, through='MemberTeam')
-    logotype = models.ImageField(upload_to="group_avatars", blank=True)
+    logotype = models.ImageField(upload_to="group_avatars", verbose_name='логотип', blank=True)
     got_task = models.ManyToManyField(to=Task, related_name='got_task', null=True)
     done_task = models.ManyToManyField(to=Task, related_name='done_task', blank=True)
     date_create = models.DateTimeField(auto_now_add=True)

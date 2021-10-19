@@ -1,4 +1,6 @@
 .team__forum {
     height: 120px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
 }

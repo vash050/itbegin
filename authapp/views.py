@@ -66,7 +66,7 @@ def register(request):
             if register_form.is_valid():
                 user = register_form.save()
                 if send_verify_mail(user):
-                    SERVER_LOGGER.info(f"сообщение для потверждения регистрации отправлено")
+                    SERVER_LOGGER.info(f"сообщение для потверждения регистрации отправлено {user.activation_key}")
                     messages.success(request, 'сообщение для потверждения регистрации отправлено')
                     return HttpResponseRedirect(reverse("mainapp:send_mail_reg"))
                 SERVER_LOGGER.critical(f"ошибка отправки сообщения для потверждения регистрации")
@@ -140,6 +140,7 @@ def send_verify_mail(user):
 def verify(request, email, activation_key):
     try:
         user = SiteUser.objects.get(email=email)
+        SERVER_LOGGER.debug(f'данные активации {user} ключ: {user.activation_key} ==  {activation_key}')
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             SERVER_LOGGER.debug(f"user {user} is activated")
             user.is_active = True

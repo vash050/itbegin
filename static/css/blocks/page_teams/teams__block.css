@@ -1,4 +1,6 @@
 .teams__block {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 360px;
     gap: 30px;

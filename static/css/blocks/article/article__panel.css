@@ -1,6 +1,8 @@
 .article__panel {
     max-height: 0;
   overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  -o-transition: max-height 0.2s ease-out;
   transition: max-height 0.2s ease-out;
   display: block;
 }
@@ -16,6 +18,8 @@
     border: none;
     text-align: left;
     outline: none;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
     transition: 0.4s;
   }
 

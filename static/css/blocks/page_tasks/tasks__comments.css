@@ -1,4 +1,6 @@
 .tasks__comments {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: 40px;
     margin-top: 40px;

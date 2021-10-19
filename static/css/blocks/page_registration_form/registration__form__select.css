@@ -5,7 +5,8 @@
 .select-selected {
     background-color: #212121;
     border: 1px solid #818181;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     border-radius: 10px;
     position: relative;
   }
@@ -45,7 +46,8 @@
     position: absolute;
     background-color: #212121;
     border: 1px solid #818181;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     border-radius: 10px;
     top: 100%;
     left: 0;

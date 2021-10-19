@@ -1,6 +1,10 @@
 .authorization__block {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 550px;
     margin-top: 100px;
     font-size: 24px;
