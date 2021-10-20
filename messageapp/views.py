@@ -1,77 +1,35 @@
 from django.db.models import Count
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic.base import View
+from rest_framework import generics
 
-from messageapp.forms import MessageForm
-from messageapp.models import Dialog
-
-
-class DialogsView(View):
-    def get(self, request, dialog_id=0):
-        chats = Dialog.objects.filter(members__in=[request.user.id])
-        try:
-            chat = Dialog.objects.get(id=dialog_id)
-            if request.user in chat.members.all():
-                chat.message_set.filter(is_read=False).exclude(author=request.user).update(is_read=True)
-            else:
-                chat = None
-        except Dialog.DoesNotExist:
-            chat = None
-
-        context = {
-            'user_profile': request.user,
-            'chats': chats,
-            'chat': chat,
-            'form': MessageForm()
-        }
-        return render(request, 'messageapp/dialog_list.html', context=context)
-
-    def post(self, request, dialog_id):
-        print(dialog_id)
-        form = MessageForm(data=request.POST)
-        # chat = Dialog.objects.get(id=self.kwargs['dialog_id'])
-        chat = Dialog.objects.get(id=dialog_id)
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.dialog = chat
-            message.author = request.user
-            message.save()
-        # return redirect(reverse('messageapp:dialog', kwargs={'dialog_id': self.kwargs['dialog_id']}))
-        return redirect(reverse('messageapp:dialog', kwargs={'dialog_id': dialog_id}))
+from messageapp.models import Dialog, Message
+from messageapp.serializers import MessageSerializer
 
 
-# class MessagesView(View):
-#     def get(self, request, dialog_id):
-#
-#         try:
-#             chat = Dialog.objects.get(id=dialog_id)
-#             if request.user in chat.members.all():
-#                 chat.message_set.filter(is_read=False).exclude(author=request.user).update(is_read=True)
-#             else:
-#                 chat = None
-#         except Dialog.DoesNotExist:
-#             chat = None
-#
-#         return render(
-#             request,
-#             'messageapp/messages.html',
-#             {
-#                 'user_profile': request.user,
-#                 'chat': chat,
-#                 'form': MessageForm()
-#             }
-#         )
-#
-#     def post(self, request, dialog_id):
-#         form = MessageForm(data=request.POST)
-#         chat = Dialog.objects.get(id=dialog_id)
-#         if form.is_valid():
-#             message = form.save(commit=False)
-#             message.dialog = chat
-#             message.author = request.user
-#             message.save()
-#         return redirect(reverse('messageapp:messages', kwargs={'dialog_id': dialog_id}))
+class DialogsApi(generics.ListAPIView):
+    serializer_class = MessageSerializer
+
+    def get(self, request, *args, **kwargs):
+        self.kwargs['user_id'] = request.user.id
+        return self.list(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = Message.objects.filter(dialog__members__in=[self.kwargs['user_id']])
+        return queryset
+
+
+class MessageCreateApi(generics.ListCreateAPIView):
+    serializer_class = MessageSerializer
+
+    def get(self, request, *args, **kwargs):
+        self.kwargs['user_id'] = request.user.id
+        return self.list(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = Message.objects.filter(dialog__members__in=[self.kwargs['user_id']])
+        return queryset
 
 
 class CreateDialogView(View):
