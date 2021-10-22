@@ -39,3 +39,6 @@ class Message(models.Model):
 
     def __str__(self):
         return self.message
+
+    def get_absolute_url(self):
+        return reverse('messageapp:dialog', kwargs={'dialog': self.dialog})
