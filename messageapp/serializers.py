@@ -17,4 +17,4 @@ class MessageSerializer(ModelSerializer):
 
     class Meta:
         model = Message
-        fields = ['dialog', 'author','user_name', 'message', 'pub_date', 'is_read', 'is_active']
+        fields = ['dialog', 'author', 'user_name', 'user_avatar', 'message', 'pub_date', 'is_read', 'is_active']
