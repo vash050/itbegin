@@ -16,7 +16,7 @@ class DialogsApi(generics.ListAPIView):
         return self.list(request, *args, **kwargs)
 
     def get_queryset(self):
-        queryset = Message.objects.filter(dialog__members__in=[self.kwargs['user_id']])
+        queryset = Message.objects.filter(dialog__members__in=[self.kwargs['user_id']]).reverse()[:10]
         return queryset
 
 
