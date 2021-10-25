@@ -13,7 +13,7 @@ class DialogSerializer(ModelSerializer):
 
 class MessageSerializer(ModelSerializer):
     user_name = serializers.CharField(source="author.username", read_only=True)
-    # user_avatar = serializers.ImageField(source="author.avatar")
+    user_avatar = serializers.ImageField(source="author.avatar", read_only=True)
 
     class Meta:
         model = Message
