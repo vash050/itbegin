@@ -1,6 +1,8 @@
 from django.db.models import Count
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic.base import View
 from rest_framework import generics
 
@@ -23,6 +25,7 @@ class DialogsApi(generics.ListAPIView):
 class MessageCreateApi(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
 
+    @method_decorator(ensure_csrf_cookie)
     def get(self, request, *args, **kwargs):
         self.kwargs['user_id'] = request.user.id
         return self.list(request, *args, **kwargs)

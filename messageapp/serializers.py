@@ -12,9 +12,9 @@ class DialogSerializer(ModelSerializer):
 
 
 class MessageSerializer(ModelSerializer):
-    user_name = serializers.CharField(source="author.username")
-    user_avatar = serializers.ImageField(source="author.avatar")
+    user_name = serializers.CharField(source="author.username", read_only=True)
+    user_avatar = serializers.ImageField(source="author.avatar", read_only=True)
 
     class Meta:
         model = Message
-        fields = ['dialog', 'author','user_name','user_avatar', 'message', 'pub_date', 'is_read', 'is_active']
+        fields = ['dialog', 'author','user_name', 'message', 'pub_date', 'is_read', 'is_active']
