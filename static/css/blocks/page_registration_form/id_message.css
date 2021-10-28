@@ -1,38 +1,42 @@
-#id_message {
+.id_message {
     height: 45px !important;   
-    width: 98%;
+    width: 99.2%;
     border-style: none; 
     border-color: Transparent; 
     outline: none;
     resize: none;
     padding-left: 21px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* border-left: 1px solid #C1C1C1; */
 }
 
-#id_message::-webkit-input-placeholder {
+.id_message::-webkit-input-placeholder {
     
     font-size: 16px;
     line-height: 24px;
 }
 
-#id_message::-moz-placeholder {
+.id_message::-moz-placeholder {
     
     font-size: 16px;
     line-height: 24px;
 }
 
-#id_message:-ms-input-placeholder {
+.id_message:-ms-input-placeholder {
     
     font-size: 16px;
     line-height: 24px;
 }
 
-#id_message::-ms-input-placeholder {
+.id_message::-ms-input-placeholder {
     
     font-size: 16px;
     line-height: 24px;
 }
 
-#id_message::placeholder {
+.id_message::placeholder {
     
     font-size: 16px;
     line-height: 24px;

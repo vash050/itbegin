@@ -1,0 +1,7 @@
+.account__message_li {
+    margin-bottom: 30px;
+}
+
+.account__message_li:last-child {
+    margin-bottom: 0;
+}

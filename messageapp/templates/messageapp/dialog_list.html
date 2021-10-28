@@ -28,19 +28,20 @@
         </div>
 
         <div id="accountOpenChat">
-
+            <p>fjefepjf</p>
             {% for chat in chats %}
-            <div class="tabcontent" id="{{ chat.id }}">
+            
                 {# настроить вывод сообщений в этом цикле#}
                 {{ chat.id }}
 
                 {% if chat.message_set.count != 0 %}
+                <div class="tabcontent" id="{{ chat.id }}">
                 {% for message in chat.message_set.all %}
                 {{ message }}
                 {% endfor %}
 
                 {#настроить отправку этой формы, урл настроен вроде)))))#}
-
+                
                 <form id="messageFormJs{{ chat.id }}" data-action="{% url 'messageapp:dialog' dialog_id=chat.id %}" method="post"
                     enctype="multipart/form-data" name="sendForm{{ chat.id }}">
 
