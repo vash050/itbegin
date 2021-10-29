@@ -1,3 +1,4 @@
+{% load mail_contact_tags %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -56,14 +57,8 @@
             <a href="#" class="footer__link">Пользовательское соглашение</a>
             <a href="#" class="footer__link">Задать вопрос</a>
         </div>
-        <div class="footer__subscribe">
-            <p class="footer__subscribe-title">Подписаться на новости</p>
-            <input name="email" placeholder="E-mail" type="e-mail"
-                   class="input_type_white footer__subscribe-input"/>
-            <button class="buttons_type_darkGray footer__button">
-                Подписаться
-            </button>
-        </div>
+        {% mail_contact_form %}
+
     </div>
 </section>
 </body>

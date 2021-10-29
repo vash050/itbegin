@@ -129,6 +129,9 @@ async function getButtons() {
                         mesAuthor.innerHTML = btnOne[j].user_name;
                         tabcontent.insertBefore(mesBlock, tabcontent.firstChild);
 
+                        // tabcontent.appendChild(messageText);
+
+
                         mesBlock.appendChild(mesAuthor);
                         mesBlock.appendChild(messageText);
                         mesBlock.appendChild(mesDate);
@@ -170,7 +173,7 @@ async function getButtons() {
     };
 
     let inputs = document.getElementsByClassName('id_message');
-    
+
     let newMessageBlock = document.createElement("ul");
 
     let inputImgs = document.getElementsByClassName("account__img_sent");
