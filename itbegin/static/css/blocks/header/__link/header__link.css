@@ -9,3 +9,10 @@
   text-decoration: none;
   
 }
+
+.header__link:hover {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #FAFD5A;
+}

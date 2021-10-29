@@ -19,4 +19,7 @@
     border-radius: 16px;
     color: #212121;
     cursor: pointer;
+    -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
   }
