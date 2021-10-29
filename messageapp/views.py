@@ -37,6 +37,8 @@ class MessageCreateApi(generics.ListCreateAPIView):
 
 class CreateDialogView(View):
     def get(self, request, user_id):
+        if request.user.id == user_id:
+            return redirect(reverse('authapp:user_profile', kwargs={'pk': request.user.id}))
         chats = Dialog.objects.filter(members__in=[request.user.id, user_id]).annotate(
             c=Count('members')).filter(c=2)
         if chats.count() == 0:
