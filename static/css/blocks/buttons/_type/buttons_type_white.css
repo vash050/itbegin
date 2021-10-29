@@ -16,6 +16,9 @@
 .buttons_type_white:hover {
   background: #FAFD5A;
   -webkit-box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
-          box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+  box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
   border-radius: 16px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }

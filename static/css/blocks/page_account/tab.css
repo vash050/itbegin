@@ -42,6 +42,9 @@
   /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #ddd;
+    -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
   }
   
   /* Create an active/current "tab button" class */

@@ -12,4 +12,7 @@
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
     cursor: pointer;
+    -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
