@@ -20,14 +20,38 @@
                     </div>
                 </div>
 
-                <div class="account__link" data-link="{% url 'messageapp:api_dialog' %}" id="accountMyMailBtn">
+                <div class="account__link" data-link="{% url 'messageapp:api_dialog' %}" id="messages">
                     <i class="far fa-envelope"></i>
                     <sup>{{ unread_dialogs_counter }}</sup>
                 </div>
-                <div id="accountMyModal" class="account__modal">
+                <div id="messagesMyModal" class="account__modal">
                     <div class="account__mailContent">
                         <span class="account__close">&times;</span>
-                        <div id="accountInsertMail"></div>
+                        <div id="accountInsertMail">
+                            <div class="panel">
+                                <div class="panel panel-body">
+                                    <!-- "Нет ни одного начатого диалога" -->
+                                </div>
+                                <div id="accountChat">
+
+                                    <input type="hidden" id="mesAuthorName" value="{{ user }}">
+                                    <input type="hidden" id="mesAuthorId" value="{{ user.id }}">
+                                    <div id="tab_column">
+                                            
+                                    </div>
+
+                                    <div id="accountOpenChat">
+
+                                        <div class="tabcontent" id="chat.id">
+                                            
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
