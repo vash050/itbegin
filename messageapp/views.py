@@ -45,4 +45,4 @@ class CreateDialogView(View):
             chat.members.add(user_id)
         else:
             chat = chats.first()
-        return redirect(reverse('messageapp:dialog', kwargs={'dialog_id': chat.id}))
+        return redirect(reverse('messageapp:api_dialog', kwargs={'pk': chat.id}))

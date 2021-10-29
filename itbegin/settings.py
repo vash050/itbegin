@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'channels',
     'forumapp',
     'logs',
+    'mailingapp',
+    # 'snowpenguin.django.recaptcha3',
 
     'signals.apps.GroupAppConfig',
 

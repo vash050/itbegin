@@ -1,0 +1,10 @@
+<form action="{% url 'mailingapp:mailing_contact' %}" method="post" enctype="multipart/form-data" class="footer__subscribe">
+    <p class="footer__subscribe-title">Подписаться на новости</p>
+{#    <input name="email" placeholder="E-mail" type="e-mail"#}
+{#           class="input_type_white footer__subscribe-input"/>#}
+    {% csrf_token %}
+    {{ mail_contact_form }}
+    <button class="buttons_type_darkGray footer__button">
+        Подписаться
+    </button>
+</form>
