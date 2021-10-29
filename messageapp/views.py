@@ -31,7 +31,7 @@ class MessageCreateApi(generics.ListCreateAPIView):
         return self.list(request, *args, **kwargs)
 
     def get_queryset(self):
-        queryset = Message.objects.filter(dialog__members__in=[self.kwargs['user_id']])
+        queryset = Message.objects.filter(dialog__members__in=[self.kwargs['user_id']])[:10]
         return queryset
 
 
@@ -47,4 +47,5 @@ class CreateDialogView(View):
             chat.members.add(user_id)
         else:
             chat = chats.first()
+            print(chat)
         return redirect(reverse('messageapp:api_dialog', kwargs={'pk': chat.id}))
