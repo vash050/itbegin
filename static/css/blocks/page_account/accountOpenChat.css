@@ -1,10 +1,11 @@
 #accountOpenChat {
     background-color: #818181;
-    /* width: 100%; */
+    width: 100%;
     margin-top: 54px;
     height: 600px;
     overflow-y: auto;
     position: relative;
     border-bottom-right-radius: 10px;
+    
 }
 

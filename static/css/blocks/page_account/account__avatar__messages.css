@@ -1,0 +1,12 @@
+.account__avatar__messages {
+    position: absolute;
+    left: 20px;
+    top: 17px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}

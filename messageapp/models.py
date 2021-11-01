@@ -28,7 +28,6 @@ class Dialog(models.Model):
 class Message(models.Model):
     dialog = models.ForeignKey(Dialog, verbose_name='чат', on_delete=models.CASCADE)
     author = models.ForeignKey(SiteUser, verbose_name='отправитель', on_delete=models.CASCADE)
-    # message = RichTextField(verbose_name='сообщения', blank=True)
     message = models.TextField(verbose_name='сообщения', blank=True)
     pub_date = models.DateTimeField(verbose_name='дата сообщения', auto_now_add=True)
     is_read = models.BooleanField(verbose_name='прочитано', default=False)

@@ -1,41 +1,21 @@
 "use strict";
 
 let datamap = new Map([
-    [document.getElementById("accountMyMailBtn"), document.getElementById("accountMyModal")]
+    [document.getElementById("messages"), document.getElementById("messagesMyModal")]
 ]);
 
-let mailBtn = document.getElementById("accountMyMailBtn");
-let link = mailBtn.getAttribute("data-link");
-let insertMail = document.getElementById("accountInsertMail");
+let dialogs = document.getElementById("messages");
+let link = dialogs.getAttribute("data-link");
 
-function gotoBottom(id) {
+let panel = document.getElementsByClassName("panel-body");
+
+let accountChat = document.getElementById("tab_column");
+let blockTwo = document.getElementById("accountOpenChat");
+
+async function gotoBottom(id) {
     var element = document.getElementById(id);
+    console.log("gotobottom");
     element.scrollTop = element.scrollHeight - element.clientHeight;
-}
-
-function getForm(formId) {
-    let jsForm = document.getElementById(formId);
-    let actionForm = jsForm.getAttribute("data-action");
-
-    return [jsForm, actionForm];
-}
-
-function getEventListener(input, form, id) {
-    $(input).keypress(function (e) {
-        if (e.which == 13) {
-            $(form).submit();
-            // $("textarea").val("");
-            //   return false;    //<---- Add this line 
-        }
-
-    });
-
-    $(id).click(function () {
-        $(form).submit();
-        // $("textarea").val("");
-        //   return false;    //<---- Add this line 
-
-    });
 }
 
 datamap.forEach((value, key) => {
@@ -72,143 +52,205 @@ async function getButton(url) {
     return res;
 }
 
-async function getButtons() {
-
-    let btnOne = await getButton(link);
-    insertMail.innerHTML = btnOne;
-
-    let blockTwo = document.getElementById("accountOpenChat");
-
-    // let btnsTwo = document.getElementsByClassName("attached-reply-body");
-    let users = document.getElementsByClassName("tablinks");
-    console.log(users);
-    let tabcontentFirst = document.getElementsByClassName("tabcontent");
-    tabcontentFirst[0].style.display = "block";
-
-    for (const dialog of users) {
-        let dialogId = dialog.getAttribute("data-id");
-        console.log(dialogId + " = dialogId");
-
-        dialog.addEventListener("click", function () {
-            openDialog(event, dialogId);
-        })
-    }
-
-    // let nameForm = "sendForm" + dialogId;
-    let jsForm = document.forms;
-
-    console.log(jsForm);
-    for (let i = 0; i<jsForm.length; i++) {
-        let actionForm = jsForm[i].getAttribute("data-action");
-
-        let id = '#' + jsForm[i].id;
-        getEventListener('#id_message', id, '#registration__send');
-        jsForm[i].onsubmit = async (e) => {
-            e.preventDefault();
-
-            blockTwo.innerHTML = await submitForm(jsForm[i], actionForm);
-            gotoBottom("accountOpenChat");
-            getEventListener('#id_message', id, '#registration__send');
-            // let jsForm = document.getElementById("messageFormJs");
-            // let actionForm = jsForm.getAttribute("data-action");
-
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-    // blockTwo.innerHTML = submitForm(jsForm[0], jsForm[1]);
-
-
-    // for (const message of btnsTwo) {
-    //     let urlTwo = message.getAttribute("data-link");
-    //     let btnTwo = await getButton(urlTwo);
-    //     // console.log(btnTwo);
-    //     let users = document.getElementsByClassName("tablinks");
-    //     console.log(users);
-    //     let tabcontentFirst = document.getElementsByClassName("tabcontent");
-    //     tabcontentFirst[0].style.display = "block";
-
-    //     for (const user of users) {
-    //         let userName = user.getAttribute("data-id");
-    //         user.addEventListener("click", function () {
-    //             openCity(event, userName);
-    //         })
-    //     }
-
-    //     function openCity(evt, cityName) {
-    //         console.log('func work');
-    //         // Declare all variables
-    //         var tabcontent, tablinks;
-
-    //         // Get all elements with class="tabcontent" and hide them
-    //         tabcontent = document.getElementsByClassName("tabcontent");
-    //         for (let i = 0; i < tabcontent.length; i++) {
-    //             tabcontent[i].style.display = "none";
-    //         }
-
-    //         // Get all elements with class="tablinks" and remove the class "active"
-    //         tablinks = document.getElementsByClassName("tablinks");
-    //         for (let i = 0; i < tablinks.length; i++) {
-    //             tablinks[i].className = tablinks[i].className.replace(" active", "");
-    //         }
-
-    //         // Show the current tab, and add an "active" class to the link that opened the tab
-    //         document.getElementById(cityName).style.display = "block";
-    //         evt.currentTarget.className += " active";
-    //     }
-
-
-    //     message.addEventListener("click", function () {
-    //         blockTwo.innerHTML = btnTwo;
-    //         gotoBottom("accountOpenChat");
-
-    //         let jsForm = document.getElementById("messageFormJs");
-    //         let actionForm = jsForm.getAttribute("data-action");
-
-    //         getEventListener('#id_message', 'form#messageFormJs', '#registration__send');
-
-    //         jsForm.onsubmit = async (e) => {
-    //             e.preventDefault();
-
-    //             blockTwo.innerHTML = await submitForm(jsForm, actionForm);
-    //             gotoBottom("accountOpenChat");
-    //             getEventListener('#id_message', 'form#messageFormJs', '#registration__send');
-    //             // let jsForm = document.getElementById("messageFormJs");
-    //             // let actionForm = jsForm.getAttribute("data-action");
-
-    //         }
-
-    //         // blockTwo.innerHTML = submitForm(jsForm[0], jsForm[1]);
-
-    //     });
-
-    // }
-}
-
-async function submitForm(form, action) {
-
-    let response = await fetch(action, {
-        method: 'POST',
-        body: new FormData(form),
-        enctype: "multipart/form-data"
-    })
-    console.log(response);
-    return response.text();
-};
-
-mailBtn.addEventListener("click", async function () {
+dialogs.addEventListener("click", async function () {
 
     getButtons()
 });
+
+async function getButtons() {
+    let token = readCookie('csrftoken');
+    let mesAuthorName = document.getElementById("mesAuthorName").value;
+    let mesAuthorId = document.getElementById("mesAuthorId").value;
+
+    let btnOne = await getButton(link);
+
+    if (!btnOne) {
+        panel[0].innerHTML = 'Нет ни одного начатого диалога';
+    } else {
+        btnOne = JSON.parse(btnOne);
+
+        let dialogCount = [];
+
+        btnOne.filter(function (item) {
+            let i = dialogCount.findIndex(x => (x.dialog == item.dialog));
+            if (i <= -1) {
+
+                dialogCount.push(item.dialog);
+
+            }
+            return null;
+        });
+
+        dialogCount = [...new Set(dialogCount)];
+        console.log(dialogCount);
+        let getUsers = once(function () {
+
+            for (let i = 0; i < dialogCount.length; i++) {
+                let tab = createNewElement("div", "tab", dialogCount[i]);
+                let tablinks = createNewElement("button", "tablinks");
+                let avatar = createNewElement("img", "avatar-messages account__avatar__messages");
+                let tabcontent = createNewElement("div", "tabcontent account__reply_body", dialogCount[i] + 'dialog');
+                let inputBlock = createNewElement("input", "id_message", dialogCount[i] + 'input', "text");
+                inputBlock.placeholder = "Сообщение";
+                let inputImageBlock = document.createElement("span");
+                let inputImage = createNewElement("img", "account__img_sent", dialogCount[i] + "registration__send");
+                inputImage.src = "/static/img/send_24px.png";
+
+                inputImageBlock.appendChild(inputImage);
+
+                if (dialogCount[0]) {
+                    (new Promise((resolve, reject) => {
+                        resolve(tablinks.id = "defaultOpen")
+                    }))
+                        .then(() => {
+                            document.getElementById("defaultOpen").click();
+                        })
+                }
+
+                tablinks.setAttribute('data-id', dialogCount[i]);
+
+                accountChat.insertBefore(tab, accountChat.firstChild);
+
+                tab.appendChild(tablinks);
+
+                blockTwo.appendChild(tabcontent);
+
+                for (let j = 0; j < btnOne.length; j++) {
+                    if (btnOne[j].dialog == dialogCount[i]) {
+                        tablinks.innerHTML = btnOne[j].user_name;
+                        avatar.src = btnOne[j].user_avatar;
+
+                        let mesBlock = createNewElement("div", "account_mes_block");
+                        let messageText = createNewElement("div", "account__message_inline");
+                        let mesDate = createNewElement("p", "account__message_date");
+                        let mesAuthor = createNewElement("p", "account__message_author");
+                        messageText.innerHTML = btnOne[j].message;
+                        mesDate.innerHTML = btnOne[j].pub_date;
+                        mesAuthor.innerHTML = btnOne[j].user_name;
+                        tabcontent.insertBefore(mesBlock, tabcontent.firstChild);
+
+                        // tabcontent.appendChild(messageText);
+
+
+                        mesBlock.appendChild(mesAuthor);
+                        mesBlock.appendChild(messageText);
+                        mesBlock.appendChild(mesDate);
+
+                        tabcontent.appendChild(inputImageBlock);
+
+                        (new Promise((resolve, reject) => {
+                            resolve(
+                                tabcontent.appendChild(inputBlock)
+
+                            )
+                        }))
+                            .then(() => {
+                                gotoBottom('accountOpenChat');
+                            })
+
+                    }
+                }
+                tablinks.appendChild(avatar);
+                once = function () { };
+
+            }
+        });
+        getUsers();
+        let tabcontentFirst = document.getElementsByClassName("tabcontent");
+        tabcontentFirst[0].style.display = "block";
+        let users = document.getElementsByClassName("tablinks");
+
+        for (const dialog of users) {
+            let dialogId = dialog.getAttribute("data-id");
+            dialogId += 'dialog';
+
+            dialog.addEventListener("click", function () {
+                openDialog(event, dialogId);
+                gotoBottom('accountOpenChat');
+            })
+        }
+
+    };
+
+    let inputs = document.getElementsByClassName('id_message');
+
+    let newMessageBlock = document.createElement("ul");
+
+    let inputImgs = document.getElementsByClassName("account__img_sent");
+
+    for (let h = 0; h < inputs.length; h++) {
+
+        let newMessageId = inputs[h].id;
+        newMessageId = newMessageId.slice(0, -5);
+
+        inputs[h].addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+
+                let newMessage = inputs[h].value;
+                // dialod_id, author_id, message, url = /message/api/dialogs/{id}/
+                let urlPost = '/message/api/dialogs/' + newMessageId + '/';
+
+                let data = JSON.stringify({
+                    'dialog': newMessageId,
+                    'author': mesAuthorId,
+                    'user_name': mesAuthorName,
+                    'message': newMessage
+                });
+                postData(urlPost, data, token);
+
+                inputs[h].parentNode.insertBefore(newMessageBlock, inputs[h]);
+                newMesShow(mesAuthorName, newMessage, newMessageBlock);
+                inputs[h].value = '';
+                gotoBottom('accountOpenChat');
+            }
+        });
+
+        inputImgs[h].addEventListener("click", function (e) {
+            let newMessage = inputs[h].value;
+            // dialod_id, author_id, message, url = /message/api/dialogs/{id}/
+            let urlPost = '/message/api/dialogs/' + newMessageId + '/';
+
+            let data = JSON.stringify({
+                'dialog': newMessageId,
+                'author': mesAuthorId,
+                'user_name': mesAuthorName,
+                'message': newMessage
+            });
+            postData(urlPost, data, token);
+
+            inputs[h].parentNode.insertBefore(newMessageBlock, inputs[h]);
+            newMesShow(mesAuthorName, newMessage, newMessageBlock);
+            inputs[h].value = '';
+            gotoBottom('accountOpenChat');
+        });
+    }
+}
+
+function createNewElement(block, cssClass, id = null, type = null) {
+    let element = document.createElement(block);
+    element.className = cssClass;
+    if (id !== null) {
+        element.id = id;
+    }
+    if (type !== null) {
+        element.type = type;
+    }
+    return element;
+}
+
+async function postData(url = '', data = {}, token) {
+
+    const response = await fetch(url, {
+        method: 'POST',
+        // credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': token
+        },
+        body: data
+    });
+    return response;
+}
 
 function openDialog(evt, dialogName) {
     console.log('func work');
@@ -226,11 +268,53 @@ function openDialog(evt, dialogName) {
     for (let i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    // cityName = "chat" + cityName;
-    // console.log(cityName);
-    // Show the current tab, and add an "active" class to the link that opened the tab
+
     let dialogBlock = document.getElementById(dialogName);
     console.log(dialogBlock);
-    dialogBlock.style.display = "block";
+    dialogBlock.style.display = "flex";
     evt.currentTarget.className += " active";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function once(fn, context) {
+
+    var result;
+
+    return function () {
+        if (fn) {
+            result = fn.apply(context || this, arguments);
+            fn = null;
+        }
+
+        return result;
+    };
+}
+
+function newMesShow(author, message, block) {
+    let mes = createNewElement("li", "account__message_li");
+    let mesNewAuthor = createNewElement("p", "account__message_author");
+    let messageNewText = createNewElement("div", "account__message_inline");
+    let mesNewDate = createNewElement("p", "account__message_date");
+    let currentDate = new Date;
+    currentDate = currentDate.getDate() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getFullYear() + " " +
+        currentDate.getHours() + ":" + currentDate.getMinutes();
+
+    mesNewAuthor.innerHTML = author;
+    messageNewText.innerHTML = message;
+    mesNewDate.innerHTML = currentDate;
+
+    mes.appendChild(mesNewAuthor);
+    mes.appendChild(messageNewText);
+    mes.appendChild(mesNewDate);
+    block.appendChild(mes);
 }
