@@ -6,54 +6,88 @@
 
 
 
-    <section class="account root__container">
-        <div class="account__background">
-            <div class="account__header root__content">
-                <p>Профиль</p>
+<section class="account root__container">
+    <div class="account__background">
+        <div class="account__header root__content">
+            <p>Профиль</p>
 
-            </div>
         </div>
+
         <div class="account__profile root__content">
             <div class="account__profile__info">
                 <div class="account__avatar">
                     <img class="account__avatar__img" src="/media/{{ object.avatar|default:object.avatar_or_default }}"
-                         alt="avatar">
+                        alt="avatar">
                 </div>
                 <div class="account__info">
-                    <p class="account__headline">{{ object.first_name }} {{ object.last_name }}</p>
+                    <p class="account__headline"><span id="companion">{{ object.first_name }}</span> {{ object.last_name }}</p>
+                    <input type="hidden" id="companionId" value="{{ object.id }}">
                     <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
                     <p>Статус: свободен</p>
-                    <a href="{% url 'messageapp:create_dialog' object.id %}">Написать письмо</a>
+                    <!-- <p data-link="{% url 'messageapp:api_dialog' object.id %}" id="newDialog">Написать сообщение</p> -->
+                    <!-- <a href="{% url 'messageapp:create_dialog' object.id %}">frgr</a> -->
+                    <!-- <a src="{% url 'messageapp:create_dialog' object.id %}">Написать письмо</a> -->
+                    <p data-link="{% url 'messageapp:create_dialog' object.id %}" id="newDialog">Написать письмо</p>
+                    <div id="messagesMyModal" class="account__modal">
+                        <div class="account__mailContent">
+                            <span class="account__close">&times;</span>
+                            <div id="accountInsertMail">
+                                <div>
+                                    <span class="panel"></span>
+                                    <div id="accountChat">
+                                        <input type="hidden" id="mesAuthorName" value="{{ user }}">
+                                        <input type="hidden" id="mesAuthorId" value="{{ user.id }}">
+                                        <div id="tab_column">
+                                            <div class="tab">
+                                                <button class="tablinks" id="tabCompanion"></button>
+                                            </div>
+                                        </div>
+                                        <div id="accountOpenChat">
+                                            <div id="{{object.id}}dialog" class="tabcontent account__reply_body">
+                                                <div class="account_mes_block"></div>
+
+                                                <span><img src="/static/img/send_24px.png" class="account__img_sent"
+                                                        id="registration_send"></span>
+                                                <input type="text" name="" id="id_message" class="id_message"
+                                                    placeholder="Сообщение">
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">{{ object.about_me }}</a>
+            </div>
+            <div class="account__content root__content">
+                <div class="account__content__div">
+                    <p class="account__headline">Специализации</p>
+                    {% for profession in object.profession.all %}
+                    <p>{{ profession }}</p>
+                    {% endfor %}
+                </div>
+                <div class="account__content__div">
+                    <p class="account__headline">Работы</p>
+                    <p>Landing page &#183; Интернет-магазин</p>
                 </div>
             </div>
-            <a href="#">{{ object.about_me }}</a>
-        </div>
-        <div class="account__content root__content">
-            <div class="account__content__div">
-                <p class="account__headline">Специализации</p>
-                {% for profession in object.profession.all %}
-                    <p>{{ profession }}</p>
-                {% endfor %}
-            </div>
-            <div class="account__content__div">
-                <p class="account__headline">Работы</p>
-                <p>Landing page &#183; Интернет-магазин</p>
-            </div>
-        </div>
-        <div class="root__content">
-            <div class="account__information">
-                <p class="account__headline">Контакты</p>
-                <p class="account__links">
-                    <a href="{{ object.contactuser.user_instagram }}"><img src="/static/img/instagram-logo.png"
-                                                                           alt="instagram"></a>
-                    <a href="{{ object.contactuser.user_vk }}"><img src="/static/img/vkontakte-logo.png"
-                                                                    alt="vkontakte"></a>
-                    <a href="{{ object.contactuser.user_telegram }}"><img src="/static/img/telegram-logo.png"
-                                                                          alt="telrgram"></a>
-                </p>
+            <div class="root__content">
+                <div class="account__information">
+                    <p class="account__headline">Контакты</p>
+                    <p class="account__links">
+                        <a href="{{ object.contactuser.user_instagram }}"><img src="/static/img/instagram-logo.png"
+                                alt="instagram"></a>
+                        <a href="{{ object.contactuser.user_vk }}"><img src="/static/img/vkontakte-logo.png"
+                                alt="vkontakte"></a>
+                        <a href="{{ object.contactuser.user_telegram }}"><img src="/static/img/telegram-logo.png"
+                                alt="telrgram"></a>
+                    </p>
+                </div>
             </div>
         </div>
-
-    </section>
+</section>
 
 {% endblock %}

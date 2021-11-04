@@ -1,13 +1,40 @@
 "use strict";
+let link, popUpEl;
+
+if (document.getElementById("newDialog")) {
+    popUpEl = document.getElementById("newDialog");
+}
+
+if (document.getElementById("messages")) {
+    popUpEl = document.getElementById("messages");
+}
 
 let datamap = new Map([
-    [document.getElementById("messages"), document.getElementById("messagesMyModal")]
+    [popUpEl, document.getElementById("messagesMyModal")]
 ]);
 
 let dialogs = document.getElementById("messages");
-let link = dialogs.getAttribute("data-link");
 
-let panel = document.getElementsByClassName("panel-body");
+if (dialogs) {
+    link = dialogs.getAttribute("data-link");
+
+    dialogs.addEventListener("click", async function () {
+
+        getButtons()
+    });
+};
+
+let newDialog = document.getElementById("newDialog");
+if (newDialog) {
+    link = newDialog.getAttribute("data-link");
+    newDialog.addEventListener("click", async function () {
+        newDialogCreate()
+
+    });
+}
+
+
+let panel = document.getElementsByClassName("panel");
 
 let accountChat = document.getElementById("tab_column");
 let blockTwo = document.getElementById("accountOpenChat");
@@ -43,6 +70,7 @@ function doModal(anchor, popupbox) {
 
 async function getAsyncData(url) {
     const res = await fetch(url);
+    console.log(res);
     let text = await res.text();
     return text;
 }
@@ -52,10 +80,75 @@ async function getButton(url) {
     return res;
 }
 
-dialogs.addEventListener("click", async function () {
+async function newDialogCreate() {
+    let token = readCookie('csrftoken');
+    let mesAuthorName = document.getElementById("mesAuthorName").value;
+    let mesAuthorId = document.getElementById("mesAuthorId").value;
 
-    getButtons()
-});
+    let companion = document.getElementById("companion").textContent;
+    let companionId = document.getElementById("companionId").value;
+
+    console.log(companion);
+
+    await fetch(link);
+
+    let companionBlock = document.getElementById("tabCompanion");
+    companionBlock.innerHTML = companion;
+    companionBlock.addEventListener("click", function () {
+        openDialog(event, '3dialog');
+        gotoBottom('accountOpenChat');
+    })
+    companionBlock.click();
+
+
+    let input = document.getElementById('id_message');
+
+    let newMessageBlock = document.createElement("ul");
+
+    let inputImg = document.getElementsByClassName("registration_send");
+
+    input.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+
+            let newMessage = input.value;
+            // dialod_id, author_id, message, url = /message/api/dialogs/{id}/
+            let urlPost = '/message/api/dialogs/3/';
+
+            let data = JSON.stringify({
+                'dialog': '3',
+                'author': mesAuthorId,
+                'user_name': mesAuthorName,
+                'message': newMessage
+            });
+            postData(urlPost, data, token);
+
+            input.parentNode.insertBefore(newMessageBlock, input);
+            newMesShow(mesAuthorName, newMessage, newMessageBlock);
+            input.value = '';
+            gotoBottom('accountOpenChat');
+        }
+    });
+
+    inputImg.addEventListener("click", function (e) {
+        let newMessage = input.value;
+        // dialod_id, author_id, message, url = /message/api/dialogs/{id}/
+        let urlPost = '/message/api/dialogs/3/';
+
+        let data = JSON.stringify({
+            'dialog': '3',
+            'author': mesAuthorId,
+            'user_name': mesAuthorName,
+            'message': newMessage
+        });
+        postData(urlPost, data, token);
+
+        input.parentNode.insertBefore(newMessageBlock, input);
+        newMesShow(mesAuthorName, newMessage, newMessageBlock);
+        input.value = '';
+        gotoBottom('accountOpenChat');
+    });
+
+};
 
 async function getButtons() {
     let token = readCookie('csrftoken');
@@ -64,7 +157,9 @@ async function getButtons() {
 
     let btnOne = await getButton(link);
 
-    if (!btnOne) {
+    console.log(typeof (btnOne));
+    console.log(btnOne.length + "length")
+    if (btnOne == '[]') {
         panel[0].innerHTML = 'Нет ни одного начатого диалога';
     } else {
         btnOne = JSON.parse(btnOne);
@@ -125,7 +220,7 @@ async function getButtons() {
                         let mesDate = createNewElement("p", "account__message_date");
                         let mesAuthor = createNewElement("p", "account__message_author");
                         messageText.innerHTML = btnOne[j].message;
-                        mesDate.innerHTML = btnOne[j].pub_date;
+                        mesDate.innerHTML = Date(btnOne[j].pub_date);
                         mesAuthor.innerHTML = btnOne[j].user_name;
                         tabcontent.insertBefore(mesBlock, tabcontent.firstChild);
 

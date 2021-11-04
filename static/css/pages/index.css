@@ -57,4 +57,5 @@
 @import url("../blocks/footer/__button/footer__button.css");
 @import url("../blocks/footer/__logo/footer__logo.css");
 @import url("../blocks/footer/__avatar/footer__avatar.css");
-
+@import url("../blocks/buttons/_type/buttons_type_green.css");
+@import url("../blocks/main/__content/main__content__adv.css");

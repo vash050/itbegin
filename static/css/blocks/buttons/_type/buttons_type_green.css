@@ -1,0 +1,24 @@
+.buttons_type_green {
+    background: #74FD92;
+    border-radius: 16px;
+    border: none;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+}
+  
+  .buttons_type_green:hover {
+    background: #FAFD5A;
+    -webkit-box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+    box-shadow: 1px 1px 15px rgba(230, 244, 70, 0.8);
+    border-radius: 16px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }

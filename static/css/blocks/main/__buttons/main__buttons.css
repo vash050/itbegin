@@ -7,5 +7,6 @@
       -ms-flex-direction: row;
           flex-direction: row;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+      justify-content: left;
+gap: 40px;
 }

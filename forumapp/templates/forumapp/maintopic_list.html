@@ -6,16 +6,6 @@
     <div class="forum__header root__content">
         <p>Форум</p>
 
-        <div class="teams__drop">
-            <button class="buttons_type_lightGray footer__button forum__button__create">Создать тему</button>
-            <div class="drop_block"> Разделы<i class="fas fa-caret-down drop_caret"></i>
-                <div class="drop_summary teams__summary">
-
-                    <a href="#"></a>
-
-                </div>
-            </div>
-        </div>
     </div>
     <div class="forum__themes root__content">
         {% for object in object_list %}
@@ -46,6 +36,7 @@
             </div>
 
         </div>
+        
         {% endfor %}
     </div>
     <div class="forum__themes__upload root__content">
