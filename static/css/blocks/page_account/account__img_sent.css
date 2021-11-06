@@ -1,7 +1,7 @@
 .account__img_sent {
     position: absolute;
     bottom: 3px;
-    right: 30px;
+    right: 0;
     cursor: pointer;
     z-index: 10;
     padding: 12px;

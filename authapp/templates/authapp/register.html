@@ -3,48 +3,70 @@
 
 
 {% block conteiner %}
-    <div class="registration__form__background">
-        <section class="registration__form__content root__container">
-            <a href="{% url 'mainapp:index' %}" class="button__registration__form">
-                <img class="button__registration__form__img" src="/static/img/Arrow.png">
-                Назад
-            </a>
-            <h1 class="registration__form__content__h1">
-                Заполни форму, что бы зарегистрироваться
-            </h1>
-            <form action="{% url 'authapp:register' %}" class="registration__form" method="post"
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-                {% for form in forms %}
-                    <div>
-                        <label for="{{ form.id_for_label }}"
-                               class="registration__form_input_label"> {{ form.label }} </label>
-                        <p style="color: #FFFFFF">{{ form }}</p>
-                        {% if form.help_text %}
-                            <small style="color: white">{{ form.help_text|safe }}</small>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li class="{{ message.tags }}">
-                                {{ message|safe }}
-                             <a href="{% url 'authapp:register' %}" class="close" style="color: red">✖</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+<div class="registration__form__background">
+    <section class="registration__form__content root__container">
+        <a href="{% url 'mainapp:index' %}" class="button__registration__form">
+            <img class="button__registration__form__img" src="/static/img/Arrow.png">
+            Назад
+        </a>
+        <h1 class="registration__form__content__h1">
+            Заполни форму, что бы зарегистрироваться
+        </h1>
+        <form action="{% url 'authapp:register' %}" class="registration__form" method="post"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for form in forms %}
+            <div>
+                <label for="{{ form.id_for_label }}" class="registration__form_input_label"> {{ form.label }} </label>
+                <p style="color: #FFFFFF">{{ form }}</p>
+                {% if form.help_text %}
+                <small style="color: white">{{ form.help_text|safe }}</small>
                 {% endif %}
+            </div>
+            {% endfor %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="{% url 'authapp:register' %}" class="close" style="color: red">✖</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <p>Ознакомьтесь с пользовательским соглашением</p>
+            <div class="registration__form_input_label">
+                <p id="modal" class="buttons_type_white account__button">Ознакомиться</p>
+                <div id="myModal" class="account__modal">
+                    <div class="account__mailContent">
+                        <span class="account__close">&times;</span>
+                        <div class="footer__soglashenie">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
+                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
+                            nobis illo voluptate. Accusamus iusto ex vero.
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
+                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
+                            nobis illo voluptate. Accusamus iusto ex vero.
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
+                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
+                            nobis illo voluptate. Accusamus iusto ex vero.
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
+                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
+                            nobis illo voluptate. Accusamus iusto ex vero.
+                        </div>
+                    </div>
+                </div>
+                <button class="buttons_type_white account__button">Прервать регистрацию</button>
+            </div>
+            <label class="registration__form_checkbox">
+                <input type="checkbox" required name="personalinfo" id="personalinfo">
+                <span class="registration__form_checkmark"></span>
+                Согласие на использование персональной информации
+            </label>
+            <input type="submit" value="Зарегистрироваться"
+                class="buttons_type_white button__submit__registration__form" id="submit__application">
+        </form>
+    </section>
 
-                <label class="registration__form_checkbox">
-                    <input type="checkbox" required name="personalinfo" id="personalinfo">
-                    <span class="registration__form_checkmark"></span>
-                    Согласие на использование персональной информации
-                </label>
-                <input type="submit" value="Зарегистрироваться"
-                       class="buttons_type_white button__submit__registration__form" id="submit__application">
-            </form>
-        </section>
-
-    </div>
+</div>
 {% endblock %}

@@ -24,10 +24,7 @@
                     <input type="hidden" id="companionId" value="{{ object.id }}">
                     <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
                     <p>Статус: свободен</p>
-                    <!-- <p data-link="{% url 'messageapp:api_dialog' object.id %}" id="newDialog">Написать сообщение</p> -->
-                    <!-- <a href="{% url 'messageapp:create_dialog' object.id %}">frgr</a> -->
-                    <!-- <a src="{% url 'messageapp:create_dialog' object.id %}">Написать письмо</a> -->
-                    <p data-link="{% url 'messageapp:create_dialog' object.id %}" id="newDialog">Написать письмо</p>
+                    <p data-link="{% url 'messageapp:create_dialog' object.id %}" id="newDialog">Написать сообщение</p>
                     <div id="messagesMyModal" class="account__modal">
                         <div class="account__mailContent">
                             <span class="account__close">&times;</span>
@@ -43,7 +40,7 @@
                                             </div>
                                         </div>
                                         <div id="accountOpenChat">
-                                            <div id="{{object.id}}dialog" class="tabcontent account__reply_body">
+                                            <div id="dialog" class="tabcontent account__reply_body">
                                                 <div class="account_mes_block"></div>
 
                                                 <span><img src="/static/img/send_24px.png" class="account__img_sent"
