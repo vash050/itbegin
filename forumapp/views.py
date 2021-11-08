@@ -6,11 +6,12 @@ from django.views import View
 from django.views.generic import ListView, CreateView
 
 from forumapp.forms import CreateForumMessage
-from forumapp.models import MainTopic, Branch, ForumMessage
+from forumapp.models import MainTopic, Branch, ForumMessage, SubTopic
 
 
 class ForumTopicList(ListView):
     """main chapters of forum"""
+    # model = MainTopic
     model = MainTopic
 
 
@@ -19,9 +20,16 @@ class ForumBranchList(ListView):
     chapters of main chapters of forum
     """
     model = Branch
+    owner = ''
+
+    def get_context_data(self, **kwargs):
+        context = super(ForumBranchList, self).get_context_data(**kwargs)
+        context["owner"] = self.owner
+        return context
 
     def get_queryset(self):
         queryset = self.model.objects.filter(topic_id=self.kwargs['pk'])
+        self.owner = queryset.first().topic.name
         return queryset
 
 
