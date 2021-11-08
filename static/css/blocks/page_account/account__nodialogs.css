@@ -1,0 +1,9 @@
+.account__nodialogs {
+    height: 100%;
+    line-height: 73px;
+    padding-left: 20px;
+}
+
+#newDialog {
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 .main__subtitle {
-  max-width: 730px;
+  max-width: 750px;
   
   /* Header2 */
 
@@ -10,10 +10,10 @@
   line-height: 64px;
   /* or 160% */
 
-  text-align: center;
+  text-align: left;
 
   /* White */
 
   color: #FFFFFF;
-    margin: 32px auto 90px;
+    margin: 32px 0 48px;
 }
