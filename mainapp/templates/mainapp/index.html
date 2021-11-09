@@ -7,17 +7,22 @@
 <section class="main root__container">
     <div class="main__background">
         <div class="main__content root__content">
-            <h1 class="main__title">Получи опыт в своей новой IT профессии</h1>
-            <h2 class="main__subtitle">
-                Находи проекты и создавай команды для реализации своих идей!
-            </h2>
-            <div class="main__buttons">
-                <a href="{% url 'mainapp:tasks' %}" class="buttons_type_white main__button">
-                    Найти проект
-                </a>
-                <a href="{% url 'groupapp:create_group' %}" class="buttons_type_white main__button">
-                    Создать команду
-                </a>
+            <div>
+                <h1 class="main__title">Получи опыт в своей новой IT профессии</h1>
+                <h2 class="main__subtitle">
+                    Находи проекты и создавай команды для реализации своих идей!
+                </h2>
+                <div class="main__buttons">
+                    <a href="{% url 'mainapp:tasks' %}" class="buttons_type_white main__button">
+                        Найти проект
+                    </a>
+                    <a href="{% url 'groupapp:create_group' %}" class="buttons_type_white main__button">
+                        Создать команду
+                    </a>
+                </div>
+            </div>
+            <div class="main__content__adv">
+                Реклама
             </div>
         </div>
     </div>
@@ -51,9 +56,9 @@
 
             <div class="news__footer">
                 <!-- <button > -->
-                    <a class="buttons_type_darkGray news__load" href="{% url 'articles:articles' %}">
-                        Перейти на страницу
-                    </a>
+                <a class="buttons_type_darkGray news__load" href="{% url 'articles:articles' %}">
+                    Перейти на страницу
+                </a>
                 <!-- </button> -->
             </div>
         </div>

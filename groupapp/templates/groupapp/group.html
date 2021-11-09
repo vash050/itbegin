@@ -34,7 +34,7 @@
                 <div class="team__profile__info">
                     <div class="team__logo__block">
 
-                        <img class="team__logo" src="/media/{{ this_group.logotype|default:this_group.avatar_or_default }}" alt="">
+                        <img class="team__logo_small" src="/media/{{ this_group.logotype|default:this_group.avatar_or_default }}" alt="">
                         <p>{{ this_group.name }}</p>
                     </div>
                     <p>{{ this_group.description }}</p>
@@ -47,7 +47,7 @@
                             {% for object in members %}
                                 <div class="team__person">
                                     <a href="{% url 'authapp:user_profile' object.pk %}">
-                                        <img class="account__avatar__img" src="/media/{{ object.avatar|default:'../../../static/img/avatar.png' }}" alt="avatar">
+                                        <img class="team_user__avatar__img" src="/media/{{ object.avatar|default:'../../../static/img/avatar.png' }}" alt="avatar">
                                     </a>
                                     <p>{{ object.first_name }}</p>
                                     <p>{{ object.last_name }}</p>
