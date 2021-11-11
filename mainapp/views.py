@@ -8,10 +8,10 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.template.loader import render_to_string
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views.generic.list import MultipleObjectMixin
 
 from articles.models import Article
@@ -97,6 +97,10 @@ class TaskUpdateView(UpdateView):
     model = Task
     form_class = CreateTaskForm
 
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    success_url = reverse_lazy('mainapp:tasks')
 
 
 @login_required

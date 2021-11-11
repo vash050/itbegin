@@ -15,7 +15,7 @@
                 <div class="drop_block"> <i class="fas fa-cog"></i></i><i class="fas fa-caret-down drop_caret"></i>
                     <div class="drop_summary teams__summary">
                         <a href="{% url 'mainapp:update_task' object.pk %}">Редактировать проект</a>
-                        <a href="#">Удалить проект</a>
+                        <a href="{% url 'mainapp:delete_task' object.pk %}">Удалить проект</a>
                     </div>
                 </div>
             </div>
