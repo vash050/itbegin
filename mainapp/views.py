@@ -11,7 +11,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.list import MultipleObjectMixin
 
 from articles.models import Article
@@ -91,6 +91,12 @@ class CategoryTaskListView(ListView, CategoryTaskMixin):
 
 class TaskView(DetailView):
     model = Task
+
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    form_class = CreateTaskForm
+
 
 
 @login_required

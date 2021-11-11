@@ -12,6 +12,7 @@ urlpatterns = [
     path('tasks_category/', mainapp.CategoryTaskListView.as_view(), name='tasks_category'),
     path('task/<int:pk>/', mainapp.TaskView.as_view(), name='task'),
     path('create_task/', mainapp.create_task, name='create_task'),
+    path('update_task/<int:pk>/', mainapp.TaskUpdateView.as_view(), name='update_task'),
     path('get_task/<int:pk>/', mainapp.get_task, name='get_task'),
     path('about/', mainapp.about, name='about'),
     path("password_reset/", mainapp.password_reset_request, name="password_reset"),

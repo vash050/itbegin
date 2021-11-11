@@ -10,15 +10,16 @@
             </div> -->
         <div class="tasks__header root__content">
             <p>Проект</p>
+            {% if object.author == user %}
             <div class="teams__drop">
                 <div class="drop_block"> <i class="fas fa-cog"></i></i><i class="fas fa-caret-down drop_caret"></i>
                     <div class="drop_summary teams__summary">
-                        <a href="#">Редактировать проект</a>
-                        <a href="#">Сменить лидера</a>
+                        <a href="{% url 'mainapp:update_task' object.pk %}">Редактировать проект</a>
                         <a href="#">Удалить проект</a>
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
         <div class="task__profile root__content">
             <div class="account__profile__info">
