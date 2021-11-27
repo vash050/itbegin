@@ -181,3 +181,14 @@ def send_mail_reg(request):
         "title": title,
     }
     return render(request, 'mainapp/password/send_mail_reg.html', context=content)
+
+
+def privacy(request):
+    """
+    privacy page
+    """
+    title = 'privacy'
+    content = {
+        "title": title,
+    }
+    return render(request, 'mainapp/includes/privacy.html', context=content)
