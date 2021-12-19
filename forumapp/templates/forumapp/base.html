@@ -57,14 +57,11 @@
 {% endblock %}
 <section class="footer root__container">
     <div class="footer__content root__content">
-        <a href={% url 'mainapp:index' %}>
-            <img class="footer__logo" src="{% static '/img/logo-black.png' %}" alt="Лого"/>
-        </a>
+        
         <div class="footer__about">
             <a href="#" class="footer__link">О проекте</a>
             <a href="#" class="footer__link">Контакты</a>
-        </div>
-        <div class="footer__questions">
+            <a href="#" class="footer__link">Задать вопрос</a>
             <p class="footer__link" id="footerSoglashenie">Пользовательское соглашение</p>
                 <div id="footerMyModal" class="account__modal">
                     <div class="account__mailContent">
@@ -85,9 +82,13 @@
                         </div>
                     </div>
                 </div>
-            <a href="#" class="footer__link">Задать вопрос</a>
+            
         </div>
-
+       
+        <a href={% url 'mainapp:index' %}>
+            <img class="footer__logo" src="{% static '/img/logo-black.png' %}" alt="Лого"/>
+        </a>
+        
         {% mail_contact_form %}
 
     </div>
