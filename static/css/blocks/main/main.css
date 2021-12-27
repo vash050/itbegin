@@ -1,8 +1,7 @@
 .main {
   background-image: url("../../../img/background.jpg");
-  /* min-height: calc(100vh - 110px); */
   min-height: 714px;
   background-repeat: no-repeat;
   background-size: cover;
-
+  background-position-y: center;
 }

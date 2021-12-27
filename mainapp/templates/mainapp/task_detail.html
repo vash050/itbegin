@@ -5,9 +5,7 @@
 {% block conteiner %}
 <section class="task root__container">
     <div class="task__background">
-        <!-- <div class="task__header root__content">
-                <p>Задача</p>
-            </div> -->
+        
         <div class="tasks__header root__content">
             <p>Проект</p>
             <div class="teams__drop">
@@ -39,12 +37,12 @@
             <p class="task__description__pbig">{{ object.full_description }}</p>
             <p class="task__description__pbig">{{ object.tz }}</p>
             {% for prof in object.professions.all %}
-            <p class="task__description__p">{{ prof }}</p>
+            <p class="task__description__pbig">{{ prof }}</p>
             {% endfor %}
             
 
-            <p class="task__description__p">Срок выполнения:</p>
-            <p class="task__description__p">Дата публикации:</p>
+            <p class="task__description__pbig">Срок выполнения:</p>
+            <p class="task__description__pbig">Дата публикации:</p>
             <div class="task__buttons">
                 <a class="account__button buttons_type_white" href="{% url 'mainapp:get_task' object.pk %}">
                     Взять проект

@@ -1,0 +1,4 @@
+.forum__avatar__div {
+    display: flex;
+    gap: 16px;
+}

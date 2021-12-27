@@ -16,3 +16,11 @@
 @import url("../blocks/page_forum/forum__theme__params__div.css");
 @import url("../blocks/page_forum/forum__avatar.css");
 @import url("../blocks/page_forum/forum__theme__topic.css");
+@import url("../blocks/page_forum/forum__message__block.css");
+@import url("../blocks/page_forum/forum__avatar__div.css");
+@import url("../blocks/page_forum/forum__answers.css");
+@import url("../blocks/page_forum/forum__p.css");
+@import url("../blocks/page_forum/forum__form__block.css");
+@import url("../blocks/page_forum/forum__button__submit.css");
+@import url("../blocks/page_forum/forum__form.css");
+@import url("../blocks/page_forum/forum__form__div.css");

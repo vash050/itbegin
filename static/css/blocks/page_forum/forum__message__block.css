@@ -1,0 +1,7 @@
+.forum__message__block {
+    width: 100%;
+    padding: 24px 0;
+    border-bottom: 1px solid #818181;
+    display: grid;
+    grid-template-columns: auto 150px 100px;
+}

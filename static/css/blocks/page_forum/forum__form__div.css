@@ -1,0 +1,12 @@
+.forum__form__div {
+    width: 80%;
+}
+
+.forum__form__div label {
+    display: none;
+}
+
+.forum__form__div textarea {
+    width: 100%;
+}
+

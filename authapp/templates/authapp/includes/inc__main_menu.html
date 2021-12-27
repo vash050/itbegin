@@ -38,7 +38,7 @@
     {% if user.is_authenticated %}
     <li style="color: #FFFFFF">
         <a href="{% url 'authapp:profile' %}">
-            <img class="footer__avatar" src="{% static '/img/avatar.png' %}" alt="Avatar" />
+            <img class="footer__avatar" src=" /media/{{ user.avatar|default:user.avatar_or_default }}" alt="Avatar" />
         </a>
     </li>
 
