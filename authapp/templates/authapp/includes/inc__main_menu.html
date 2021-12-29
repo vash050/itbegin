@@ -22,14 +22,14 @@
             class="header__link {% if request.resolver_match.url_name == '' %}header__link_activ{% endif %}">
             О нас
         </a>
-        <a href="{% url 'forunapp:forum' %}"
-            class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">
-            Форум
-        </a>
-        <a href="{% url 'articles:articles' %}"
-            class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">
-            Статьи
-        </a>
+{#        <a href="{% url 'forunapp:forum' %}"#}
+{#            class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">#}
+{#            Форум#}
+{#        </a>#}
+{#        <a href="{% url 'articles:articles' %}"#}
+{#            class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">#}
+{#            Статьи#}
+{#        </a>#}
     </nav>
     <a href="#" class="buttons_type_green header__button">
         Донат
