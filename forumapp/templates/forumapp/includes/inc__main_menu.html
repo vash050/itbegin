@@ -21,23 +21,23 @@
         <a href="{% url 'mainapp:about' %}" class="header__link {% if request.resolver_match.url_name == '' %}header__link_activ{% endif %}">
             О нас
         </a>
-        <a href="{% url 'forunapp:forum' %}"
-            class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">
-            Форум
-        </a>
-        <a href="{% url 'articles:articles' %}"
-            class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">
-            Статьи
-        </a>
+{#        <a href="{% url 'forunapp:forum' %}"#}
+{#            class="header__link {% if request.resolver_match.url_name == 'forum' %}header__link_activ{% endif %}">#}
+{#            Форум#}
+{#        </a>#}
+{#        <a href="{% url 'articles:articles' %}"#}
+{#            class="header__link {% if request.resolver_match.url_name == 'articles' %}header__link_activ{% endif %}">#}
+{#            Статьи#}
+{#        </a>#}
     </nav>
-    <a href="#" class="buttons_type_green header__button">
-        Донат
-    </a>
+{#    <a href="#" class="buttons_type_green header__button">#}
+{#        Донат#}
+{#    </a>#}
 
     {% if user.is_authenticated %}
     <li style="color: #FFFFFF">
-        <a href="{% url 'authapp:profile' %}">
-            <img class="footer__avatar" src="{% static '/img/avatar.png' %}" alt="Avatar" />
+      <a href="{% url 'authapp:profile' %}">
+            <img class="footer__avatar" src="/media/{{ request.user.avatar|default:'../../../static/img/avatar.png' }}" alt="Avatar" />
         </a>
     </li>
 
