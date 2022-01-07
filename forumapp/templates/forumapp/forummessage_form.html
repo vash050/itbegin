@@ -1,18 +1,14 @@
-{% extends 'forumapp/base.html' %}
-{% load static %}
-
-{% block conteiner %}
-    <div>
-        {% for object in object_list %}
-            <p>----------------------------------------------------------------------------</p>
-            <p>{{ object.name }}</p>
-            <p> {{ object.description }}</p>
-            {% for subtopic in object.subtopic_set.all %}
-                <a href="{% url 'forunapp:branch' %}"><p>{{ subtopic.name }}</p></a>
-            {% endfor %}
-            <p>----------------------------------------------------------------------------</p>
-        {% endfor %}
-    </div>
-
+{% extends 'forumapp/base.html' %} {% load static %} {% block conteiner %}
+<div>
+  {% for object in object_list %}
+  <div class="forum__message__block">
+    <p>{{ object.name }}</p>
+    <p>{{ object.description }}</p>
+    {% for subtopic in object.subtopic_set.all %}
+    <a href="{% url 'forunapp:branch' %}"><p>{{ subtopic.name }}</p></a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock %}

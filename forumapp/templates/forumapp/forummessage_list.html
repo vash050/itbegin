@@ -1,38 +1,69 @@
-{% extends 'forumapp/base.html' %}
-{% load static %}
-
-{% block conteiner %}
+{% extends 'forumapp/base.html' %} {% load static %} {% block conteiner %}
 <div class="forum__background root__container">
-    <div class="root__content">
-        {% for object in object_list %}
-            <p>----------------------------------------------------------------------------</p>
-            <p>{{ object.body }}</p>
-            <p> {{ object.author_branch_forum }}</p>
-            <p> {{ object.date_create }}</p>
-            <p>----------------------------------------------------------------------------</p>
-        {% endfor %}
+  <div class="forum__header root__content">
+    <p>Название темы</p>
+    <p>Раздел</p>
+  </div>
+  <div class="root__content">
+    {% for object in object_list %}
+    <div class="forum__message__block">
+        <div class="forum__avatar__div">
+            <!-- Здесь выводит не аватар автора, а аватар юзера -->
+            <img class="forum__avatar" src=" /media/{{ object.avatar|default:user.avatar_or_default }}" alt="Avatar" />
+            <p>{{ object.author_branch_forum }}</p>
+        </div>
+      <div>
+          <p class="forum__p">Создано</p>
+        <p>{{ object.date_create }}</p>
+      </div>
+      <div class="forum__answers">
+        <p class="forum__p">Ответов</p>
+        <p>10</p>
+      </div>
+      
+      <p>{{ object.body }}</p>
     </div>
-    <div class="registration__form__background root__content">
-        <section class="registration__form__content root__container">
-
-            <a href="{% url 'forunapp:forum_message' topic_pk %}" class="button__registration__form">
-                <img class="button__registration__form__img" src="/static/img/Arrow.png">
-                Назад
+    {% endfor %}
+  </div>
+  <div class="forum__form__block root__content">
+    
+      
+      <form
+        class="forum__form"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="forum__form__div">{{ form }}</div>
+        <input
+          type="submit"
+          value="Ответить"
+          class="forum__button__submit"
+          id="submit__application"
+        />
+      </form>
+    
+  </div>
+  <div class="teams__pages__block root__content">
+    
+        <div class="teams__pages">
+            <a href="#">
+                
+                <
+                
             </a>
-            <h1 class="registration__form__content__h1">
-                Заполни форму, что бы создать команду
-            </h1>
-            <form class="registration__form" method="post"
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-                <div style="background-color: #FFFFFF">
-                    {{ form }}
+        </div>
 
-                </div>
-                <input type="submit" value="Создать"
-                       class="buttons_type_white button__submit__registration__form" id="submit__application">
-            </form>
-        </section>
-    </div>
+    <div class="page__active teams__pages">1</div>
+    
+        <div class="teams__pages">
+            <a href="#">
+                
+                >
+            </a>
+        </div>
+
+
+</div>
 </div>
 {% endblock %}
