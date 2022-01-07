@@ -17,7 +17,7 @@ class DialogSerializer(ModelSerializer):
 class UserSerializer(ModelSerializer):
     class Meta:
         model = SiteUser
-        fields = ['first_name', 'last_name', 'id', 'username']  # оставить только username
+        fields = ['first_name', 'last_name', 'id', 'username', 'avatar']  # оставить только username
 
 
 class MessageSerializer(ModelSerializer):

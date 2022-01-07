@@ -65,26 +65,16 @@
             <a href="#" class="footer__link">Контакты</a>
         </div>
         <div class="footer__questions">
-            <p class="footer__link" id="newDialog">Пользовательское соглашение</p>
-                <div id="messagesMyModal" class="account__modal">
-                    <div class="account__mailContent">
-                        <span class="account__close">&times;</span>
-                        <div class="footer__soglashenie">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                        </div>
+            <p class="footer__link" id="footerSoglashenie">Пользовательское соглашение</p>
+            <div id="footerMyModal" class="account__modal">
+                <div class="account__mailContent">
+                    <span class="account__close">&times;</span>
+                    <div class="footer__soglashenie">
+                        {% include 'mainapp/includes/privacy.html' %}
+
                     </div>
                 </div>
+            </div>
             <a href="#" class="footer__link">Задать вопрос</a>
         </div>
 
@@ -93,6 +83,5 @@
     </div>
 </section>
 </body>
-
 
 </html>

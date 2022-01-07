@@ -1,0 +1,39 @@
+{% extends 'mainapp/base.html' %}
+
+{% block conteiner %}
+    <div class="registration__form__background">
+        <section class="registration__form__content registration__form__background root__container">
+            <a href="{% url 'mainapp:tasks' %}" class="button__registration__form">
+                <img class="button__registration__form__img" src="/static/img/Arrow.png">
+                Назад
+            </a>
+            <h1 class="registration__form__content__h1">
+                Заполни форму, что бы редактировать проект
+            </h1>
+            <form class="registration__form" action="{% url 'mainapp:update_task' object.pk %}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="registration__form__block">
+                        <label for="{{ field.id_for_label }}"
+                               class="registration__form_input_label"> {{ field.label }} </label>
+                        {% if field.label == 'Professions' %}
+                        <div class="registration__form__check">
+                            {% for prof in field %}
+                                {{ prof }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+
+                <input type="submit" value="Сохранить" class="buttons_type_white button__submit__registration__form"
+                       id="submit__application">
+            </form>
+        </section>
+
+    </div>
+{% endblock %}

@@ -1,25 +1,29 @@
 "use strict";
-let link, popUpEl;
-
-if (document.getElementById("newDialog")) {
-    popUpEl = document.getElementById("newDialog");
+let link, popUpEl, popUpElBlock, datamap;
+if (document.getElementById("footerSoglashenie")) {
+    datamap = new Map([
+        [document.getElementById("footerSoglashenie"), document.getElementById("footerMyModal")]
+    ]);
 }
 
-if (document.getElementById("messages")) {
-    popUpEl = document.getElementById("messages");
+if (document.getElementById("newDialog") && document.getElementById("footerSoglashenie")) {
+    datamap = new Map([
+        [document.getElementById("newDialog"), document.getElementById("messagesMyModal")],
+        [document.getElementById("footerSoglashenie"), document.getElementById("footerMyModal")]
+    ]);
 }
 
-let datamap = new Map([
-    [popUpEl, document.getElementById("messagesMyModal")],
-    [document.getElementById("modal"), document.getElementById("myModal")]
-    // [document.getElementById("modalButton"), document.getElementById("messagesMyModal")],
-]);
+if (document.getElementById("messages") && document.getElementById("footerSoglashenie")) {
+    datamap = new Map([
+        [document.getElementById("messages"), document.getElementById("messagesMyModal")],
+        [document.getElementById("footerSoglashenie"), document.getElementById("footerMyModal")]
+    ]);
+}
 
 let dialogs = document.getElementById("messages");
 
 if (dialogs) {
     link = dialogs.getAttribute("data-link");
-
     dialogs.addEventListener("click", async function () {
         getButtons()
     });
@@ -118,7 +122,7 @@ async function newDialogCreate() {
     input.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             let newMessage = input.value;
-            
+
             let data = JSON.stringify({
                 'dialog': dialogId,
                 'author': mesAuthorId,
@@ -136,7 +140,7 @@ async function newDialogCreate() {
 
     inputImg.addEventListener("click", function (e) {
         let newMessage = input.value;
-        
+
         let data = JSON.stringify({
             'dialog': dialogId,
             'author': mesAuthorId,
@@ -180,7 +184,6 @@ async function getButtons() {
         dialogCount = [...new Set(dialogCount)];
 
         let getUsers = once(function () {
-
             for (let i = 0; i < dialogCount.length; i++) {
                 let tab = createNewElement("div", "tab", dialogCount[i]);
                 let tablinks = createNewElement("button", "tablinks");
@@ -212,9 +215,14 @@ async function getButtons() {
                 blockTwo.appendChild(tabcontent);
 
                 for (let j = 0; j < btnOne.length; j++) {
+                   console.log(btnOne);
                     if (btnOne[j].dialog == dialogCount[i]) {
-                        tablinks.innerHTML = btnOne[j].user_name;
-                        avatar.src = btnOne[j].user_avatar;
+                        let arr1 = btnOne[0].all_members;
+                        let arr2 = [{id: mesAuthorId}];
+                        let opponent = arr1.filter(e=>arr2.findIndex(i=>i.id == e.id) === -1);
+                        console.log(opponent);
+                        tablinks.innerHTML = opponent[0].first_name + ' ' + opponent[0].last_name;
+                        avatar.src = opponent[0].avatar;
                         messagePrint(btnOne[j], tabcontent);
                         tabcontent.appendChild(inputImageBlock);
 

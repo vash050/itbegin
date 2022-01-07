@@ -6,6 +6,8 @@
     outline: 0;
     width: 454px;
     cursor: pointer;
+    height: 81px;
+    overflow-y: auto;
   }
   .input_type_checkbox li {
     width: 454px;
