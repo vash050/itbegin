@@ -43,7 +43,7 @@ for (let item of addButton) {
                 }
                 let btsId = "bts" + id.substring(0, id.length - 1);
                 let buttons = document.getElementById(btsId);
-                console.log(buttons);
+       
                 buttons.innerHTML = 'Заявка принята';
             })
 
@@ -66,14 +66,14 @@ for (let item of delButton) {
                     data = JSON.stringify(data);
                     putData(urlApplications + id, data)
                         .then(data => {
-                            console.log(data);
+                          
                         })
                 }
                 let btsId = "bts" + id.substring(0, id.length - 1);
                 let blcId = "blc" + id.substring(0, id.length - 1);
                 let buttons = document.getElementById(btsId);
                 let blockAppl = document.getElementById(blcId);
-                console.log(buttons);
+         
                 buttons.innerHTML = 'Заявка отклонена';
                 blockAppl.setAttribute('class', 'team__application__block_reject');
             })

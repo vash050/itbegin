@@ -1,18 +1,16 @@
 "use strict";
+if (document.getElementById("accordion")) {
+  let acc = document.getElementById;
 
-let acc = document.getElementById("accordion");
-
-acc.addEventListener("click", function () {
-    console.log('clicked');
+  acc.addEventListener("click", function () {
     this.classList.toggle("active");
     let panel = this.nextElementSibling;
     if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-        
+      panel.style.maxHeight = null;
     } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        
+      panel.style.maxHeight = panel.scrollHeight + "px";
     }
-});
+  });
 
-acc.click();
+  acc.click();
+}
