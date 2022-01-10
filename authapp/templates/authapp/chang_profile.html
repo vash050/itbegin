@@ -15,12 +15,16 @@
             enctype="multipart/form-data">
             {% csrf_token %}
             {% for form in forms %}
-            {% if form.label == 'Профессии' %}
+
+            {% if form.label == 'Профессия' %}
             <div class="registration__form__check">
                 {% for prof in form %}
-                {{ prof }}
+{#                    с эти циклом нужно работать#}
+               {{ prof }}
+                    <span>hh</span>
                 {% endfor %}
             </div>
+
             {% else %}
             {% if form.label != 'Пароль' %}
             <div>

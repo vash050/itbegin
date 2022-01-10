@@ -57,6 +57,7 @@ class SiteUserUpdateForm(UserChangeForm):
                 field.widget.attrs["class"] = "input_type_checkbox"
 
 
+
 class SiteUserUpdateContact(UserChangeForm):
     class Meta:
         model = ContactUser
