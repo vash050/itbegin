@@ -1,17 +1,18 @@
 .tasks {
-    background-image: url("../../../img/background_tasks.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("../../../img/background_tasks.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    display: -webkit-box;
+  display: -webkit-box;
 
-    display: -ms-flexbox;
+  display: -ms-flexbox;
 
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    width: 100%;
-    min-height: 630px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  min-height: 630px;
+  background-position-y: center;
 }

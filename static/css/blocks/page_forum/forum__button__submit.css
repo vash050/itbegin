@@ -1,0 +1,10 @@
+.forum__button__submit {
+  width: 170px;
+  height: 40px;
+  background: #818181;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+}

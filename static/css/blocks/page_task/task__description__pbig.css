@@ -1,3 +1,7 @@
 .task__description__pbig {
-    min-height: 60px;
+  min-height: 60px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 10px;
 }

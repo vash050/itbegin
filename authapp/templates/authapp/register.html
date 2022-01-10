@@ -36,27 +36,8 @@
             {% endif %}
             <p>Ознакомьтесь с пользовательским соглашением</p>
             <div class="registration__form_input_label">
-                <p id="modal" class="buttons_type_white account__button">Ознакомиться</p>
-                <div id="myModal" class="account__modal">
-                    <div class="account__mailContent">
-                        <span class="account__close">&times;</span>
-                        <div class="footer__soglashenie">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem dolor magnam temporibus
-                            architecto deleniti? Tempore culpa voluptatem impedit sed, adipisci suscipit nesciunt minus
-                            nobis illo voluptate. Accusamus iusto ex vero.
-                        </div>
-                    </div>
-                </div>
-                <button class="buttons_type_white account__button">Прервать регистрацию</button>
+                <a href={% url "mainapp:privacy" %} target="_blank" rel="noopener noreferrer" class="buttons_type_white account__button">Ознакомиться</a>
+                <a href={% url 'mainapp:index' %} class="buttons_type_white account__button">Прервать регистрацию</a>
             </div>
             <label class="registration__form_checkbox">
                 <input type="checkbox" required name="personalinfo" id="personalinfo">
