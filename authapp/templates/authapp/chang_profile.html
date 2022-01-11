@@ -19,9 +19,10 @@
             {% if form.label == 'Профессия' %}
             <div class="registration__form__check">
                 {% for prof in form %}
-{#                    с эти циклом нужно работать#}
+                <div class="checkmark_prof">
                {{ prof }}
-                    <span>hh</span>
+                    <span class="checkmark"></span>
+                </div>
                 {% endfor %}
             </div>
 
