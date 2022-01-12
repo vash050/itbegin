@@ -17,10 +17,16 @@
                     <div class="registration__form__block">
                         <label for="{{ field.id_for_label }}"
                                class="registration__form_input_label"> {{ field.label }} </label>
+                    
+<!-- Посмотри пожалуйста, судя по всему в этот if не заходит -->
+                               
                         {% if field.label == 'Professions' %}
                         <div class="registration__form__check">
                             {% for prof in field %}
+                            <div class="checkmark_prof">
                                 {{ prof }}
+                                     <span class="checkmark"></span>
+                                 </div>
                             {% endfor %}
                         </div>
                         {% else %}
