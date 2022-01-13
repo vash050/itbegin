@@ -15,9 +15,11 @@
             {% csrf_token %}
             {% for field in form %}
 
-<!-- Посмотри пожалуйста, судя по всему в этот if не заходит -->
 
-            {% if field.label == 'Need profession' %}
+            {% if field.label == 'Нужные профессии' %}
+            <div>
+            <label for="{{ field.id_for_label }}"
+                                   class="registration__form_input_label"> {{ field.label }} </label>
             <div class="registration__form__check">
                 {% for prof in field %}
                 <div class="checkmark_prof">
@@ -26,6 +28,7 @@
                      </div>
                 {% endfor %}
             </div>
+        </div>
             {% else %}
             <div>
                 <label for="{{ field.id_for_label }}" class="registration__form_input_label">
