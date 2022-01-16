@@ -1,0 +1,4 @@
+.account_mes_block {
+    display: grid;
+    grid-template-columns: 50px auto;
+}

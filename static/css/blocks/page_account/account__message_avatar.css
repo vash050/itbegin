@@ -1,0 +1,11 @@
+.account__message_avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    grid-row: 2;
+    align-self: end;
+}

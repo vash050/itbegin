@@ -60,8 +60,8 @@
     <div class="footer__content root__content">
         
         <div class="footer__about">
-            <a href="#" class="footer__link">О проекте</a>
-            <a href="#" class="footer__link">Контакты</a>
+            <a href="{% url 'mainapp:about' %}" class="footer__link">О проекте</a>
+            <a href="{% url 'mainapp:about' %}" class="footer__link">Контакты</a>
             <a href="#" class="footer__link">Задать вопрос</a>
             <p class="footer__link" id="footerPrivacy" data-id='{% url "mainapp:privacy" %}'>Пользовательское соглашение</p>
             <div id="footerMyModal" class="account__modal">

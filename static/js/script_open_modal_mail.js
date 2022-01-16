@@ -9,6 +9,7 @@ let link,
   form,
   formBlock,
   formLink;
+  let token = readCookie("csrftoken");
 
 if (document.getElementById("footerPrivacy")) {
   
@@ -72,10 +73,19 @@ if (
 
 let dialogs = document.getElementById("messages");
 
+// открываем сообщения внутри профиля
 if (dialogs) {
   link = dialogs.getAttribute("data-link");
   dialogs.addEventListener("click", async function () {
     getButtons();
+    let dialog = await getButton(link);
+
+    let dialogId = dialog[0].dialog;
+    let data = JSON.stringify({
+      dialog: dialogId,
+      is_read: true,
+    });
+    postData(link, data, token);
   });
 }
 
@@ -130,7 +140,8 @@ async function getAsyncData(url) {
 }
 
 async function getButton(url) {
-  const res = await getAsyncData(url);
+  let res = await getAsyncData(url);
+  res = JSON.parse(res);
   return res;
 }
 
@@ -139,13 +150,16 @@ async function privacyOpen(url, blockForPrivacy) {
   blockForPrivacy.innerHTML = resP;
 }
 
+
+//Написать сообщение или открыть диалог на странице профиля другого юзера
 async function newDialogCreate() {
-  let token = readCookie("csrftoken");
+  
   let mesAuthorName = document.getElementById("mesAuthorName").value;
   let mesAuthorId = document.getElementById("mesAuthorId").value;
 
   let companion = document.getElementById("companion").textContent;
   let companionId = document.getElementById("companionId").value;
+  let companionUserAvatar = document.getElementById("companionUserAvatar").src;
 
   let urlRedirect = await fetch(link);
   let paramsUrl = urlRedirect.url;
@@ -164,11 +178,18 @@ async function newDialogCreate() {
 
   for (let i = messages.length - 1; i >= 0; i--) {
     if (dialogId == messages[i].dialog) {
-      messagePrint(messages[i], messagesBlock[0]);
+      messagePrint(messages[i], messagesBlock[0], messages[i].user_avatar);
     }
   }
 
+
+ // формируется имя юзера, которому хотим написать 
   let companionBlock = document.getElementById("tabCompanion");
+  let companionUserAvatarImg = createNewElement('img', 'avatar-messages account__avatar__messages');
+
+  companionUserAvatarImg.src = companionUserAvatar;
+
+  companionBlock.before(companionUserAvatarImg);
   companionBlock.innerHTML = companion;
   companionBlock.addEventListener("click", function () {
     openDialog(event, "dialog");
@@ -213,8 +234,10 @@ async function newDialogCreate() {
   });
 }
 
+
+// открывает диалоги в профиле пользователя
 async function getButtons() {
-  let token = readCookie("csrftoken");
+
   let mesAuthorName = document.getElementById("mesAuthorName").value;
   let mesAuthorId = document.getElementById("mesAuthorId").value;
 
@@ -226,8 +249,6 @@ async function getButtons() {
     panel[0].innerHTML = "";
     panel[0].appendChild(noDialogs);
   } else {
-    btnOne = JSON.parse(btnOne);
-
     let dialogCount = [];
 
     btnOne.filter(function (item) {
@@ -289,16 +310,17 @@ async function getButtons() {
         for (let j = 0; j < btnOne.length; j++) {
         
           if (btnOne[j].dialog == dialogCount[i]) {
+            let authorAvatarSrc = btnOne[j].user_avatar
             let arr1 = btnOne[0].all_members;
             let arr2 = [{ id: mesAuthorId }];
             let opponent = arr1.filter(
               (e) => arr2.findIndex((i) => i.id == e.id) === -1
             );
-          
+
             tablinks.innerHTML =
               opponent[0].first_name + " " + opponent[0].last_name;
             avatar.src = opponent[0].avatar;
-            messagePrint(btnOne[j], tabcontent);
+            messagePrint(btnOne[j], tabcontent, authorAvatarSrc);
             tabcontent.appendChild(inputImageBlock);
 
             new Promise((resolve, reject) => {
@@ -477,7 +499,7 @@ function newMesShow(author, message, block) {
   block.appendChild(mes);
 }
 
-function messagePrint(mesArray, block) {
+function messagePrint(mesArray, block, avatarSrc = '') {
   let rightDate = new Date(mesArray.pub_date);
   let dateString =
     ("0" + rightDate.getDate()).slice(-2) +
@@ -493,12 +515,15 @@ function messagePrint(mesArray, block) {
   let messageText = createNewElement("div", "account__message_inline");
   let mesDate = createNewElement("p", "account__message_date");
   let mesAuthor = createNewElement("p", "account__message_author");
+  let mesAvatar = createNewElement('img', "account__message_avatar");
+  mesAvatar.src = avatarSrc;
   messageText.innerHTML = mesArray.message;
   mesDate.innerHTML = dateString;
 
   mesAuthor.innerHTML = mesArray.user_name;
   block.insertBefore(mesBlock, block.firstChild);
 
+  mesBlock.appendChild(mesAvatar);
   mesBlock.appendChild(mesAuthor);
   mesBlock.appendChild(messageText);
   mesBlock.appendChild(mesDate);

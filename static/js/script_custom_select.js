@@ -1,13 +1,13 @@
 "use strict";
+
 let checkboxes, checkedDiv, enabledSettings, opacity;
 
-if (document.querySelectorAll("input[type=checkbox][name=profession]")) {
-  checkboxes = document.querySelectorAll(
-    "input[type=checkbox][name=profession]"
-  );
+if (document.querySelectorAll(".input_type_checkbox")) {
+ 
+  checkboxes = document.querySelectorAll(".input_type_checkbox");
   checkedDiv = document.getElementsByClassName("checkmark");
 
-  checkboxes.forEach(function (checkbox) {
+   checkboxes.forEach(function (checkbox) {
     if (checkbox.checked) {
       changeOpacity(checkedDiv[checkbox.value - 1], "1");
     }
