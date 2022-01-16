@@ -22,8 +22,8 @@
                 <div class="account__info">
                     <p class="account__headline"><span id="companion">{{ object.first_name }}</span> {{ object.last_name }}</p>
                     <input type="hidden" id="companionId" value="{{ object.id }}">
-                    <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>
-                    <p>Статус: свободен</p>
+{#                    <p>Выполнено заданий 0 &#183; Работ в портфолио 5</p>#}
+{#                    <p>Статус: свободен</p>#}
                     <p data-link="{% url 'messageapp:create_dialog' object.id %}" id="newDialog">Написать сообщение</p>
                     <div id="messagesMyModal" class="account__modal">
                         <div class="account__mailContent">
