@@ -1,0 +1,8 @@
+.registration__form__forma {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+    font-size: 18px;
+    line-height: 36px;
+}

@@ -1,19 +1,20 @@
-{% extends 'authapp/base.html' %}
-
-
+{% extends 'authapp/base.html' %} 
 {% block conteiner %}
-{% if user %}
-<h3>Поздравляем!</h3>
-<br>
-<h4>Пользователь {{user.username}} подтвержден.</h4>
-{% else %}
-<h3>Верификация не пройдена.</h3>
-{% endif %}
-<br>
-<button class="">
-    <a href="{% url 'mainapp:index' %}" class="">
-        на главную
-    </a>
-</button>
-
+<div class="registration__form__background">
+  <section class="registration__form__content__password root__content">
+    {% if user %}
+    <h3 class="registration__form__content__h2">Поздравляем!</h3>
+    <br />
+    <h4 class="registration__form__content__p">
+      Пользователь {{user.username}} подтвержден.
+    </h4>
+    {% else %}
+    <h3 class="registration__form__content__h2">Верификация не пройдена.</h3>
+    {% endif %}
+    <br />
+    <button class="button__registration__password buttons_type_white">
+      <a href="{% url 'mainapp:index' %}" class=""> На главную </a>
+    </button>
+  </section>
+</div>
 {% endblock %}

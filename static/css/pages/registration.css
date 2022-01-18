@@ -32,4 +32,8 @@
 @import url("../blocks/page_registration_form/registration__inner__messages.css");
 
 @import url("../blocks/page_registration_form/registration__send.css");
-
+@import url("../blocks/page_registration_form/__content/registration__form__content__p.css");
+@import url("../blocks/page_registration_form/registration__form__forma.css");
+@import url("../blocks/page_registration_form/__button/button__registration__password.css");
+@import url("../blocks/page_registration_form/__content/registration__form__content__password.css");
+@import url("../blocks/page_registration_form/__content/registration__form__content__h2.css");
