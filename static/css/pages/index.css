@@ -52,6 +52,7 @@
 @import url("../blocks/footer/__questions/footer__questions.css");
 @import url("../blocks/footer/__subscribe/footer__subscribe.css");
 @import url("../blocks/footer/__link/footer__link.css");
+@import url("../blocks/footer/__link/footer__link__privacy.css");
 @import url("../blocks/footer/__subscribe-title/footer__subscribe-title.css");
 @import url("../blocks/footer/__subscribe-input/footer__subscribe-input.css");
 @import url("../blocks/footer/__button/footer__button.css");
