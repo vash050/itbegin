@@ -4,8 +4,8 @@
 {% block conteiner %}
     <div class="root darkgrey_background authorization__page">
         <section class="authorization__block">
-            <a href="{% url 'authapp:login' %}">Вход</a>
-            <a href="{% url 'authapp:register' %}">Регистрация</a>
+            <a href="{% url 'authapp:login' %}" class="hover__yellow">Вход</a>
+            <a href="{% url 'authapp:register' %}" class="hover__yellow">Регистрация</a>
         </section>
         <section class="authorization__main root__container">
             <form action="{% url 'authapp:login' %}" method="post" enctype="multipart/form-data" class="authorization__form">

@@ -2,9 +2,13 @@ import hashlib
 import random
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms.widgets import HiddenInput, CheckboxSelectMultiple
+from django.forms.widgets import HiddenInput, CheckboxSelectMultiple, DateInput
+from django import forms
 
 from authapp.models import SiteUser, ContactUser
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class SiteUserLoginForm(AuthenticationForm):
@@ -18,6 +22,9 @@ class SiteUserRegisterForm(UserCreationForm):
     class Meta:
         model = SiteUser
         fields = ('first_name', 'last_name', 'date_born', 'username', 'email', 'password1', 'password2')
+        widgets = {
+            'date_born': DateInput(attrs={'type': 'date'})
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -45,6 +52,7 @@ class SiteUserUpdateForm(UserChangeForm):
                   'profession', 'about_me', 'link_to_portfolio')
         widgets = {
             'profession': CheckboxSelectMultiple(attrs={}),
+            'date_born': DateInput(attrs={'type': 'date'})
         }
 
     def __init__(self, *args, **kwargs):
@@ -55,6 +63,7 @@ class SiteUserUpdateForm(UserChangeForm):
                 field.widget = HiddenInput()
             if field_name == 'profession':
                 field.widget.attrs["class"] = "input_type_checkbox"
+            
 
 
 

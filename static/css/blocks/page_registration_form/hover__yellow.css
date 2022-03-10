@@ -1,0 +1,8 @@
+.hover__yellow:hover {
+    transition: all 0.4s;
+    color: #fafd5a;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+}
